@@ -7,7 +7,7 @@ module.exports = {
       "Orders",
       [
         {
-          totalPrice: 0,
+          totalPrice: 16490,
           basketId: 1,
           statusId: 1, 
         },
