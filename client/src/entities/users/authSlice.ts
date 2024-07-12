@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { User, UserForLoga, UserForRega } from './types/userTypes';
+import Tokens from './api/tokensApi';
 import AuthApi from './api/userApi';
+import type { User, UserWithoutIdwithPassword, UserWithoutName } from './types/userTypes';
 
 type StateAuth = {
   user: User | undefined;
@@ -15,24 +16,27 @@ const initialState: StateAuth = {
   error: undefined,
   loading: true,
 };
-
-export const registrationThunk = createAsyncThunk('registration/user', (body: UserForRega) =>
-  AuthApi.registration(body),
+// действие, которое нужно сделать
+export const registrationThunk = createAsyncThunk(
+  'registration/user',
+  (body: UserWithoutIdwithPassword) => AuthApi.registartion(body),
 );
 
-export const authorizationThunk = createAsyncThunk('authorization/user', (body: UserForLoga) =>
-  AuthApi.authorization(body),
-);
-
-export const refreshUser = createAsyncThunk('refreshTokens/user', () => AuthApi.refreshUser());
+export const refreshTokens = createAsyncThunk('refreshTokens/user', () => Tokens.refreshTokens());
 
 export const logoutThunk = createAsyncThunk('logout/user', () => AuthApi.logout());
+
+export const authorizationThunk = createAsyncThunk('authorization/user', (body: UserWithoutName) =>
+  AuthApi.authrozation(body),
+);
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  // стнхронные редьюсеры
   reducers: {},
   extraReducers: (builder) => {
+    // описываем все возможные исходы действия
     builder
       .addCase(registrationThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
@@ -47,14 +51,14 @@ const authSlice = createSlice({
         state.error = action.error.message;
         state.loading = false;
       })
-      .addCase(refreshUser.fulfilled, (state, action) => {
+      .addCase(refreshTokens.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.accessToken = action.payload.accessToken;
       })
-      .addCase(refreshUser.pending, (state) => {
+      .addCase(refreshTokens.pending, (state) => {
         state.loading = true;
       })
-      .addCase(refreshUser.rejected, (state, action) => {
+      .addCase(refreshTokens.rejected, (state, action) => {
         state.error = action.error.message;
         state.loading = false;
       })
@@ -74,14 +78,6 @@ const authSlice = createSlice({
       .addCase(logoutThunk.fulfilled, (state) => {
         state.user = undefined;
         state.accessToken = undefined;
-        state.loading = false;
-      })
-      .addCase(logoutThunk.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(logoutThunk.rejected, (state, action) => {
-        state.error = action.error.message;
-        state.loading = false;
       });
   },
 });
