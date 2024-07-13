@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import authSlice from '../../entities/users/authSlice';
+import sneakerSlice from '../../entities/sneakers/sneakerSlice';
 
 const store = configureStore({
   reducer: {
     user: authSlice.reducer,
+    sneakers: sneakerSlice.reducer,
   },
 });
 

@@ -1,0 +1,37 @@
+.SneakerItem {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .SneakerItem h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .SneakerItem h4 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  .SneakerItem p {
+    font-size: 1em;
+    margin-bottom: 10px;
+  }
+  
+  .SneakerImages {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .SneakerImages img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+  }
+  
