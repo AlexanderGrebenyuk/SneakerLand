@@ -18,6 +18,9 @@ module.exports = {
       price: {
         type: Sequelize.INTEGER,
       },
+      articul: {
+        type: Sequelize.INTEGER,
+      },
       sexId: {
         type: Sequelize.INTEGER,
         references: {
