@@ -7,39 +7,39 @@ module.exports = {
       "Images",
       [
         {
-          link: "img/imgSneakers/JORDAN AIR JORDAN 1 LOW/1.png",
+          link: "img/imgSneakers/NIKE JORDAN AIR JORDAN 1 LOW/1.png",
           sneakerId: 1,
         },
         {
-          link: "img/imgSneakers/JORDAN AIR JORDAN 1 LOW/2.png",
+          link: "img/imgSneakers/NIKE JORDAN AIR JORDAN 1 LOW/2.png",
           sneakerId: 1,
         },
         {
-          link: "img/imgSneakers/JORDAN AIR JORDAN 1 LOW/3.png",
+          link: "img/imgSneakers/NIKE JORDAN AIR JORDAN 1 LOW/3.png",
           sneakerId: 1,
         },
         {
-          link: "img/imgSneakers/JORDAN AIR JORDAN 1 LOW/1.png",
+          link: "img/imgSneakers/NIKE JORDAN AIR JORDAN 1 LOW/1.png",
           sneakerId: 2,
         },
         {
-          link: "img/imgSneakers/JORDAN AIR JORDAN 1 LOW/2.png",
+          link: "img/imgSneakers/NIKE JORDAN AIR JORDAN 1 LOW/2.png",
           sneakerId: 2,
         },
         {
-          link: "img/imgSneakers/JORDAN AIR JORDAN 1 LOW/3.png",
+          link: "img/imgSneakers/NIKE JORDAN AIR JORDAN 1 LOW/3.png",
           sneakerId: 2,
         },
         {
-          link: "img/imgSneakers/JORDAN AIR JORDAN 1 LOW/1.png",
+          link: "img/imgSneakers/NIKE JORDAN AIR JORDAN 1 LOW/1.png",
           sneakerId: 3,
         },
         {
-          link: "img/imgSneakers/JORDAN AIR JORDAN 1 LOW/2.png",
+          link: "img/imgSneakers/NIKE JORDAN AIR JORDAN 1 LOW/2.png",
           sneakerId: 3,
         },
         {
-          link: "img/imgSneakers/JORDAN AIR JORDAN 1 LOW/3.png",
+          link: "img/imgSneakers/NIKE JORDAN AIR JORDAN 1 LOW/3.png",
           sneakerId: 3,
         },
       ],
