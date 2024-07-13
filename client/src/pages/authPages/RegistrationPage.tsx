@@ -7,8 +7,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { registrationThunk } from '../../entities/users/authSlice';
 import { UserWithoutIdwithPassword } from '../../entities/users/types/userTypes';
 
-type RegistrationPageProps = {};
-
 const schema = object().shape({
     name: string().nullable().trim().required('Обязательно для заполнения'),
     email: string().email().nullable().trim().required('Не email'),
@@ -25,8 +23,9 @@ const schema = object().shape({
       .oneOf([ref('password')], 'Пароли не совпадают'),
   });
 
-const RegistrationPage = ({}: RegistrationPageProps): JSX.Element => {
+const RegistrationPage = (): JSX.Element => {
     const dispatch = useAppDispatch();
+
     const {
         register,
         handleSubmit,
