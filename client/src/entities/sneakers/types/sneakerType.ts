@@ -50,6 +50,7 @@ export type Sneaker = {
   model: string;
   description: string;
   price: number;
+  articul: number;
   sexId: SexId;
   sizeId: SizeId;
   colorId: ColorId;
