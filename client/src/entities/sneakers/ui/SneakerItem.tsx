@@ -1,23 +1,33 @@
 import React from 'react';
 import { Sneaker } from '../types/sneakerType';
 import './styles/SneakerItem.css';
+import { useAppSelector } from '../../../app/store/store';
 
 type SneakerItemProps = {
-  sneaker: Sneaker;
+  // sneaker: Sneaker;
+  sneak: Sneaker;
 };
-const SneakerItem = ({ sneaker }: SneakerItemProps): JSX.Element => {
-  console.log(sneaker);
-  
+const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
+  console.log(sneak);
+
+  const { user } = useAppSelector((state) => state.user);
+
   return (
     <div className="SneakerItem">
       <div className="SneakerImages">
-        {sneaker.Images.map((image) => (
-          <img key={image.id} src={image.link} alt={sneaker.model} />
+        {sneak.Images.map((image) => (
+          <img key={image.id} src={image.link} alt={sneak.model} />
         ))}
       </div>
-      <h3>{sneaker.Brand.name}</h3>
-      <p>{sneaker.model}</p>
-      <p>{sneaker.price}</p>
+      <h3>{sneak.Brand.name}</h3>
+      <p>{sneak.model}</p>
+      <p>{sneak.price} ₽</p>
+      {user?.isAdmin && (
+        <>
+          <button>Изменить</button>
+          <button>Удалить </button>
+        </>
+      )}
     </div>
   );
 };

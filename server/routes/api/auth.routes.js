@@ -3,9 +3,11 @@ const { User } = require('../../db/models');
 const bcrypt = require('bcrypt');
 const generateTokens = require('../../utils/authUtils');
 
+
+//добавить isAdmin
 router.post('/registration', async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password} = req.body;
 
     if (name.trim() === '' || email.trim() === '' || password.trim() === '') {
       res.status(400).json({ message: 'нужно заполнить все поля' });
@@ -19,8 +21,8 @@ router.post('/registration', async (req, res) => {
       return;
     }
     const hashPassword = await bcrypt.hash(password, 10);
-
-    const user = await User.create({ name, email, password: hashPassword });
+                                                                          // добавила
+    const user = await User.create({ name, email, password: hashPassword, isAdmin: false });
 
     delete user.dataValues.password;
 
