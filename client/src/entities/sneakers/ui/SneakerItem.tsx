@@ -7,7 +7,7 @@ type SneakerItemProps = {
 };
 const SneakerItem = ({ sneaker }: SneakerItemProps): JSX.Element => {
   console.log(sneaker);
-
+  
   return (
     <div className="SneakerItem">
       <div className="SneakerImages">
