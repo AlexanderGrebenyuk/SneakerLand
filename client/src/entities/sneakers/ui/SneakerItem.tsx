@@ -1,7 +1,9 @@
 import React from 'react';
 import { Sneaker } from '../types/sneakerType';
 import './styles/SneakerItem.css';
-import { useAppSelector } from '../../../app/store/store';
+import { useAppDispatch, useAppSelector } from '../../../app/store/store';
+import { useNavigate } from 'react-router-dom';
+import { removeSneakerThunk } from '../sneakerSlice';
 
 type SneakerItemProps = {
   // sneaker: Sneaker;
@@ -9,8 +11,13 @@ type SneakerItemProps = {
 };
 const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
   console.log(sneak);
-
   const { user } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const onHandleDelete = (): void => {
+    void dispatch(removeSneakerThunk(sneak.id));
+  };
 
   return (
     <div className="SneakerItem">
@@ -24,10 +31,15 @@ const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
       <p>{sneak.price} ₽</p>
       {user?.isAdmin && (
         <>
-          <button>Изменить</button>
-          <button>Удалить </button>
+          <button type="button">Изменить</button>
+          <button type="button" onClick={onHandleDelete}>
+            Удалить
+          </button>
         </>
       )}
+
+      {/* Доделать страницу товара */}
+      <button onClick={() => navigate(`/sneakers/${sneak.id}`)}>Подробнее</button>
     </div>
   );
 };

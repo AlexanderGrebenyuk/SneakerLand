@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Sneaker } from './types/sneakerType';
+import { Sneaker, SneakerId } from './types/sneakerType';
 import SneakerApi from './api/sneakerApi';
 
 type StateSneakers = {
@@ -18,9 +18,9 @@ export const getSneakersThunk = createAsyncThunk('load/sneakers', () =>
 //   MovieApi.createMovie(body),
 // );
 
-// export const removeMovieThunk = createAsyncThunk('remove/movies', (id: MovieId) =>
-//   MovieApi.deleteMovie(id),
-// );
+export const removeSneakerThunk = createAsyncThunk('remove/sneakers', (id: SneakerId) =>
+  SneakerApi.removeSneaker(id),
+);
 
 // export const updateMovieThunk = createAsyncThunk(
 //   'update/movies',
@@ -34,9 +34,13 @@ const sneakerSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
-    builder.addCase(getSneakersThunk.fulfilled, (state, action) => {        
-      state.sneakers = action.payload;
-    });
+    builder
+      .addCase(getSneakersThunk.fulfilled, (state, action) => {
+        state.sneakers = action.payload;
+      })
+      .addCase(removeSneakerThunk.fulfilled, (state, action) => {
+        state.sneakers = state.sneakers.filter((sneaker) => sneaker.id !== action.payload);
+      });
     //   .addCase(createMovieThunk.fulfilled, (state, action) => {
     //     state.movies.push(action.payload);
     //   })
