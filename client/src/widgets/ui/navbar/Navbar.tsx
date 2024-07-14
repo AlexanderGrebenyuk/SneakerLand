@@ -10,6 +10,7 @@ type NavbarProps={
 const Navbar= ({}: NavbarProps): JSX.Element =>{
     const { user } = useAppSelector((state: RootState) => state.user);
     const dispatch = useAppDispatch();
+console.log(user);
 
     const onHandleLogout = (e: React.MouseEvent<HTMLAnchorElement>): void => {
       e.preventDefault();

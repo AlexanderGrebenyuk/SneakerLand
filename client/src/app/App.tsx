@@ -5,20 +5,18 @@ import { useAppDispatch } from './store/store';
 import { refreshTokens } from '../entities/users/authSlice';
 import { getSneakersThunk } from '../entities/sneakers/sneakerSlice';
 
-
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
-
   useEffect(() => {
-    void dispatch(getSneakersThunk())
+    void dispatch(getSneakersThunk());
     void dispatch(refreshTokens());
   }, [dispatch]);
 
   return (
     <div className="App">
-    <Navbar/>
-    <AppRoutes/>
+      <Navbar />
+      <AppRoutes />
     </div>
   );
 }
