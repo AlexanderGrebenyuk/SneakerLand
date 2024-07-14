@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { Sneaker, SneakerId } from '../types/sneakerType';
+import { Sneaker, SneakerId, SneakerWithoutId } from '../types/sneakerType';
 import axiosInstance from '../../../services/axiosInstance';
 
 class SneakerApi {
@@ -16,6 +16,14 @@ class SneakerApi {
       return id;
     }
     return 'Что-то пошло не так';
+  };
+
+  static createSneaker = async (body: SneakerWithoutId): Promise<Sneaker> => {
+    const response: AxiosResponse<{ message: string; sneaker: Sneaker }> = await axiosInstance.post(
+      '/sneakers',
+      body,
+    );
+    return response.data.sneaker
   };
 }
 

@@ -1,66 +1,53 @@
-/* styles/Navbar.css */
+/* Navbar.css */
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  .Navbar {
-    background-color: white;
-    border-bottom: 1px solid #e5e5e5;
-    padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .Navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .Navbar ul li {
-    margin: 0 10px;
-  }
-  
-  .Navbar ul li a {
-    color: #333;
-    text-decoration: none;
-    padding: 10px;
-    font-weight: bold;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-  }
-  
-  .Navbar ul li a:hover,
-  .Navbar ul li a.active {
-    color: #000;
-    border-bottom: 2px solid #000;
-  }
-  
-  .Navbar .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #000;
-  }
-  
-  @media (max-width: 768px) {
-    .Navbar ul {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .Navbar ul li {
-      width: 100%;
-    }
-  
-    .Navbar ul li a {
-      width: 100%;
-      text-align: left;
-      padding: 10px 20px;
-    }
-  }
-  
+.header {
+  background-color: #f8f9fa; /* Светлый фон заголовка */
+  padding: 20px; /* Внутренние отступы */
+  text-align: center; /* Выравнивание текста по центру */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+.header h1 {
+  margin: 0; /* Убираем внешние отступы у заголовка */
+  font-family: 'Arial', sans-serif; /* Шрифт заголовка */
+  color: #343a40; /* Цвет текста */
+  font-size: 2rem; /* Размер текста */
+}
+
+.Navbar {
+  background-color: #f8f9fa; /* Светлый фон навбара */
+  color: #343a40; /* Цвет текста */
+  padding: 10px 20px; /* Внутренние отступы */
+  font-family: 'Arial', sans-serif; /* Шрифт */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+.Navbar ul {
+  list-style-type: none; /* Убираем маркеры списка */
+  display: flex; /* Отображаем элементы в ряд */
+  justify-content: space-between; /* Равномерно распределяем элементы */
+  align-items: center; /* Выравниваем по центру */
+  margin: 0;
+  padding: 0;
+}
+
+.Navbar ul li {
+  margin: 0 10px; /* Отступы между элементами */
+}
+
+.Navbar ul li a {
+  color: #343a40; /* Цвет текста ссылок */
+  text-decoration: none; /* Убираем подчеркивание */
+  font-size: 1.2rem; /* Размер текста */
+  padding: 10px; /* Внутренние отступы вокруг текста ссылок */
+  transition: color 0.3s ease; /* Плавное изменение цвета текста при наведении */
+  font-family: 'Roboto', sans-serif; /* Применяем шрифт Roboto */
+}
+
+.Navbar ul li a:hover {
+  color: #007bff; /* Цвет текста при наведении */
+}
+
+.Navbar ul li.active a {
+  font-weight: bold; /* Жирный шрифт для активной ссылки */
+}
