@@ -1,6 +1,11 @@
 const { Image, Sneaker } = require("../../db/models");
 const router = require("express").Router();
+const upload = require('../../middleware/multer')
+const imageController = require('../../controllers/imageController')
 const verifyAccessToken = require("../../middleware/verifyAccessToken");
+
+
+router.post('/upload-images/:sneakerId', upload.array('images', 3), imageController.uploadImages);
 
 // ПРОВЕРИТЬ С ВЛАДОМ и verifyAccessToken
 router.post("/", verifyAccessToken, async (req, res) => {
