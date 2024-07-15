@@ -5,6 +5,7 @@ import { useAppDispatch } from './store/store';
 import { refreshTokens } from '../entities/users/authSlice';
 import { getSneakersThunk } from '../entities/sneakers/sneakerSlice';
 
+
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
 

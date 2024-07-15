@@ -1,24 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store/store';
 import SneakerItem from '../../entities/sneakers/ui/SneakerItem';
+import ModalWindow from '../../shared/ui/modal/Modal';
+import FormAddSneakers from '../../entities/sneakers/ui/FormAddSneakers';
+import './styles/SneakersPage.css';
 
+const SneakersPage = (): JSX.Element => {
+  const { sneakers } = useSelector((state: RootState) => state.sneakers);
+  const { user } = useSelector((state: RootState) => state.user);
 
-
-const SneakersPage= (): JSX.Element =>{
-
-    const {sneakers} = useSelector((state: RootState) => state.sneakers)
+  const [active, setActive] = useState(false);
+  const onToggle = (): void => {
+    setActive((prev) => !prev);
+  };
 
     // const sneaker = sneakers && sneakers.length > 0 ? sneakers[0] : null;
     
     //Есть 2 варианта: 1) Мы через find по артикулам пушим в пустой массив потом его мапаем. 2) Мы фильтруем по какому-то размеру, потом полученный массив мапаем и отрисовываем карточку
-return (
-    <div className="SneakerPage">
 
-      {sneakers && sneakers.filter((sneaker) => (sneaker.Sex.title==='Для него' && sneaker.Size.size===40)).map((sneak) => (<SneakerItem key={sneak.id} sneak={sneak}/> ))}
-      {/* {sneaker && <SneakerItem sneaker={sneaker} />} */}
-    </div>
- );
+  return (
+    <>
+      {user?.isAdmin === true && (
+        <button type="button" onClick={() => setActive((prev) => !prev)}>
+          Добавить кроссовки
+        </button>
+      )}
+      <div className="SneakerPage">
+        <ModalWindow active={active} onToggle={onToggle}>
+          <h3>Добавить кроссовки</h3>
+          <FormAddSneakers />
+          <button type="button" onClick={onToggle}>
+            Закрыть
+          </button>
+        </ModalWindow>
+        {sneakers &&
+          sneakers
+            .filter((sneaker) => sneaker.Sex.title === 'Для него' && sneaker.Size.size === 40)
+            .map((sneak) => <SneakerItem key={sneak.id} sneak={sneak} />)}
+      </div>
+    </>
+};
+export default SneakersPage;
 
-} 
-export default SneakersPage

@@ -42,8 +42,8 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// ТОЛЬКО ДЛЯ АДМИНА!!!! verifyAccessToken, ВЛАД ОБЪЯСНИТ ССЫЛКИ НА IMG
-router.post("/", verifyAccessToken, async (req, res) => {
+// ТОЛЬКО ДЛЯ АДМИНА!!!! verifyAccessToken, ВЛАД ОБЪЯСНИТ ССЫЛКИ НА IMG upload
+router.post("/", verifyAccessToken,  async (req, res) => {
   try {
     const { model, description, price, sexId, sizeId, colorId, brandId, link } =
       req.body;
