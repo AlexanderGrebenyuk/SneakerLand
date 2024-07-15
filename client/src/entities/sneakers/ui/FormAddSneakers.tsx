@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { number, object, string } from 'yup';
 import { useAppDispatch } from '../../../app/store/store';
 import { useForm } from 'react-hook-form';
@@ -31,6 +31,7 @@ const schema = object().shape({
   brandId: number()
     .required('Идентификатор бренда обязателен для заполнения')
     .integer('Идентификатор бренда должен быть целым числом'),
+  images: object().nullable(),
 });
 
 type FormAddSneakersProps = {};
@@ -55,6 +56,8 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
     },
   });
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const onHandleSubmit = async (formData: {
     model: string;
     description: string;
@@ -63,6 +66,7 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
     sizeId: number;
     colorId: number;
     brandId: number;
+    images: FileList;
   }): Promise<void> => {
     const sneaker: SneakerWithoutId = {
       model: formData.model,
@@ -81,6 +85,19 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
       Brand: { id: formData.brandId, name: '', createdAt: null, updatedAt: null },
       Images: [],
     };
+
+    const formDataToSend = new FormData();
+    formDataToSend.append('model', sneaker.model);
+    formDataToSend.append('description', sneaker.description);
+    formDataToSend.append('price', sneaker.price.toString());
+    formDataToSend.append('sexId', sneaker.sexId.toString());
+    formDataToSend.append('sizeId', sneaker.sizeId.toString());
+    formDataToSend.append('colorId', sneaker.colorId.toString());
+    formDataToSend.append('brandId', sneaker.brandId.toString());
+    for (let i = 0; i < formData.images.length; i++) {
+      formDataToSend.append('images', formData.images[i]);
+    }
+
     try {
       await dispatch(createSneakerThunk(sneaker));
       reset();
@@ -132,6 +149,12 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
           brandId:
           <input type="number" {...register('brandId')} />
           <span>{errors.brandId?.message}</span>
+        </label>
+        <br />
+        <label htmlFor="images">
+          Images:
+          <input type="file" id='images' name='images' multiple ref={fileInputRef} onChange={(e) => register('images', {required: true})}/>
+          <span>{errors.images?.message}</span>
         </label>
         <br />
         <button type="submit">Добавить</button>

@@ -1,53 +1,63 @@
-/* Navbar.css */
-
-.header {
-  background-color: #f8f9fa; /* Светлый фон заголовка */
-  padding: 20px; /* Внутренние отступы */
-  text-align: center; /* Выравнивание текста по центру */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень */
-}
-
-.header h1 {
-  margin: 0; /* Убираем внешние отступы у заголовка */
-  font-family: 'Arial', sans-serif; /* Шрифт заголовка */
-  color: #343a40; /* Цвет текста */
-  font-size: 2rem; /* Размер текста */
-}
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 .Navbar {
-  background-color: #f8f9fa; /* Светлый фон навбара */
-  color: #343a40; /* Цвет текста */
-  padding: 10px 20px; /* Внутренние отступы */
-  font-family: 'Arial', sans-serif; /* Шрифт */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+  border-bottom: 1px solid #eaeaea;
+  z-index: 1000;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.Navbar img {
+  height: 40px;
 }
 
 .Navbar ul {
-  list-style-type: none; /* Убираем маркеры списка */
-  display: flex; /* Отображаем элементы в ряд */
-  justify-content: space-between; /* Равномерно распределяем элементы */
-  align-items: center; /* Выравниваем по центру */
+  list-style: none;
+  display: flex;
   margin: 0;
   padding: 0;
 }
 
-.Navbar ul li {
-  margin: 0 10px; /* Отступы между элементами */
+.Navbar li {
+  margin-left: 1.5rem;
 }
 
-.Navbar ul li a {
-  color: #343a40; /* Цвет текста ссылок */
-  text-decoration: none; /* Убираем подчеркивание */
-  font-size: 1.2rem; /* Размер текста */
-  padding: 10px; /* Внутренние отступы вокруг текста ссылок */
-  transition: color 0.3s ease; /* Плавное изменение цвета текста при наведении */
-  font-family: 'Roboto', sans-serif; /* Применяем шрифт Roboto */
+.Navbar a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
 }
 
-.Navbar ul li a:hover {
-  color: #007bff; /* Цвет текста при наведении */
+.Navbar a:hover {
+  color: #000;
 }
 
-.Navbar ul li.active a {
-  font-weight: bold; /* Жирный шрифт для активной ссылки */
+.Navbar a.active {
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+}
+
+@media (max-width: 768px) {
+  .Navbar ul {
+    flex-direction: column;
+  }
+
+  .Navbar li {
+    margin: 0.5rem 0;
+  }
+}
+
+body {
+  padding-top: 70px;
+
 }

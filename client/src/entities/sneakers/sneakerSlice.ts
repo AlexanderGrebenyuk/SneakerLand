@@ -30,7 +30,6 @@ export const removeSneakerThunk = createAsyncThunk('remove/sneakers', (id: Sneak
 const sneakerSlice = createSlice({
   name: 'sneakers',
   initialState,
-
   reducers: {},
 
   extraReducers: (builder) => {
