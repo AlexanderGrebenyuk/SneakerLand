@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { removeSneakerThunk } from '../sneakerSlice';
 import Carusel from '../../../shared/ui/carusel/Carusel';
 import ModalWindow from '../../../shared/ui/modal/Modal';
-import FormUpdateSneaker from './FormUpdateSneaker';
+// import FormUpdateSneaker from './FormUpdateSneaker';
 
 type SneakerItemProps = {
   // sneaker: Sneaker;
@@ -26,7 +26,6 @@ const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
     setActive((prev) => !prev);
   };
 
-
   return (
     <div className="SneakerItem">
       <Carusel sneak={sneak} />
@@ -36,32 +35,30 @@ const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
       {user?.isAdmin ? (
         <>
           <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-            <button type="button" style={{ borderRadius: '20px' }}>
-              Изменить
+            <button
+              type="button"
+              style={{ borderRadius: '20px' }}
+              onClick={() => setActive((prev) => !prev)}
+            >
+              Обновить
             </button>
+            {/* <ModalWindow active={active} onToggle={onToggle}>
+              <FormUpdateSneaker sneak={sneak} />
+            </ModalWindow> */}
             <button type="button" style={{ borderRadius: '20px' }} onClick={onHandleDelete}>
               Удалить
             </button>
           </div>
+          {/* ДОДЕЛАТЬ СТРАНИЦУ ДУРА!!!! */}
         </>
+      ) : (
+        <button
+          onClick={() => navigate(`/sneakers/${sneak.id}`)}
+          style={{ justifyContent: 'center', margin: '10px', borderRadius: '20px' }}
+        >
+          Подробнее
+        </button>
       )}
-
-      {/* Доделать страницу товара */}
-      <button
-        onClick={() => navigate(`/sneakers/${sneak.id}`)}
-        style={{ justifyContent: 'center', margin: '10px', borderRadius: '20px' }}
-      >
-        Подробнее
-      </button>
-          <button type="button" onClick={() => setActive((prev) => !prev)}>Обновить</button>
-          <ModalWindow active={active} onToggle={onToggle}>
-            <FormUpdateSneaker sneak={sneak}/>
-          </ModalWindow>
-          <button type="button" onClick={onHandleDelete}>
-            Удалить
-          </button>
-        </>
-      ): (<button onClick={() => navigate(`/sneakers/${sneak.id}`)}>Подробнее</button>)}
     </div>
   );
 };

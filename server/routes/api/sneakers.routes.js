@@ -43,12 +43,13 @@ router.get("/:id", async (req, res) => {
 });
 
 // ТОЛЬКО ДЛЯ АДМИНА!!!! verifyAccessToken, ВЛАД ОБЪЯСНИТ ССЫЛКИ НА IMG upload
-router.post("/", verifyAccessToken,  async (req, res) => {
+router.post("/", verifyAccessToken, async (req, res) => {
   try {
-    const { model, description, price, sexId, sizeId, colorId, brandId, link } =
+    const { model, description, price, sexId, sizeId, colorId, brandId, images } =
       req.body;
-
+    
     const { user } = res.locals;
+
     if (user.isAdmin) {
       if (
         model.trim() !== "" &&
@@ -58,7 +59,7 @@ router.post("/", verifyAccessToken,  async (req, res) => {
         sizeId !== "" &&
         colorId !== "" &&
         brandId !== "" &&
-        link.trim() !== ""
+        images.length === 3 
       ) {
         const newSneaker = await Sneaker.create({
           model,
@@ -69,28 +70,33 @@ router.post("/", verifyAccessToken,  async (req, res) => {
           colorId,
           brandId,
         });
+
+
         if (newSneaker) {
-          const img = await Image.create({ link, sneakerId: newSneaker.id });
-          if (img) {
-            const sneaker = await Sneaker.findOne({
-              where: { id: newSneaker.id },
-              include: [
-                { model: Sex },
-                { model: Size },
-                { model: Color },
-                { model: Brand },
-                { model: Image },
-              ],
-            });
-            res.status(201).json({ message: "success", sneaker });
-            return;
-          }
+          const createdImages = await Promise.all(images.map(async img => {
+            return await Image.create({ link: img.link, sneakerId: newSneaker.id });
+          }));
+
+          const sneaker = await Sneaker.findOne({
+            where: { id: newSneaker.id },
+            include: [
+              { model: Sex },
+              { model: Size },
+              { model: Color },
+              { model: Brand },
+              { model: Image },
+            ],
+          });
+
+          res.status(201).json({ message: "success", sneaker });
+          return;
         }
-        return;
       }
-      res.status(400).json({ message: "Не должно быть пустых полей" });
+
+      res.status(400).json({ message: "Не должно быть пустых полей или неверное количество изображений" });
       return;
     }
+
     res.status(400).json({ message: "Вы не админ" });
     return;
   } catch ({ message }) {
