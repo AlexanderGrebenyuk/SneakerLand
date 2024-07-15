@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { number, object, string } from 'yup';
+import { array, number, object, string } from 'yup';
 import { useAppDispatch } from '../../../app/store/store';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -8,30 +8,24 @@ import { createSneakerThunk } from '../sneakerSlice';
 
 const schema = object().shape({
   model: string().nullable().trim().required('Обязательно для заполнения'),
-
   description: string().nullable().trim().required('Обязательно для заполнения'),
-
   price: number()
     .required('Цена обязательна для заполнения')
     .positive('Цена должна быть положительным числом')
     .integer('Цена должна быть целым числом'),
-
   sexId: number()
     .required('Идентификатор пола обязателен для заполнения')
     .integer('Идентификатор пола должен быть целым числом'),
-
   sizeId: number()
     .required('Идентификатор размера обязателен для заполнения')
     .integer('Идентификатор размера должен быть целым числом'),
-
   colorId: number()
     .required('Идентификатор цвета обязателен для заполнения')
     .integer('Идентификатор цвета должен быть целым числом'),
-
   brandId: number()
     .required('Идентификатор бренда обязателен для заполнения')
     .integer('Идентификатор бренда должен быть целым числом'),
-  images: object().nullable(),
+  images: array().nullable(), 
 });
 
 type FormAddSneakersProps = {};
@@ -53,6 +47,7 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
       sizeId: 0,
       colorId: 0,
       brandId: 0,
+      images: [],
     },
   });
 
@@ -76,13 +71,11 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
       sizeId: formData.sizeId,
       colorId: formData.colorId,
       brandId: formData.brandId,
-      articul: 0, // Пример значения по умолчанию
-      createdAt: null,
-      updatedAt: null,
-      Sex: { id: formData.sexId, title: '', createdAt: null, updatedAt: null },
-      Size: { id: formData.sizeId, size: 0, createdAt: null, updatedAt: null },
-      Color: { id: formData.colorId, name: '', createdAt: null, updatedAt: null },
-      Brand: { id: formData.brandId, name: '', createdAt: null, updatedAt: null },
+      articul: 0, 
+      Sex: { id: formData.sexId, title: '' },
+      Size: { id: formData.sizeId, size: 0 },
+      Color: { id: formData.colorId, name: '' },
+      Brand: { id: formData.brandId, name: '' },
       Images: [],
     };
 
@@ -94,6 +87,8 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
     formDataToSend.append('sizeId', sneaker.sizeId.toString());
     formDataToSend.append('colorId', sneaker.colorId.toString());
     formDataToSend.append('brandId', sneaker.brandId.toString());
+
+    
     for (let i = 0; i < formData.images.length; i++) {
       formDataToSend.append('images', formData.images[i]);
     }
@@ -153,13 +148,19 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
         <br />
         <label htmlFor="images">
           Images:
-          <input type="file" id='images' name='images' multiple ref={fileInputRef} onChange={(e) => register('images', {required: true})}/>
+          <input
+            type="file"
+            id="images"
+            name="images"
+            multiple
+            ref={fileInputRef}
+            onChange={(e) => register('images', { required: true })}
+          />
           <span>{errors.images?.message}</span>
         </label>
         <br />
         <button type="submit">Добавить</button>
-        <input type="file" name="" id="" />
-        <br />
+
       </form>
     </div>
   );

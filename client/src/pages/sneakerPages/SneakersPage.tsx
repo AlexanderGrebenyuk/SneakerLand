@@ -14,11 +14,7 @@ const SneakersPage = (): JSX.Element => {
   const onToggle = (): void => {
     setActive((prev) => !prev);
   };
-
-    // const sneaker = sneakers && sneakers.length > 0 ? sneakers[0] : null;
-    
-    //Есть 2 варианта: 1) Мы через find по артикулам пушим в пустой массив потом его мапаем. 2) Мы фильтруем по какому-то размеру, потом полученный массив мапаем и отрисовываем карточку
-
+  
   return (
     <>
       {user?.isAdmin === true && (
@@ -40,6 +36,6 @@ const SneakersPage = (): JSX.Element => {
             .map((sneak) => <SneakerItem key={sneak.id} sneak={sneak} />)}
       </div>
     </>
+  );
 };
 export default SneakersPage;
-
