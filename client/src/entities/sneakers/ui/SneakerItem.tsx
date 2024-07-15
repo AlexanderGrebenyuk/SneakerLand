@@ -4,6 +4,7 @@ import './styles/SneakerItem.css';
 import { useAppDispatch, useAppSelector } from '../../../app/store/store';
 import { useNavigate } from 'react-router-dom';
 import { removeSneakerThunk } from '../sneakerSlice';
+import Carusel from '../../../shared/ui/carusel/Carusel';
 import ModalWindow from '../../../shared/ui/modal/Modal';
 import FormUpdateSneaker from './FormUpdateSneaker';
 
@@ -12,7 +13,6 @@ type SneakerItemProps = {
   sneak: Sneaker;
 };
 const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
-
   const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -29,16 +29,30 @@ const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
 
   return (
     <div className="SneakerItem">
-      <div className="SneakerImages">
-        {sneak.Images.map((image) => (
-          <img key={image.id} src={image.link} alt={sneak.model} />
-        ))}
-      </div>
+      <Carusel sneak={sneak} />
       <h3>{sneak.Brand.name}</h3>
       <p>{sneak.model}</p>
       <p>{sneak.price} ₽</p>
       {user?.isAdmin ? (
         <>
+          <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
+            <button type="button" style={{ borderRadius: '20px' }}>
+              Изменить
+            </button>
+            <button type="button" style={{ borderRadius: '20px' }} onClick={onHandleDelete}>
+              Удалить
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* Доделать страницу товара */}
+      <button
+        onClick={() => navigate(`/sneakers/${sneak.id}`)}
+        style={{ justifyContent: 'center', margin: '10px', borderRadius: '20px' }}
+      >
+        Подробнее
+      </button>
           <button type="button" onClick={() => setActive((prev) => !prev)}>Обновить</button>
           <ModalWindow active={active} onToggle={onToggle}>
             <FormUpdateSneaker sneak={sneak}/>
@@ -48,7 +62,6 @@ const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
           </button>
         </>
       ): (<button onClick={() => navigate(`/sneakers/${sneak.id}`)}>Подробнее</button>)}
-      
     </div>
   );
 };
