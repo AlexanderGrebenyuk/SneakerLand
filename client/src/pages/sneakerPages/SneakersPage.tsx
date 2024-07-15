@@ -10,7 +10,6 @@ const SneakersPage = (): JSX.Element => {
   const { sneakers } = useSelector((state: RootState) => state.sneakers);
   const { user } = useSelector((state: RootState) => state.user);
 
-
   const [active, setActive] = useState(false);
   const onToggle = (): void => {
     setActive((prev) => !prev);
@@ -37,6 +36,5 @@ const SneakersPage = (): JSX.Element => {
             .map((sneak) => <SneakerItem key={sneak.id} sneak={sneak} />)}
       </div>
     </>
-  );
 };
 export default SneakersPage;

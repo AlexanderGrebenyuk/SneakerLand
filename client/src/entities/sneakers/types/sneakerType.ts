@@ -1,8 +1,6 @@
 export type Sex = {
   id: number;
   title: string;
-  createdAt: string | null;
-  updatedAt: string | null;
 };
 
 export type SexId = Sex['id'];
@@ -10,8 +8,6 @@ export type SexId = Sex['id'];
 export type Color = {
   id: number;
   name: string;
-  createdAt: string | null;
-  updatedAt: string | null;
 };
 
 export type ColorId = Color['id'];
@@ -19,8 +15,6 @@ export type ColorId = Color['id'];
 export type Size = {
   id: number;
   size: number;
-  createdAt: string | null;
-  updatedAt: string | null;
 };
 
 export type SizeId = Size['id'];
@@ -28,8 +22,6 @@ export type SizeId = Size['id'];
 export type Brand = {
   id: number;
   name: string;
-  createdAt: string | null;
-  updatedAt: string | null;
 };
 
 export type BrandId = Brand['id'];
@@ -38,12 +30,11 @@ export type Image = {
   id: number;
   link: string;
   sneakerId: number;
-  createdAt: string | null;
-  updatedAt: string | null;
 };
 
 export type ImageId = Image['id'];
 export type ImageWithoutId = Omit<Image, 'id'>;
+export type ImageLink = Image['link'];
 
 export type Sneaker = {
   id: number;
@@ -55,14 +46,25 @@ export type Sneaker = {
   sizeId: SizeId;
   colorId: ColorId;
   brandId: BrandId;
-  createdAt: string | null;
-  updatedAt: string | null;
   Sex: Sex;
   Size: Size;
   Color: Color;
   Brand: Brand;
   Images: Image[];
 };
+
+//Проверить с Владом
+// export type SneakerForForm = {
+//   model: string;
+//   description: string;
+//   price: number;
+//   articul: number; // ДОБАВИЛА и на Бэке тоже!!!!
+//   sexId: SexId;
+//   sizeId: SizeId;
+//   colorId: ColorId;
+//   brandId: BrandId;
+//   link: ImageLink;
+// };
 
 export type SneakerId = Sneaker['id'];
 

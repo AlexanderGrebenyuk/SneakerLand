@@ -5,6 +5,7 @@ import { logoutThunk } from '../../../entities/users/authSlice';
 import './Navbar.css';
 import logo from '../../../../public/logo.png';
 
+
 type NavbarProps = {};
 const Navbar = ({}: NavbarProps): JSX.Element => {
   const { user } = useAppSelector((state: RootState) => state.user);
