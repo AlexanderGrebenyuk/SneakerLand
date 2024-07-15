@@ -20,5 +20,5 @@ return (
     </div>
  );
 
-}
+} 
 export default SneakersPage
