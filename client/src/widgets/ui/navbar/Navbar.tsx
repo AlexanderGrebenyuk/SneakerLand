@@ -2,22 +2,19 @@ import React from 'react';
 import { RootState, useAppDispatch, useAppSelector } from '../../../app/store/store';
 import { NavLink } from 'react-router-dom';
 import { logoutThunk } from '../../../entities/users/authSlice';
-import './Navbar.css'
+import './Navbar.css';
 
+type NavbarProps = {};
+const Navbar = ({}: NavbarProps): JSX.Element => {
+  const { user } = useAppSelector((state: RootState) => state.user);
+  const dispatch = useAppDispatch();
 
-type NavbarProps={
-}
-const Navbar= ({}: NavbarProps): JSX.Element =>{
-    const { user } = useAppSelector((state: RootState) => state.user);
-    const dispatch = useAppDispatch();
-console.log(user);
+  const onHandleLogout = (e: React.MouseEvent<HTMLAnchorElement>): void => {
+    e.preventDefault();
+    dispatch(logoutThunk());
+  };
 
-    const onHandleLogout = (e: React.MouseEvent<HTMLAnchorElement>): void => {
-      e.preventDefault();
-      dispatch(logoutThunk());
-    };
-     
-return (
+  return (
     <nav className="Navbar">
       <ul>
         <li>
@@ -50,7 +47,6 @@ return (
         )}
       </ul>
     </nav>
- );
-
-}
-export default Navbar
+  );
+};
+export default Navbar;

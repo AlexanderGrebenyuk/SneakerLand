@@ -2239,25 +2239,1328 @@ module.exports = {
           sneakerId: 184,
         },
         //ADIDAS NEO ENTRAP MID FY
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/1.png",
+          sneakerId: 185,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/2.png",
+          sneakerId: 185,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/3.png",
+          sneakerId: 185,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/1.png",
+          sneakerId: 186,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/2.png",
+          sneakerId: 186,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/3.png",
+          sneakerId: 186,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/1.png",
+          sneakerId: 187,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/2.png",
+          sneakerId: 187,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/3.png",
+          sneakerId: 187,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/1.png",
+          sneakerId: 188,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/2.png",
+          sneakerId: 188,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/3.png",
+          sneakerId: 188,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/1.png",
+          sneakerId: 189,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/2.png",
+          sneakerId: 189,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/3.png",
+          sneakerId: 189,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/1.png",
+          sneakerId: 190,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/2.png",
+          sneakerId: 190,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/3.png",
+          sneakerId: 190,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/1.png",
+          sneakerId: 191,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/2.png",
+          sneakerId: 191,
+        },
+        {
+          link: "img/imgSneakers/ADIDAS NEO ENTRAP MID FY/3.png",
+          sneakerId: 191,
+        },
         //REEBOK CLUB C REVENGE LEGACY
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/1.png",
+          sneakerId: 192,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/2.png",
+          sneakerId: 192,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/3.png",
+          sneakerId: 192,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/1.png",
+          sneakerId: 193,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/2.png",
+          sneakerId: 193,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/3.png",
+          sneakerId: 193,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/1.png",
+          sneakerId: 194,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/2.png",
+          sneakerId: 194,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/3.png",
+          sneakerId: 194,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/1.png",
+          sneakerId: 195,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/2.png",
+          sneakerId: 195,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/3.png",
+          sneakerId: 195,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/1.png",
+          sneakerId: 196,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/2.png",
+          sneakerId: 196,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/3.png",
+          sneakerId: 196,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/1.png",
+          sneakerId: 197,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/2.png",
+          sneakerId: 197,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/3.png",
+          sneakerId: 197,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/1.png",
+          sneakerId: 198,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/2.png",
+          sneakerId: 198,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY/3.png",
+          sneakerId: 198,
+        },
         //REEBOK CLASSIC LEATHER LEGACY
-        //REEBOK CLASSIC LEATHER LEGACY
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/1.png",
+          sneakerId: 199,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/2.png",
+          sneakerId: 199,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/3.png",
+          sneakerId: 199,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/1.png",
+          sneakerId: 200,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/2.png",
+          sneakerId: 200,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/3.png",
+          sneakerId: 200,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/1.png",
+          sneakerId: 201,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/2.png",
+          sneakerId: 201,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/3.png",
+          sneakerId: 201,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/1.png",
+          sneakerId: 202,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/2.png",
+          sneakerId: 202,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/3.png",
+          sneakerId: 202,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/1.png",
+          sneakerId: 203,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/2.png",
+          sneakerId: 203,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/3.png",
+          sneakerId: 203,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/1.png",
+          sneakerId: 204,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/2.png",
+          sneakerId: 204,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/3.png",
+          sneakerId: 204,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/1.png",
+          sneakerId: 205,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/2.png",
+          sneakerId: 205,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLASSIC LEATHER LEGACY/3.png",
+          sneakerId: 205,
+        },
         //REEBOK PRESEASON.01
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/1.png",
+          sneakerId: 206,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/2.png",
+          sneakerId: 206,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/3.png",
+          sneakerId: 206,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/1.png",
+          sneakerId: 207,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/2.png",
+          sneakerId: 207,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/3.png",
+          sneakerId: 207,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/1.png",
+          sneakerId: 208,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/2.png",
+          sneakerId: 208,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/3.png",
+          sneakerId: 208,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/1.png",
+          sneakerId: 209,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/2.png",
+          sneakerId: 209,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/3.png",
+          sneakerId: 209,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/1.png",
+          sneakerId: 210,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/2.png",
+          sneakerId: 210,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/3.png",
+          sneakerId: 210,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/1.png",
+          sneakerId: 211,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/2.png",
+          sneakerId: 211,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/3.png",
+          sneakerId: 211,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/1.png",
+          sneakerId: 212,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/2.png",
+          sneakerId: 212,
+        },
+        {
+          link: "img/imgSneakers/REEBOK PRESEASON.01/3.png",
+          sneakerId: 212,
+        },
         //REEBOK CLUB C REVENGE LEGACY GX
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/1.png",
+          sneakerId: 213,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/2.png",
+          sneakerId: 213,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/3.png",
+          sneakerId: 213,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/1.png",
+          sneakerId: 214,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/2.png",
+          sneakerId: 214,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/3.png",
+          sneakerId: 214,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/1.png",
+          sneakerId: 215,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/2.png",
+          sneakerId: 215,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/3.png",
+          sneakerId: 215,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/1.png",
+          sneakerId: 216,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/2.png",
+          sneakerId: 216,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/3.png",
+          sneakerId: 216,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/1.png",
+          sneakerId: 217,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/2.png",
+          sneakerId: 217,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/3.png",
+          sneakerId: 217,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/1.png",
+          sneakerId: 218,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/2.png",
+          sneakerId: 218,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/3.png",
+          sneakerId: 218,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/1.png",
+          sneakerId: 219,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/2.png",
+          sneakerId: 219,
+        },
+        {
+          link: "img/imgSneakers/REEBOK CLUB C REVENGE LEGACY GX/3.png",
+          sneakerId: 219,
+        },
         //REEBOK AZTREK DV
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/1.png",
+          sneakerId: 220,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/2.png",
+          sneakerId: 220,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/3.png",
+          sneakerId: 220,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/1.png",
+          sneakerId: 221,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/2.png",
+          sneakerId: 221,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/3.png",
+          sneakerId: 221,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/1.png",
+          sneakerId: 222,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/2.png",
+          sneakerId: 222,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/3.png",
+          sneakerId: 222,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/1.png",
+          sneakerId: 223,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/2.png",
+          sneakerId: 223,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/3.png",
+          sneakerId: 223,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/1.png",
+          sneakerId: 224,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/2.png",
+          sneakerId: 224,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/3.png",
+          sneakerId: 224,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/1.png",
+          sneakerId: 225,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/2.png",
+          sneakerId: 225,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/3.png",
+          sneakerId: 225,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/1.png",
+          sneakerId: 226,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/2.png",
+          sneakerId: 226,
+        },
+        {
+          link: "img/imgSneakers/REEBOK AZTREK DV/3.png",
+          sneakerId: 226,
+        },
         // NEW BALANCE 2002R
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/1.png",
+          sneakerId: 227,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/2.png",
+          sneakerId: 227,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/3.png",
+          sneakerId: 227,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/1.png",
+          sneakerId: 228,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/2.png",
+          sneakerId: 228,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/3.png",
+          sneakerId: 228,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/1.png",
+          sneakerId: 229,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/2.png",
+          sneakerId: 229,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/3.png",
+          sneakerId: 229,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/1.png",
+          sneakerId: 230,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/2.png",
+          sneakerId: 230,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/3.png",
+          sneakerId: 230,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/1.png",
+          sneakerId: 231,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/2.png",
+          sneakerId: 231,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/3.png",
+          sneakerId: 231,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/1.png",
+          sneakerId: 232,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/2.png",
+          sneakerId: 232,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/3.png",
+          sneakerId: 232,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/1.png",
+          sneakerId: 233,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/2.png",
+          sneakerId: 233,
+        },
+        {
+          link: "img/imgSneakers/NEW BALANCE 2002R/3.png",
+          sneakerId: 233,
+        },
         //New Balance 530
-        //New Balance 550
+        {
+          link: "img/imgSneakers/New Balance 530/1.png",
+          sneakerId: 234,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/2.png",
+          sneakerId: 234,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/3.png",
+          sneakerId: 234,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/1.png",
+          sneakerId: 235,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/2.png",
+          sneakerId: 235,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/3.png",
+          sneakerId: 235,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/1.png",
+          sneakerId: 236,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/2.png",
+          sneakerId: 236,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/3.png",
+          sneakerId: 236,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/1.png",
+          sneakerId: 237,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/2.png",
+          sneakerId: 237,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/3.png",
+          sneakerId: 237,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/1.png",
+          sneakerId: 238,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/2.png",
+          sneakerId: 238,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/3.png",
+          sneakerId: 238,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/1.png",
+          sneakerId: 239,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/2.png",
+          sneakerId: 239,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/3.png",
+          sneakerId: 239,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/1.png",
+          sneakerId: 240,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/2.png",
+          sneakerId: 240,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/3.png",
+          sneakerId: 240,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/1.png",
+          sneakerId: 241,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/2.png",
+          sneakerId: 241,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/3.png",
+          sneakerId: 241,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/1.png",
+          sneakerId: 242,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/2.png",
+          sneakerId: 242,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/3.png",
+          sneakerId: 242,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/1.png",
+          sneakerId: 243,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/2.png",
+          sneakerId: 243,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/3.png",
+          sneakerId: 243,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/1.png",
+          sneakerId: 244,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/2.png",
+          sneakerId: 244,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/3.png",
+          sneakerId: 244,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/1.png",
+          sneakerId: 245,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/2.png",
+          sneakerId: 245,
+        },
+        {
+          link: "img/imgSneakers/New Balance 530/3.png",
+          sneakerId: 245,
+        },
+        //New Balance 550 !!!!!!!
+        {
+          link: "img/imgSneakers/New Balance 550/1.png",
+          sneakerId: 246,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/2.png",
+          sneakerId: 246,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/3.png",
+          sneakerId: 246,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/1.png",
+          sneakerId: 247,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/2.png",
+          sneakerId: 247,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/3.png",
+          sneakerId: 247,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/1.png",
+          sneakerId: 248,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/2.png",
+          sneakerId: 248,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/3.png",
+          sneakerId: 248,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/1.png",
+          sneakerId: 249,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/2.png",
+          sneakerId: 249,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/3.png",
+          sneakerId: 249,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/1.png",
+          sneakerId: 250,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/2.png",
+          sneakerId: 250,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/3.png",
+          sneakerId: 250,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/1.png",
+          sneakerId: 251,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/2.png",
+          sneakerId: 251,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/3.png",
+          sneakerId: 251,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/1.png",
+          sneakerId: 252,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/2.png",
+          sneakerId: 252,
+        },
+        {
+          link: "img/imgSneakers/New Balance 550/3.png",
+          sneakerId: 252,
+        },
         //New Balance 574
+        {
+          link: "img/imgSneakers/New Balance 574/1.png",
+          sneakerId: 253,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/2.png",
+          sneakerId: 253,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/3.png",
+          sneakerId: 253,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/1.png",
+          sneakerId: 254,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/2.png",
+          sneakerId: 254,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/3.png",
+          sneakerId: 254,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/1.png",
+          sneakerId: 255,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/2.png",
+          sneakerId: 255,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/3.png",
+          sneakerId: 255,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/1.png",
+          sneakerId: 256,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/2.png",
+          sneakerId: 256,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/3.png",
+          sneakerId: 256,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/1.png",
+          sneakerId: 257,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/2.png",
+          sneakerId: 257,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/3.png",
+          sneakerId: 257,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/1.png",
+          sneakerId: 258,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/2.png",
+          sneakerId: 258,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/3.png",
+          sneakerId: 258,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/1.png",
+          sneakerId: 259,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/2.png",
+          sneakerId: 259,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/3.png",
+          sneakerId: 259,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/1.png",
+          sneakerId: 260,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/2.png",
+          sneakerId: 260,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/3.png",
+          sneakerId: 260,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/1.png",
+          sneakerId: 261,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/2.png",
+          sneakerId: 261,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/3.png",
+          sneakerId: 261,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/1.png",
+          sneakerId: 262,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/2.png",
+          sneakerId: 262,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/3.png",
+          sneakerId: 262,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/1.png",
+          sneakerId: 263,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/2.png",
+          sneakerId: 263,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/3.png",
+          sneakerId: 263,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/1.png",
+          sneakerId: 264,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/2.png",
+          sneakerId: 264,
+        },
+        {
+          link: "img/imgSneakers/New Balance 574/3.png",
+          sneakerId: 264,
+        },
         //New Balance 1906R
+        {
+          link: "img/imgSneakers/New Balance 1906R/1.png",
+          sneakerId: 265,
+        },
+        {
+          link: "img/imgSneakers/New Balance 1906R/2.png",
+          sneakerId: 265,
+        },
+        {
+          link: "img/imgSneakers/New Balance 1906R/3.png",
+          sneakerId: 265,
+        },{
+          link: "img/imgSneakers/New Balance 1906R/1.png",
+          sneakerId: 266,
+        },
+        {
+          link: "img/imgSneakers/New Balance 1906R/2.png",
+          sneakerId: 266,
+        },
+        {
+          link: "img/imgSneakers/New Balance 1906R/3.png",
+          sneakerId: 266,
+        },{
+          link: "img/imgSneakers/New Balance 1906R/1.png",
+          sneakerId: 267,
+        },
+        {
+          link: "img/imgSneakers/New Balance 1906R/2.png",
+          sneakerId: 267,
+        },
+        {
+          link: "img/imgSneakers/New Balance 1906R/3.png",
+          sneakerId: 267,
+        },{
+          link: "img/imgSneakers/New Balance 1906R/1.png",
+          sneakerId: 268,
+        },
+        {
+          link: "img/imgSneakers/New Balance 1906R/2.png",
+          sneakerId: 268,
+        },
+        {
+          link: "img/imgSneakers/New Balance 1906R/3.png",
+          sneakerId: 268,
+        },{
+          link: "img/imgSneakers/New Balance 1906R/1.png",
+          sneakerId: 269,
+        },
+        {
+          link: "img/imgSneakers/New Balance 1906R/2.png",
+          sneakerId: 269,
+        },
+        {
+          link: "img/imgSneakers/New Balance 1906R/3.png",
+          sneakerId: 269,
+        },
         //New Balance 990
+        {
+          link: "img/imgSneakers/New Balance 990/1.png",
+          sneakerId: 270,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/2.png",
+          sneakerId: 270,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/3.png",
+          sneakerId: 270,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/1.png",
+          sneakerId: 271,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/2.png",
+          sneakerId: 271,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/3.png",
+          sneakerId: 271,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/1.png",
+          sneakerId: 272,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/2.png",
+          sneakerId: 272,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/3.png",
+          sneakerId: 272,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/1.png",
+          sneakerId: 273,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/2.png",
+          sneakerId: 273,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/3.png",
+          sneakerId: 273,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/1.png",
+          sneakerId: 274,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/2.png",
+          sneakerId: 274,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/3.png",
+          sneakerId: 274,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/1.png",
+          sneakerId: 275,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/2.png",
+          sneakerId: 275,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/3.png",
+          sneakerId: 275,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/1.png",
+          sneakerId: 276,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/2.png",
+          sneakerId: 276,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/3.png",
+          sneakerId: 276,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/1.png",
+          sneakerId: 277,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/2.png",
+          sneakerId: 277,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/3.png",
+          sneakerId: 277,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/1.png",
+          sneakerId: 278,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/2.png",
+          sneakerId: 278,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/3.png",
+          sneakerId: 278,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/1.png",
+          sneakerId: 279,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/2.png",
+          sneakerId: 279,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/3.png",
+          sneakerId: 279,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/1.png",
+          sneakerId: 280,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/2.png",
+          sneakerId: 280,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/3.png",
+          sneakerId: 280,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/1.png",
+          sneakerId: 281,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/2.png",
+          sneakerId: 281,
+        },
+        {
+          link: "img/imgSneakers/New Balance 990/3.png",
+          sneakerId: 281,
+        },
         //New Balance 327
+        {
+          link: "img/imgSneakers/New Balance 327/1.png",
+          sneakerId: 282,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/2.png",
+          sneakerId: 282,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/3.png",
+          sneakerId: 282,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/1.png",
+          sneakerId: 283,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/2.png",
+          sneakerId: 283,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/3.png",
+          sneakerId: 283,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/1.png",
+          sneakerId: 284,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/2.png",
+          sneakerId: 284,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/3.png",
+          sneakerId: 284,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/1.png",
+          sneakerId: 285,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/2.png",
+          sneakerId: 285,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/3.png",
+          sneakerId: 285,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/1.png",
+          sneakerId: 286,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/2.png",
+          sneakerId: 286,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/3.png",
+          sneakerId: 286,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/1.png",
+          sneakerId: 287,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/2.png",
+          sneakerId: 287,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/3.png",
+          sneakerId: 287,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/1.png",
+          sneakerId: 288,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/2.png",
+          sneakerId: 288,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/3.png",
+          sneakerId: 288,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/1.png",
+          sneakerId: 289,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/2.png",
+          sneakerId: 289,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/3.png",
+          sneakerId: 289,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/1.png",
+          sneakerId: 290,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/2.png",
+          sneakerId: 290,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/3.png",
+          sneakerId: 290,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/1.png",
+          sneakerId: 291,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/2.png",
+          sneakerId: 291,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/3.png",
+          sneakerId: 291,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/1.png",
+          sneakerId: 292,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/2.png",
+          sneakerId: 292,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/3.png",
+          sneakerId: 292,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/1.png",
+          sneakerId: 293,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/2.png",
+          sneakerId: 293,
+        },
+        {
+          link: "img/imgSneakers/New Balance 327/3.png",
+          sneakerId: 293,
+        },
       ],
       {}
     );
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete("Images", null, {});
+    await queryInterface.bulkDelete("Images", null, {}); 
   },
 };

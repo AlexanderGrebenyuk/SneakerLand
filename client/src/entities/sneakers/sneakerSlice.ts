@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Sneaker, SneakerId } from './types/sneakerType';
+import { Sneaker, SneakerForForm, SneakerId, SneakerWithoutId } from './types/sneakerType';
 import SneakerApi from './api/sneakerApi';
 
 type StateSneakers = {
@@ -22,10 +22,10 @@ export const removeSneakerThunk = createAsyncThunk('remove/sneakers', (id: Sneak
   SneakerApi.removeSneaker(id),
 );
 
-// export const updateMovieThunk = createAsyncThunk(
-//   'update/movies',
-//   (obj: { id: MovieId; body: MovieWithoutIdAndUserId }) => MovieApi.updateMovie(obj),
-// );
+export const updateSneakerThunk = createAsyncThunk(
+  'update/sneakers',
+  (obj: { id: SneakerId; body: SneakerForForm }) => SneakerApi.updateSneaker(obj), //SneakerForForm
+);
 
 const sneakerSlice = createSlice({
   name: 'sneakers',
@@ -40,7 +40,9 @@ const sneakerSlice = createSlice({
       })
       .addCase(removeSneakerThunk.fulfilled, (state, action) => {
         state.sneakers = state.sneakers.filter((sneaker) => sneaker.id !== action.payload);
-      });
+      }).addCase(updateSneakerThunk.fulfilled, (state, action) => {
+        state.sneakers = state.sneakers.map((sneaker) => sneaker.id === action.payload.id ? action.payload : sneaker)
+      })
     //   .addCase(createMovieThunk.fulfilled, (state, action) => {
     //     state.movies.push(action.payload);
     //   })
