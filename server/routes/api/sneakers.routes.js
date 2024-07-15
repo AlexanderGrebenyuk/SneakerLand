@@ -35,6 +35,7 @@ router.get("/:id", async (req, res) => {
         { model: Image },
       ],
     });
+    console.log(sneaker); 
     res.status(200).json({ message: "success", sneaker });
   } catch ({ message }) {
     res.status(500).json({ error: message });
