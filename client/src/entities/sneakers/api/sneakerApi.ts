@@ -5,9 +5,10 @@ import { Sneaker, SneakerId, SneakerWithoutId } from '../types/sneakerType'; //�
 import axiosInstance from '../../../services/axiosInstance';
 
 class SneakerApi {
+  // либо сдлеать динамическую функцию для квери параметров либо создать новую
   static getAllSneakers = async (): Promise<Sneaker[]> => {
     const response: AxiosResponse<{ message: string; sneakers: Sneaker[] }> =
-      await axiosInstance.get('/sneakers');
+      await axiosInstance.get('/sneakers?sexId=1&sizeId=5');
     return response.data.sneakers;
   };
   static removeSneaker = async (id: SneakerId): Promise<SneakerId | string> => {

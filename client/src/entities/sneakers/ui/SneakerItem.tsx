@@ -1,43 +1,46 @@
 import React, { useState } from 'react';
-import { Sneaker, SneakerId } from '../types/sneakerType';
+import { Sneaker } from '../types/sneakerType';
 import './styles/SneakerItem.css';
 import { useAppDispatch, useAppSelector } from '../../../app/store/store';
 import { createLikeThunk, removeLikeThunk } from '../../like/likeSlice';
 import { useNavigate } from 'react-router-dom';
 import { removeSneakerThunk } from '../sneakerSlice';
 import Carusel from '../../../shared/ui/carusel/Carusel';
-import ModalWindow from '../../../shared/ui/modal/Modal';
+// import ModalWindow from '../../../shared/ui/modal/Modal';
 // import FormUpdateSneaker from './FormUpdateSneaker';
 
-
-
 type SneakerItemProps = {
-  sneak: Sneaker
+  sneak: Sneaker;
 };
+
 const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
-  const likes = useAppSelector((state) => state.likes.likes)
-  const {user} = useAppSelector((state) => state.user)
-  const dispatch = useAppDispatch()
+  const likes = useAppSelector((state) => state.likes.likes);
+  const { user } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [active, setActive] = useState(false);
+console.log(active);
 
-     
-  const onHandleAddLike =(): void => {
-    void dispatch(createLikeThunk({sneakerId: sneaker.id}))
-  }
-  const like =  likes.find((el)=> el.sneakerId === sneaker.id && el.userId === user?.id )
-  
-  const onHandleDeleteLike =  (): void => {
-    void dispatch(removeLikeThunk(sneaker.id))
-    
-      const onHandleDelete = (): void => {
+
+  const onHandleAddLike = (): void => {
+    void dispatch(createLikeThunk({ sneakerId: sneak.id, Sneaker: sneak }));
+  };
+
+  const onHandleDeleteLike = (): void => {
+    void dispatch(removeLikeThunk(sneak.id));
+  };
+
+  const onHandleDelete = (): void => {
     void dispatch(removeSneakerThunk(sneak.id));
   };
 
-  const onToggle = (): void => {
-    setActive((prev) => !prev);
- 
 
+  // МОДАЛКА ДЛЯ ОБНОВЛЕНИЯ 
+  // const onToggle = (): void => {
+  //   setActive((prev) => !prev);
+  // };
+
+  const like = likes.find((el) => el.sneakerId === sneak.id && el.userId === user?.id);
 
   return (
     <div className="SneakerItem">
@@ -45,7 +48,7 @@ const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
       <h3>{sneak.Brand.name}</h3>
       <p>{sneak.model}</p>
       <p>{sneak.price} ₽</p>
-        
+
       {user?.isAdmin ? (
         <>
           <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
@@ -73,20 +76,19 @@ const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
           Подробнее
         </button>
       )}
-      
-        {like === undefined ? (
+
+      {!user?.isAdmin &&
+        (like === undefined ? (
           <button onClick={onHandleAddLike}>
-        <img src='../../../../public/icons/icons8-червы-50.png' alt =''/>
-        </button>
-        ):
-        (
-          <button onClick={onHandleDeleteLike}>
-          <img src='../../../../public/icons/icons8-лайк-с-заливкой-48.png' alt = 'like'/>
+            <img src="../../../../public/icons/icons8-червы-50.png" alt="like" />
           </button>
-        )
-        }
-      
+        ) : (
+          <button onClick={onHandleDeleteLike}>
+            <img src="../../../../public/icons/icons8-лайк-с-заливкой-48.png" alt="liked" />
+          </button>
+        ))}
     </div>
   );
 };
+
 export default SneakerItem;

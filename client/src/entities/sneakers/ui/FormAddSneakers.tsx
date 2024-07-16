@@ -33,7 +33,6 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
   const dispatch = useAppDispatch();
   const [files, setFiles] = useState();
 
-
   const {
     register,
     handleSubmit,

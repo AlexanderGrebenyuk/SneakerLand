@@ -8,6 +8,7 @@ const verifyAccessToken = require('../../middleware/verifyAccessToken');
 router.get('/', async (req, res) => {
   try {
     const sneakers = await Sneaker.findAll({
+      where: req.query,
       include: [
         { model: Sex },
         { model: Size },

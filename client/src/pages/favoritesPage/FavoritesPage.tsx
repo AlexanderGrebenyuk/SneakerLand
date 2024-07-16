@@ -1,41 +1,17 @@
-
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../app/store/store';
+import React from 'react';
+import { useAppSelector } from '../../app/store/store';
 import SneakerItem from '../../entities/sneakers/ui/SneakerItem';
-import { Like } from '../../entities/like/types/likeTypes'; // Убедитесь, что путь правильный
+//import { Like } from '../../entities/like/types/likeTypes'; // Убедитесь, что путь правильный
 
 const FavoritesPage = (): JSX.Element => {
-  const { user } = useSelector((state: RootState) => state.user);
-  const { likes } = useSelector((state: RootState) => state.likes);
-  const { sneakers } = useSelector((state: RootState) => state.sneakers);
-
-const  favorite=()=>{
-      return likes.filter((el: Like) => el.userId === user?.id)
-}
-const  favoriteSneak = () =>{
-      return favoriteLikes?.map((like: Like) => sneakers?.find((sneaker) => sneaker?.id === like?.sneakerId))
-}
-
-
-
-  const favoriteLikes = favorite()
-  const favoriteSneakers  = favoriteSneak()
-
-
-useEffect(()=>{
-    favorite()
-    favoriteSneak()
-},[ ])
-
+  const { user } = useAppSelector((state) => state.user);
+  const likes = useAppSelector((state) => state.likes.likes);
+  console.log(likes);
+console.log(user);
 
   return (
     <div className="FavoritesPage">
-      {favoriteSneakers &&  (
-        favoriteSneakers.map((sneaker) => 
-          <SneakerItem  sneaker={sneaker}  key={sneaker?.id} />
-        )
-      ) }
+      {likes && likes.map((like) => <SneakerItem sneak={like.Sneaker} key={like.id} />)}
     </div>
   );
 };

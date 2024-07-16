@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Sneaker } from '../types/sneakerType';
 // import { useAppDispatch } from '../../../app/store/store';
 // import { updateSneakerThunk } from '../sneakerSlice';
