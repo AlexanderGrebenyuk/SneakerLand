@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 1rem;
   background-color: white;
@@ -60,4 +60,30 @@
 body {
   padding-top: 70px;
 
+}
+
+
+.nav-section {
+  display: flex;
+  align-items: center;
+}
+
+.nav-left,
+.nav-right {
+  /* flex: 1; */
+  gap: 10px;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.nav-center {
+  flex: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.Navbar a {
+  margin: 0 10px;
+  text-decoration: none;
 }

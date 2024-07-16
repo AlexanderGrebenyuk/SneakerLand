@@ -56,9 +56,10 @@ const RegistrationPage = (): JSX.Element => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onHandleSubmit)}>
+    <div className="page-container">
+    <form className="auth-form" onSubmit={handleSubmit(onHandleSubmit)}>
       <label htmlFor="name">
-        Name:
+        Имя:
         <input type="text" {...register('name')} />
         <span>{errors.name?.message}</span>
       </label>
@@ -70,22 +71,21 @@ const RegistrationPage = (): JSX.Element => {
       </label>
       <br />
       <label htmlFor="password">
-        Password:
+        Пароль:
         <input type="password" {...register('password')} />
         <span>{errors.password?.message}</span>
       </label>
       <br />
       <label htmlFor="cpassword">
-        Check password:
+        Проверка пороля:
         <input type="password" {...register('cpassword')} />
         <span>{errors.cpassword?.message}</span>
       </label>
-      <input type="file" name="" id="" />
-      <br />
       <div className="button-container">
-        <button type="submit">Sign up</button>
+        <button type="submit">Зарегистрироваться</button>
       </div>
     </form>
+  </div>
   );
 };
 export default RegistrationPage;

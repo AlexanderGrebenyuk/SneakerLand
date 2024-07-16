@@ -5,6 +5,7 @@ import { object, string } from 'yup';
 import { UserWithoutName } from '../../entities/users/types/userTypes';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import './styles/Auth.css'
 
 const schema = object().shape({
   email: string().email().nullable().trim().required('Не email'),
@@ -40,20 +41,22 @@ function AuthorizationPage(): JSX.Element {
   };
 
   return (
-    <form onSubmit={handleSubmit(onHandleSubmit)}>
-      <label htmlFor="email">
-        Email:
-        <input type="email" {...register('email')} />
-        <span>{errors.email?.message}</span>
-      </label>
-      <br />
-      <label htmlFor="password">
-        Password:
-        <input type="password" {...register('password')} />
-        <span>{errors.password?.message}</span>
-      </label>
-      <button type="submit">login</button>
-    </form>
+    <div className="page-container">
+      <form className="auth-form" onSubmit={handleSubmit(onHandleSubmit)}>
+        <label htmlFor="email">
+          Email:
+          <input type="email" {...register('email')} />
+          <span>{errors.email?.message}</span>
+        </label>
+        <br />
+        <label htmlFor="password">
+          Пароль:
+          <input type="password" {...register('password')} />
+          <span>{errors.password?.message}</span>
+        </label>
+        <button type="submit">Войти</button>
+      </form>
+    </div>
   );
 }
 

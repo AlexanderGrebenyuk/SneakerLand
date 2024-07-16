@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAppSelector } from '../../app/store/store';
 import SneakerItem from '../../entities/sneakers/ui/SneakerItem';
+import './styles/FavoritesPage.css'
 //import { Like } from '../../entities/like/types/likeTypes'; // Убедитесь, что путь правильный
 
 const FavoritesPage = (): JSX.Element => {
