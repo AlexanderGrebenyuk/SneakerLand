@@ -14,8 +14,10 @@ export const getSneakersThunk = createAsyncThunk('load/sneakers', () =>
   SneakerApi.getAllSneakers(),
 );
 
-export const createSneakerThunk = createAsyncThunk('add/sneakers', (body: SneakerWithoutId) =>
-  SneakerApi.createSneaker(body),
+export const createSneakerThunk = createAsyncThunk<Sneaker, SneakerWithoutId>(
+  'add/sneakers',
+  (body: SneakerWithoutId) => 
+    SneakerApi.createSneaker(body),
 );
 
 export const removeSneakerThunk = createAsyncThunk('remove/sneakers', (id: SneakerId) =>
@@ -42,7 +44,7 @@ const sneakerSlice = createSlice({
       })
       .addCase(createSneakerThunk.fulfilled, (state, action) => {
         state.sneakers.push(action.payload);
-      })
+      });
     //   .addCase(updateSneakerThunk.fulfilled, (state, action) => {
     //     state.sneakers = state.sneakers.map((sneaker) => sneaker.id === action.payload.id ? action.payload : sneaker)
     //   })

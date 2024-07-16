@@ -3,7 +3,7 @@ import { RootState, useAppDispatch, useAppSelector } from '../../../app/store/st
 import { NavLink } from 'react-router-dom';
 import { logoutThunk } from '../../../entities/users/authSlice';
 import './Navbar.css';
-import logo from '../../../../public/logo.png';
+// import logo from '../../../../public/logo.png';
 
 
 type NavbarProps = {};
@@ -18,7 +18,7 @@ const Navbar = ({}: NavbarProps): JSX.Element => {
 
   return (
     <nav className="Navbar">
-      <img src={logo} alt="logo"/>
+      {/* <img src={logo} alt="logo"/> */}
 
       <ul>
         <li>
