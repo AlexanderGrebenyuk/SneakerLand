@@ -1,10 +1,21 @@
+//@ts-nocheck
 import React, { useState } from 'react';
-import { array, number, object, string } from 'yup';
+import { number, object, string } from 'yup';
 import { useAppDispatch } from '../../../app/store/store';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SneakerWithoutId } from '../types/sneakerType';
 import { createSneakerThunk } from '../sneakerSlice';
+
+type FormValues = {
+  model: string;
+  description: string;
+  price: number;
+  sexId: number;
+  sizeId: number;
+  colorId: number;
+  brandId: number;
+};
 
 const schema = object().shape({
   model: string().nullable().trim().required('Обязательно для заполнения'),
@@ -25,20 +36,19 @@ const schema = object().shape({
   brandId: number()
     .required('Идентификатор бренда обязателен для заполнения')
     .integer('Идентификатор бренда должен быть целым числом'),
-  images: array().nullable(),
 });
 
 type FormAddSneakersProps = {};
 const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
   const dispatch = useAppDispatch();
-  const [files, setFiles] = useState();
+  const [files, setFiles] = useState<FileList>();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({
+  } = useForm<FormValues>({
     resolver: yupResolver(schema),
     defaultValues: {
       model: '',
@@ -48,7 +58,6 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
       sizeId: 0,
       colorId: 0,
       brandId: 0,
-      images: [],
     },
   });
 
@@ -60,7 +69,6 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
     sizeId: number;
     colorId: number;
     brandId: number;
-    images: File[];
   }): Promise<void> => {
     const sneaker: SneakerWithoutId = {
       model: formData.model,
@@ -78,7 +86,7 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
       Images: [],
     };
 
-    const formDataToSend = new FormData();
+    const formDataToSend: any = new FormData();
     for (const key in sneaker) {
       formDataToSend.append(key, sneaker[key]);
     }
@@ -88,7 +96,6 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
     for (let key in files) {
       formDataToSend.append('images', files[key]);
     }
-
 
     try {
       await dispatch(createSneakerThunk(formDataToSend));
@@ -156,7 +163,6 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
               }
             }}
           />
-          <span>{errors.images?.message}</span>
         </label>
         <br />
         <button type="submit">Добавить</button>

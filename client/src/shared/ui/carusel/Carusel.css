@@ -33,7 +33,7 @@
   .carousel-indicators {
     top: 200px;
   }
-  
+/*   
   .carousel-indicators [data-bs-target] {
     box-sizing: content-box;
     flex: 0 1 auto;
@@ -51,4 +51,4 @@
     border-bottom: 10px solid transparent;
     opacity: .5;
     transition: opacity .6s ease;
-}
+} */
