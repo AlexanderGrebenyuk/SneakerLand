@@ -46,7 +46,7 @@ export type ImageId = Image['id'];
 export type ImageWithoutId = Omit<Image, 'id'>;
 
 export type Sneaker = {
-  id: number;
+  id: number
   model: string;
   description: string;
   price: number;

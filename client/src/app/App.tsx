@@ -4,7 +4,8 @@ import Navbar from '../widgets/ui/navbar/Navbar';
 import { useAppDispatch } from './store/store';
 import { refreshTokens } from '../entities/users/authSlice';
 import { getSneakersThunk } from '../entities/sneakers/sneakerSlice';
-
+import { getLikeThunk } from '../entities/like/likeSlice';
+import './styles/index.css';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -13,12 +14,13 @@ function App(): JSX.Element {
   useEffect(() => {
     void dispatch(getSneakersThunk())
     void dispatch(refreshTokens());
+    void dispatch(getLikeThunk())
   }, [dispatch]);
 
   return (
     <div className="App">
     <Navbar/>
-    <AppRoutes/>
+        <AppRoutes />
     </div>
   );
 }
