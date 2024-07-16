@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Sneaker } from '../types/sneakerType';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../app/store/store';
+import SizeItem from '../../sizes/ui/SizeItem';
+import { createLikeThunk, removeLikeThunk } from '../../like/likeSlice';
 
 type SneakerItemPageProps = {
   sneaker: Sneaker;
@@ -9,9 +12,20 @@ type SneakerItemPageProps = {
 // const Sizes = [37,38,39,40,41,42,43,44,45];
 
 const SneakerItemPage = ({ sneaker }: SneakerItemPageProps): JSX.Element => {
-  const [size, setSize] = useState('');
-  console.log(size);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const likes = useAppSelector((state) => state.likes.likes);
+  const { user } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
+
+  const onHandleAddLike = (): void => {
+    void dispatch(createLikeThunk({ sneakerId: sneaker.id, Sneaker: sneaker }));
+  };
+
+  const onHandleDeleteLike = (): void => {
+    void dispatch(removeLikeThunk(sneaker.id));
+  };
+
+  const like = likes.find((el) => el.sneakerId === sneaker.id && el.userId === user?.id);
 
   return (
     <div className=" SneakerItemPage">
@@ -29,24 +43,22 @@ const SneakerItemPage = ({ sneaker }: SneakerItemPageProps): JSX.Element => {
       </div>
       <div className="SneakerItemPageForBasket">
         <p>{sneaker.model}</p>
-        <form>
-          <label htmlFor="size-select">
-            <select onChange={(e) => setSize(e.target.value)} name="size" id="size-select">
-              <option value="">Ваш размер</option>
-              {/* {Sizes.map((el) => (
-                <option value={el}>{el}</option>
-              ))} */}
-
-              {/* Добавить размеры */}
-            </select>
-          </label>
-        </form>
         <button>Добавить в корзину</button>
-        <button>Добавить в избранное</button>
+        {!user?.isAdmin &&
+        (like === undefined ? (
+          <button onClick={onHandleAddLike}>
+            <img src="../../../../public/icons/icons8-червы-50.png" alt="like" />
+          </button>
+        ) : (
+          <button onClick={onHandleDeleteLike}>
+            <img src="../../../../public/icons/icons8-лайк-с-заливкой-48.png" alt="liked" />
+          </button>
+        ))}
       </div>
-      <button type='button' onClick={() => navigate(-1)}>
+      <button type="button" onClick={() => navigate(-1)}>
         Назад
       </button>
+      <SizeItem sneaker={sneaker}/>
     </div>
   );
 };

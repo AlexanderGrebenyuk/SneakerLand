@@ -6,6 +6,7 @@ import { refreshTokens } from '../entities/users/authSlice';
 import { getSneakersThunk } from '../entities/sneakers/sneakerSlice';
 import { getLikeThunk } from '../entities/like/likeSlice';
 import './styles/index.css';
+import { getSizeThunk } from '../entities/sizes/sizeSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -14,6 +15,7 @@ function App(): JSX.Element {
     void dispatch(getSneakersThunk());
     void dispatch(refreshTokens());
     void dispatch(getLikeThunk());
+    void dispatch(getSizeThunk())
   }, [dispatch]);
 
   return (

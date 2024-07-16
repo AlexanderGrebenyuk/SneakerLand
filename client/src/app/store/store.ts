@@ -4,13 +4,16 @@ import authSlice from '../../entities/users/authSlice';
 import sneakerSlice from '../../entities/sneakers/sneakerSlice';
 import likeSlice from '../../entities/like/likeSlice';
 import filterSlice from '../../entities/filter/filterSlice';
+import sizeSlice from '../../entities/sizes/sizeSlice';
+
 
 const store = configureStore({
   reducer: {
     user: authSlice.reducer,
     sneakers: sneakerSlice.reducer,
     likes: likeSlice.reducer,
-    filters: filterSlice.reducer
+    filters: filterSlice.reducer,
+    sizes: sizeSlice.reducer,
   },
 });
 

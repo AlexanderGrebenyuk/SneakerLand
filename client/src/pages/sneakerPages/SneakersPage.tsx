@@ -10,6 +10,7 @@ import './styles/SneakersPage.css'; // ОБРАТИТЬ ВНИМАНИЕ
 const SneakersPage = (): JSX.Element => {
   const sneakers = useAppSelector((state) => state.sneakers.sneakers);
   const { user } = useAppSelector((state) => state.user);
+  
   //const filters = useAppSelector((state) => state.filters); // ПРОВЕРИТЬ
 
   const [active, setActive] = useState(false);
