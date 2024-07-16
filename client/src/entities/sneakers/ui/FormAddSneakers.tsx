@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SneakerWithoutId } from '../types/sneakerType';
 import { createSneakerThunk } from '../sneakerSlice';
+import '../../../shared/ui/modal/Modal.css'
 
 type FormValues = {
   model: string;
@@ -107,51 +108,51 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
 
   return (
     <div className="FormAddSneakers">
-      <form onSubmit={handleSubmit(onHandleSubmit)}>
+      <form onSubmit={handleSubmit(onHandleSubmit)} enctype="multipart/form-data">
         <label htmlFor="model">
-          Model:
+          Модель:
           <input type="text" {...register('model')} />
           <span>{errors.model?.message}</span>
         </label>
         <br />
         <label htmlFor="description">
-          Description:
+          Описание:
           <input type="text" {...register('description')} />
           <span>{errors.description?.message}</span>
         </label>
         <br />
         <label htmlFor="price">
-          Price:
+          Цена:
           <input type="number" {...register('price')} />
           <span>{errors.price?.message}</span>
         </label>
         <br />
         <label htmlFor="sexId">
-          SexId:
+          Пол:
           <input type="number" {...register('sexId')} />
           <span>{errors.sexId?.message}</span>
         </label>
         <br />
         <label htmlFor="sizeId">
-          SizeId:
+          Размер:
           <input type="number" {...register('sizeId')} />
           <span>{errors.sizeId?.message}</span>
         </label>
         <br />
         <label htmlFor="colorId">
-          ColorId:
+          Цвет:
           <input type="number" {...register('colorId')} />
           <span>{errors.colorId?.message}</span>
         </label>
         <br />
         <label htmlFor="brandId">
-          BrandId:
+          Бренд:
           <input type="number" {...register('brandId')} />
           <span>{errors.brandId?.message}</span>
         </label>
         <br />
-        <label htmlFor="images">
-          Images:
+        <label htmlFor="images" className='input-file'>
+          Изображения:
           <input
             type="file"
             id="images"
@@ -163,6 +164,7 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
               }
             }}
           />
+          <span>Добавить файлы</span>
         </label>
         <br />
         <button type="submit">Добавить</button>

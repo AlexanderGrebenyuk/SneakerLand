@@ -79,12 +79,12 @@ const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
 
       {!user?.isAdmin &&
         (like === undefined ? (
-          <button onClick={onHandleAddLike}>
-            <img src="../../../../public/icons/icons8-червы-50.png" alt="like" />
+          <button className="action-button" onClick={onHandleAddLike}>
+            <img src="../../../../public/icons/icons8-червы-50.png" alt="like" style={{height: '40px'}}/>
           </button>
         ) : (
-          <button onClick={onHandleDeleteLike}>
-            <img src="../../../../public/icons/icons8-лайк-с-заливкой-48.png" alt="liked" />
+          <button className="action-button" onClick={onHandleDeleteLike}>
+            <img src="../../../../public/icons/icons8-лайк-с-заливкой-48.png" alt="liked" style={{height: '40px'}}/>
           </button>
         ))}
     </div>

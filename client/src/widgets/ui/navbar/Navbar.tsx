@@ -3,7 +3,7 @@ import { RootState, useAppDispatch, useAppSelector } from '../../../app/store/st
 import { NavLink } from 'react-router-dom';
 import { logoutThunk } from '../../../entities/users/authSlice';
 import './Navbar.css';
-// import logo from '../../../../public/logo.png';
+import logo2 from '../../../../public/logo2.png';
 
 
 type NavbarProps = {};
@@ -18,39 +18,29 @@ const Navbar = ({}: NavbarProps): JSX.Element => {
 
   return (
     <nav className="Navbar">
-      {/* <img src={logo} alt="logo"/> */}
+    <div className="nav-section nav-left">
+      <NavLink to="/">Главная</NavLink>
+      <NavLink to="/sneakers">Кроссовки</NavLink>
+    </div>
+    <div className="nav-section nav-center">
+      <img src={logo2} alt="logo"/>
+    </div>
+    <div className="nav-section nav-right">
+      <NavLink to="/favorites">Избранное</NavLink>
+      <NavLink to="/cart">Корзина</NavLink>
+      {user ? (
+        <NavLink to="/" onClick={onHandleLogout}>
+          Выход
+        </NavLink>
+      ) : (
+        <>
+          <NavLink to="/signIn">Войти</NavLink>
+          <NavLink to="/signUp">Зарегистрироваться</NavLink>
+        </>
+      )}
+    </div>
+  </nav>
 
-      <ul>
-        <li>
-          <NavLink to="/">Главная</NavLink>
-        </li>
-        <li>
-          <NavLink to="/sneakers">Кроссовки</NavLink>
-        </li>
-        <li>
-          <NavLink to="/favorites">Избранное</NavLink>
-        </li>
-        <li>
-          <NavLink to="/cart">Корзина</NavLink>
-        </li>
-        {user ? (
-          <li>
-            <NavLink to="/" onClick={onHandleLogout}>
-              Выход
-            </NavLink>
-          </li>
-        ) : (
-          <>
-            <li>
-              <NavLink to="/signIn">Войти</NavLink>
-            </li>
-            <li>
-              <NavLink to="/signUp">Зарегистрироваться</NavLink>
-            </li>
-          </>
-        )}
-      </ul>
-    </nav>
   );
 };
 export default Navbar;

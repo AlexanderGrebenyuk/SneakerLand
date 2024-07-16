@@ -7,6 +7,7 @@ import {
   setSex,
   clearFilters,
 } from '../../entities/filter/filterSlice';
+import './Sidebar.css'
 
 const colors = ['black', 'white', 'red', 'blue'];
 const brands = ['Nike', 'Adidas', 'Puma', 'Reebok'];
@@ -41,7 +42,7 @@ function Sidebar(): JSX.Element {
   };
 
   return (
-    <div>
+    <div className="Sidebar">
       <h2>Фильтры</h2>
       <form onSubmit={handleSubmit}>
         <div>
