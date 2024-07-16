@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Sneaker } from './types/sneakerType';
+import { Sneaker, SneakerId, SneakerWithoutId } from './types/sneakerType';
 import SneakerApi from './api/sneakerApi';
 
 type StateSneakers = {
@@ -14,29 +14,40 @@ export const getSneakersThunk = createAsyncThunk('load/sneakers', () =>
   SneakerApi.getAllSneakers(),
 );
 
-// export const createMovieThunk = createAsyncThunk('add/movies', (body: MovieWithoutIdAndUserId) =>
-//   MovieApi.createMovie(body),
-// );
+export const createSneakerThunk = createAsyncThunk<Sneaker, SneakerWithoutId>(
+  'add/sneakers',
+  (body: SneakerWithoutId) => 
+    SneakerApi.createSneaker(body),
+);
 
-// export const removeMovieThunk = createAsyncThunk('remove/movies', (id: MovieId) =>
-//   MovieApi.deleteMovie(id),
-// );
+export const removeSneakerThunk = createAsyncThunk('remove/sneakers', (id: SneakerId) =>
+  SneakerApi.removeSneaker(id),
+);
 
-// export const updateMovieThunk = createAsyncThunk(
-//   'update/movies',
-//   (obj: { id: MovieId; body: MovieWithoutIdAndUserId }) => MovieApi.updateMovie(obj),
+// export const updateSneakerThunk = createAsyncThunk(
+//   'update/sneakers',
+//   (obj: { id: SneakerId; body: SneakerForForm }) => SneakerApi.updateSneaker(obj), //SneakerForForm ПЕРЕДЕЛАТЬ ДУРА!!!!
 // );
 
 const sneakerSlice = createSlice({
   name: 'sneakers',
   initialState,
-
   reducers: {},
 
   extraReducers: (builder) => {
-    builder.addCase(getSneakersThunk.fulfilled, (state, action) => {        
-      state.sneakers = action.payload;
-    });
+    builder
+      .addCase(getSneakersThunk.fulfilled, (state, action) => {
+        state.sneakers = action.payload;
+      })
+      .addCase(removeSneakerThunk.fulfilled, (state, action) => {
+        state.sneakers = state.sneakers.filter((sneaker) => sneaker.id !== action.payload);
+      })
+      .addCase(createSneakerThunk.fulfilled, (state, action) => {
+        state.sneakers.push(action.payload);
+      });
+    //   .addCase(updateSneakerThunk.fulfilled, (state, action) => {
+    //     state.sneakers = state.sneakers.map((sneaker) => sneaker.id === action.payload.id ? action.payload : sneaker)
+    //   })
     //   .addCase(createMovieThunk.fulfilled, (state, action) => {
     //     state.movies.push(action.payload);
     //   })

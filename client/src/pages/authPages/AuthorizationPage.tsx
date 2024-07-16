@@ -22,14 +22,25 @@ function AuthorizationPage(): JSX.Element {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
-
-  const onHadleSubmit = async (user: UserWithoutName): Promise<void> => {
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+ 
+  const onHandleSubmit = async (formData: { email: string; password: string }): Promise<void> => {
+    const user: UserWithoutName = {
+      email: formData.email,
+      password: formData.password,
+      isAdmin: false,
+    };
     void dispatch(authorizationThunk(user));
   };
 
   return (
-    <form onSubmit={handleSubmit(onHadleSubmit)}>
+    <form onSubmit={handleSubmit(onHandleSubmit)}>
       <label htmlFor="email">
         Email:
         <input type="email" {...register('email')} />

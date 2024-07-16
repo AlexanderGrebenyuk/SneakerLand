@@ -1,37 +1,56 @@
 .SneakerItem {
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin: 20px;
-    max-width: 400px;
-    text-align: center;
-  }
-  
-  .SneakerItem h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-  }
-  
-  .SneakerItem h4 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    color: #555;
-  }
-  
-  .SneakerItem p {
-    font-size: 1em;
-    margin-bottom: 10px;
-  }
-  
-  .SneakerImages {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-  }
-  
-  .SneakerImages img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border: 1px solid #ccc;
-  }
-  
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background: #fff;
+  margin: 10px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.SneakerImages {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.SneakerImages img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin: 0 10px;
+}
+
+.SneakerButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.SneakerButton:hover {
+  background-color: #444f5b;
+  transform: translateY(-2px);
+}
+
+button {
+  background-color: #8a9aaa;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  margin: 5px 0;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #c0d0e2;
+  transform: translateY(-2px);
+}

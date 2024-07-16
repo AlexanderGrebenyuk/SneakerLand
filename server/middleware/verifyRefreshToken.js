@@ -9,7 +9,7 @@ async function verifyRefreshToken(req, res, next) {
 
     user = await User.findOne({
       where: { id: user.id },
-      attributes: ['id', 'name', 'email'],
+      attributes: ['id', 'name', 'email', 'isAdmin'],
     });
 
     res.locals.user = user;

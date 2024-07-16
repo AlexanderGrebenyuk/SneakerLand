@@ -29,7 +29,6 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(Comment, {
         foreignKey: "sneakerId",
       });
-
     }
   }
   Sneaker.init(
@@ -37,6 +36,7 @@ module.exports = (sequelize, DataTypes) => {
       model: DataTypes.STRING,
       description: DataTypes.TEXT,
       price: DataTypes.INTEGER,
+      articul: DataTypes.INTEGER,
       sexId: DataTypes.INTEGER,
       sizeId: DataTypes.INTEGER,
       colorId: DataTypes.INTEGER,

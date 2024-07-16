@@ -1,42 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Sneaker, SneakerId } from '../types/sneakerType';
 import './styles/SneakerItem.css';
-import { RootState, useAppDispatch } from '../../../app/store/store';
+import { useAppDispatch, useAppSelector } from '../../../app/store/store';
 import { createLikeThunk, removeLikeThunk } from '../../like/likeSlice';
-import { useSelector } from 'react-redux';
-
+import { useNavigate } from 'react-router-dom';
+import { removeSneakerThunk } from '../sneakerSlice';
+import Carusel from '../../../shared/ui/carusel/Carusel';
+import ModalWindow from '../../../shared/ui/modal/Modal';
+// import FormUpdateSneaker from './FormUpdateSneaker';
 
 
 
 type SneakerItemProps = {
-  sneaker: Sneaker
+  sneak: Sneaker
 };
-const SneakerItem = ({ sneaker }: SneakerItemProps): JSX.Element => {
-  const likes = useSelector((state: RootState) => state.likes.likes)
-  const user = useSelector((state: RootState) => state.user.user)
+const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
+  const likes = useAppSelector((state) => state.likes.likes)
+  const {user} = useAppSelector((state) => state.user)
   const dispatch = useAppDispatch()
+  const navigate = useNavigate();
+  const [active, setActive] = useState(false);
+
      
   const onHandleAddLike =(): void => {
     void dispatch(createLikeThunk({sneakerId: sneaker.id}))
   }
   const like =  likes.find((el)=> el.sneakerId === sneaker.id && el.userId === user?.id )
   
-  const onHandleDelete =  (): void => {
+  const onHandleDeleteLike =  (): void => {
     void dispatch(removeLikeThunk(sneaker.id))
- 
+    
+      const onHandleDelete = (): void => {
+    void dispatch(removeSneakerThunk(sneak.id));
   };
+
+  const onToggle = (): void => {
+    setActive((prev) => !prev);
+ 
+
 
   return (
     <div className="SneakerItem">
-      <div className="SneakerImages">
-        {sneaker.Images.map((image) => (
-          <img key={image.id} src={image.link} alt={sneaker.model} />
-        ))}
-      </div>
-      <h3>{sneaker.Brand.name}</h3>
-      <p>{sneaker.model}</p>
-      <p>{sneaker.price}</p>
-
+      <Carusel sneak={sneak} />
+      <h3>{sneak.Brand.name}</h3>
+      <p>{sneak.model}</p>
+      <p>{sneak.price} ₽</p>
+        
+      {user?.isAdmin ? (
+        <>
+          <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
+            <button
+              type="button"
+              style={{ borderRadius: '20px' }}
+              onClick={() => setActive((prev) => !prev)}
+            >
+              Обновить
+            </button>
+            {/* <ModalWindow active={active} onToggle={onToggle}>
+              <FormUpdateSneaker sneak={sneak} />
+            </ModalWindow> */}
+            <button type="button" style={{ borderRadius: '20px' }} onClick={onHandleDelete}>
+              Удалить
+            </button>
+          </div>
+          {/* ДОДЕЛАТЬ СТРАНИЦУ ДУРА!!!! */}
+        </>
+      ) : (
+        <button
+          onClick={() => navigate(`/sneakers/${sneak.id}`)}
+          style={{ justifyContent: 'center', margin: '10px', borderRadius: '20px' }}
+        >
+          Подробнее
+        </button>
+      )}
       
         {like === undefined ? (
           <button onClick={onHandleAddLike}>
@@ -44,7 +80,7 @@ const SneakerItem = ({ sneaker }: SneakerItemProps): JSX.Element => {
         </button>
         ):
         (
-          <button onClick={onHandleDelete}>
+          <button onClick={onHandleDeleteLike}>
           <img src='../../../../public/icons/icons8-лайк-с-заливкой-48.png' alt = 'like'/>
           </button>
         )

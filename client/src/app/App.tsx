@@ -10,17 +10,16 @@ import './styles/index.css';
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
-
   useEffect(() => {
-    void dispatch(getSneakersThunk())
+    void dispatch(getSneakersThunk());
     void dispatch(refreshTokens());
     void dispatch(getLikeThunk())
   }, [dispatch]);
 
   return (
     <div className="App">
-    <Navbar/>
-        <AppRoutes />
+      <Navbar />
+      <AppRoutes />
     </div>
   );
 }

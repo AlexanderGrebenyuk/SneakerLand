@@ -11,6 +11,7 @@ module.exports = {
       },
       link: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       sneakerId: {
         type: Sequelize.INTEGER,
