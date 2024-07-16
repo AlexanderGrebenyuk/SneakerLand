@@ -2,11 +2,15 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import authSlice from '../../entities/users/authSlice';
 import sneakerSlice from '../../entities/sneakers/sneakerSlice';
+import likeSlice from '../../entities/like/likeSlice';
+import filterSlice from '../../entities/filter/filterSlice';
 
 const store = configureStore({
   reducer: {
     user: authSlice.reducer,
     sneakers: sneakerSlice.reducer,
+    likes: likeSlice.reducer,
+    filters: filterSlice.reducer
   },
 });
 
