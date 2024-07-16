@@ -21,9 +21,15 @@ class SneakerApi {
   };
 
   static createSneaker = async (body: SneakerWithoutId): Promise<Sneaker> => {
+    console.log(body);
     const response: AxiosResponse<{ message: string; sneaker: Sneaker }> = await axiosInstance.post(
       '/sneakers',
       body,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      },
     );
     return response.data.sneaker;
   };

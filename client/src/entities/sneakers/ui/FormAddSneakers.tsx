@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { array, number, object, string } from 'yup';
 import { useAppDispatch } from '../../../app/store/store';
 import { useForm } from 'react-hook-form';
@@ -25,12 +25,14 @@ const schema = object().shape({
   brandId: number()
     .required('Идентификатор бренда обязателен для заполнения')
     .integer('Идентификатор бренда должен быть целым числом'),
-  images: array().nullable(), 
+  images: array().nullable(),
 });
 
 type FormAddSneakersProps = {};
 const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
   const dispatch = useAppDispatch();
+  const [files, setFiles] = useState();
+
 
   const {
     register,
@@ -51,8 +53,6 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
     },
   });
 
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
   const onHandleSubmit = async (formData: {
     model: string;
     description: string;
@@ -61,7 +61,7 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
     sizeId: number;
     colorId: number;
     brandId: number;
-    images: FileList;
+    images: File[];
   }): Promise<void> => {
     const sneaker: SneakerWithoutId = {
       model: formData.model,
@@ -71,7 +71,7 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
       sizeId: formData.sizeId,
       colorId: formData.colorId,
       brandId: formData.brandId,
-      articul: 0, 
+      articul: 0,
       Sex: { id: formData.sexId, title: '' },
       Size: { id: formData.sizeId, size: 0 },
       Color: { id: formData.colorId, name: '' },
@@ -80,21 +80,19 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
     };
 
     const formDataToSend = new FormData();
-    formDataToSend.append('model', sneaker.model);
-    formDataToSend.append('description', sneaker.description);
-    formDataToSend.append('price', sneaker.price.toString());
-    formDataToSend.append('sexId', sneaker.sexId.toString());
-    formDataToSend.append('sizeId', sneaker.sizeId.toString());
-    formDataToSend.append('colorId', sneaker.colorId.toString());
-    formDataToSend.append('brandId', sneaker.brandId.toString());
-
-    
-    for (let i = 0; i < formData.images.length; i++) {
-      formDataToSend.append('images', formData.images[i]);
+    for (const key in sneaker) {
+      formDataToSend.append(key, sneaker[key]);
     }
 
+    formDataToSend.append('modelName', formData.model);
+
+    for (let key in files) {
+      formDataToSend.append('images', files[key]);
+    }
+
+
     try {
-      await dispatch(createSneakerThunk(sneaker));
+      await dispatch(createSneakerThunk(formDataToSend));
       reset();
     } catch (error) {
       console.error(error);
@@ -102,7 +100,7 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
   };
 
   return (
-    <div className=" FormAddSneakers">
+    <div className="FormAddSneakers">
       <form onSubmit={handleSubmit(onHandleSubmit)}>
         <label htmlFor="model">
           Model:
@@ -111,37 +109,37 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
         </label>
         <br />
         <label htmlFor="description">
-          description:
+          Description:
           <input type="text" {...register('description')} />
           <span>{errors.description?.message}</span>
         </label>
         <br />
         <label htmlFor="price">
-          price:
+          Price:
           <input type="number" {...register('price')} />
           <span>{errors.price?.message}</span>
         </label>
         <br />
         <label htmlFor="sexId">
-          sexId:
+          SexId:
           <input type="number" {...register('sexId')} />
           <span>{errors.sexId?.message}</span>
         </label>
         <br />
         <label htmlFor="sizeId">
-          sizeId:
+          SizeId:
           <input type="number" {...register('sizeId')} />
           <span>{errors.sizeId?.message}</span>
         </label>
         <br />
         <label htmlFor="colorId">
-          colorId:
+          ColorId:
           <input type="number" {...register('colorId')} />
           <span>{errors.colorId?.message}</span>
         </label>
         <br />
         <label htmlFor="brandId">
-          brandId:
+          BrandId:
           <input type="number" {...register('brandId')} />
           <span>{errors.brandId?.message}</span>
         </label>
@@ -153,14 +151,16 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
             id="images"
             name="images"
             multiple
-            ref={fileInputRef}
-            onChange={(e) => register('images', { required: true })}
+            onChange={(e) => {
+              if (e.target.files) {
+                setFiles(e.target.files);
+              }
+            }}
           />
           <span>{errors.images?.message}</span>
         </label>
         <br />
         <button type="submit">Добавить</button>
-
       </form>
     </div>
   );

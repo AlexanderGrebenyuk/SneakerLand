@@ -16,6 +16,7 @@ const Carusel = ({ sneak }: CaruselProps): JSX.Element => {
             <img
               className="d-block w-100"
               src={`http://localhost:3000/${image.link}`}
+
               alt={sneak.model}
             />
           </Carousel.Item>
