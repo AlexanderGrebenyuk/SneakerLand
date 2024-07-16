@@ -19,7 +19,7 @@ const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [active, setActive] = useState(false);
-console.log(active);
+
 
 
   const onHandleAddLike = (): void => {
