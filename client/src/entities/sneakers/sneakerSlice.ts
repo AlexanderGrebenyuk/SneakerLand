@@ -14,10 +14,11 @@ export const getSneakersThunk = createAsyncThunk('load/sneakers', () =>
   SneakerApi.getAllSneakers(),
 );
 
+// создать новую санку для фильтрации по параметрам
+
 export const createSneakerThunk = createAsyncThunk<Sneaker, SneakerWithoutId>(
   'add/sneakers',
-  (body: SneakerWithoutId) => 
-    SneakerApi.createSneaker(body),
+  (body: SneakerWithoutId) => SneakerApi.createSneaker(body),
 );
 
 export const removeSneakerThunk = createAsyncThunk('remove/sneakers', (id: SneakerId) =>

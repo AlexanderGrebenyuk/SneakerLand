@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState, AppDispatch } from '../../app/store/store'
-import { setColor, setBrand, setSize, setSex, clearFilters } from '../../entities/filter/filterSlice';
+import { useAppDispatch, useAppSelector } from '../../app/store/store';
+import {
+  setColor,
+  setBrand,
+  setSize,
+  setSex,
+  clearFilters,
+} from '../../entities/filter/filterSlice';
 
 const colors = ['black', 'white', 'red', 'blue'];
 const brands = ['Nike', 'Adidas', 'Puma', 'Reebok'];
@@ -9,9 +14,8 @@ const sizes = [38, 39, 40, 41, 42, 43, 44, 45];
 const sexes = ['Для него', 'Для нее'];
 
 function Sidebar(): JSX.Element {
-  const dispatch = useDispatch<AppDispatch>();
-  const filters = useSelector((state: RootState) => state.filters);
-
+  const dispatch = useAppDispatch();
+  const filters = useAppSelector((state) => state.filters);
 
   const [localFilters, setLocalFilters] = useState({
     color: filters.color,
@@ -100,5 +104,3 @@ function Sidebar(): JSX.Element {
 }
 
 export default Sidebar;
-
-

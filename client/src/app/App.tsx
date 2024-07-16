@@ -13,7 +13,7 @@ function App(): JSX.Element {
   useEffect(() => {
     void dispatch(getSneakersThunk());
     void dispatch(refreshTokens());
-    void dispatch(getLikeThunk())
+    void dispatch(getLikeThunk());
   }, [dispatch]);
 
   return (
