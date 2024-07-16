@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Sneaker } from '../types/sneakerType';
+import { useNavigate } from 'react-router-dom';
 
 type SneakerItemPageProps = {
   sneaker: Sneaker;
@@ -10,6 +11,7 @@ type SneakerItemPageProps = {
 const SneakerItemPage = ({ sneaker }: SneakerItemPageProps): JSX.Element => {
   const [size, setSize] = useState('');
   console.log(size);
+  const navigate = useNavigate()
 
   return (
     <div className=" SneakerItemPage">
@@ -42,6 +44,9 @@ const SneakerItemPage = ({ sneaker }: SneakerItemPageProps): JSX.Element => {
         <button>Добавить в корзину</button>
         <button>Добавить в избранное</button>
       </div>
+      <button type='button' onClick={() => navigate(-1)}>
+        Назад
+      </button>
     </div>
   );
 };
