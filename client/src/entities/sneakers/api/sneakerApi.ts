@@ -8,9 +8,10 @@ class SneakerApi {
   // либо сдлеать динамическую функцию для квери параметров либо создать новую
   static getAllSneakers = async (): Promise<Sneaker[]> => {
     const response: AxiosResponse<{ message: string; sneakers: Sneaker[] }> =
-      await axiosInstance.get('/sneakers?sexId=1&sizeId=5');
+    await axiosInstance.get('/sneakers');
     return response.data.sneakers;
   };
+  // ?sexId=1&sizeId=5
   static removeSneaker = async (id: SneakerId): Promise<SneakerId | string> => {
     const response: AxiosResponse<{ message: string }> = await axiosInstance.delete(
       `/sneakers/${id}`,
