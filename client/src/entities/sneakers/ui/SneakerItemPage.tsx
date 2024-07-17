@@ -43,22 +43,25 @@ const SneakerItemPage = ({ sneaker }: SneakerItemPageProps): JSX.Element => {
       </div>
       <div className="SneakerItemPageForBasket">
         <p>{sneaker.model}</p>
-        <button>Добавить в корзину</button>
-        {!user?.isAdmin &&
-        (like === undefined ? (
-          <button onClick={onHandleAddLike}>
-            <img src="../../../../public/icons/icons8-червы-50.png" alt="like" />
-          </button>
-        ) : (
-          <button onClick={onHandleDeleteLike}>
-            <img src="../../../../public/icons/icons8-лайк-с-заливкой-48.png" alt="liked" />
-          </button>
-        ))}
+          {user && !user.isAdmin && (
+            <>
+              <button>Добавить в корзину</button>
+              {like === undefined ? (
+                <button onClick={onHandleAddLike}>
+                  <img src="../../../../public/icons/icons8-червы-50.png" alt="like" />
+                </button>
+              ) : (
+                <button onClick={onHandleDeleteLike}>
+                  <img src="../../../../public/icons/icons8-лайк-с-заливкой-48.png" alt="liked" />
+                </button>
+              )}
+            </>
+          )}
       </div>
       <button type="button" onClick={() => navigate(-1)}>
         Назад
       </button>
-      <SizeItem sneaker={sneaker}/>
+      <SizeItem sneaker={sneaker} />
     </div>
   );
 };
