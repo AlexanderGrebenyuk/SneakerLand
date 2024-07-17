@@ -27,7 +27,7 @@ router.get("/", verifyAccessToken, async (req, res) => {
 
 //СОЗДАНИЕ OrderLine
 //verifyAccessToken
-router.post("/", async (req, res) => {
+router.post("/", verifyAccessToken,  async (req, res) => {
   try {
     const { user } = res.locals; // засунуть в юзера баскетИд
     const { orderId, sneakerId, count, priceLine } = req.body;
