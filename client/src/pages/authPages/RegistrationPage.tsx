@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { registrationThunk } from '../../entities/users/authSlice';
 import { UserWithoutIdwithPassword } from '../../entities/users/types/userTypes';
+import { useNavigate } from 'react-router-dom';
 
 const schema = object().shape({
   name: string().nullable().trim().required('Обязательно для заполнения'),
@@ -25,6 +26,7 @@ const schema = object().shape({
 
 const RegistrationPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
 
   const {
     register,
@@ -53,6 +55,7 @@ const RegistrationPage = (): JSX.Element => {
       isAdmin: false,
     };
     void dispatch(registrationThunk(user));
+    navigate('/sneakers')
   };
 
   return (

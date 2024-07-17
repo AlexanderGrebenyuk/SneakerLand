@@ -6,6 +6,7 @@ import { UserWithoutName } from '../../entities/users/types/userTypes';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import './styles/Auth.css'
+import { useNavigate } from 'react-router-dom';
 
 const schema = object().shape({
   email: string().email().nullable().trim().required('Не email'),
@@ -18,6 +19,7 @@ const schema = object().shape({
 
 function AuthorizationPage(): JSX.Element {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
 
   const {
     register,
@@ -38,6 +40,7 @@ function AuthorizationPage(): JSX.Element {
       isAdmin: false,
     };
     void dispatch(authorizationThunk(user));
+    navigate('/sneakers')
   };
 
   return (
