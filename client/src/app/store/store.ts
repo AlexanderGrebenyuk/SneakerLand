@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import authSlice from '../../entities/users/authSlice';
 import sneakerSlice from '../../entities/sneakers/sneakerSlice';
 import likeSlice from '../../entities/like/likeSlice';
-import filterSlice from '../../entities/filter/filterSlice';
+
 import sizeSlice from '../../entities/sizes/sizeSlice';
 import brandSlice from '../../entities/brand/brandSlice';
 import colorSlice from '../../entities/color/colorSlice';
@@ -14,7 +14,7 @@ const store = configureStore({
     user: authSlice.reducer,
     sneakers: sneakerSlice.reducer,
     likes: likeSlice.reducer,
-    filters: filterSlice.reducer,
+  
     sizes: sizeSlice.reducer,
     brands: brandSlice.reducer,
     colors: colorSlice.reducer,

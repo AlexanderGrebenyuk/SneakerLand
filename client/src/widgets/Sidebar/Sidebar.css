@@ -1,4 +1,4 @@
-.Sidebar {
+.sidebar {
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(140, 135, 135, 0.1);
@@ -6,7 +6,7 @@
   margin-top: 30px;
 }
 
-.Sidebar h2 {
+ h2 {
   font-size: 1.5rem;
   margin-bottom: 15px;
   color: #333;
@@ -17,12 +17,12 @@
   flex-direction: column;
 }
 
-.Sidebar label {
+ label {
   margin-bottom: 10px;
   color: #666;
 }
 
-.Sidebar select {
+ select {
   width: 100%;
   padding: 10px;
   margin-bottom: 12px;
