@@ -30,7 +30,7 @@ router.get("/", verifyAccessToken, async (req, res) => {
 router.post("/", verifyAccessToken,  async (req, res) => {
   try {
     const { user } = res.locals; // засунуть в юзера баскетИд
-    const { orderId, sneakerId, count, priceLine } = req.body;
+    const {  sneakerId } = req.body;
     let order;
     let basketinDb;
 
