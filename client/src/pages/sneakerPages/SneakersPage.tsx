@@ -36,14 +36,14 @@ const SneakersPage = (): JSX.Element => {
     
     <div className="addSneakersButton">
       {user?.isAdmin === true && (
-        <button type="button" onClick={() => setActive((prev) => !prev)}>
+        <button className='buttonAddSneak' type="button" onClick={() => setActive((prev) => !prev)}>
           Добавить кроссовки
         </button>
       )}
     </div>
     <ModalWindow active={active} onToggle={onToggle}>
-      <h4>Добавить кроссовки</h4>
-      <FormAddSneakers />
+      <h4 style={{marginLeft: '110px', marginBottom: '20px'}}>Добавить кроссовки</h4>
+      <FormAddSneakers setActive={setActive} />
     </ModalWindow>
     <div className='cardsFlex'>
     {sneakers && sneakers.map((sneak) => <SneakerItem sneak={sneak} key={sneak.id} />)}

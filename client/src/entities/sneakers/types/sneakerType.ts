@@ -11,6 +11,7 @@ export type Color = {
 };
 
 export type ColorId = Color['id'];
+export type ColorWithoutId = Omit<Color, 'id'>
 
 export type Size = {
   id: number;
@@ -25,7 +26,7 @@ export type Brand = {
 };
 
 export type BrandId = Brand['id'];
-
+export type BrandWithoutId = Omit<Brand, 'id'>
 export type Image = {
   id: number;
   link: string;

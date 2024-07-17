@@ -76,3 +76,26 @@ button:hover {
 .SneakerItem .action-button:hover {
   background-color: #ffffff;
 }
+
+.flexInputs {
+  display: flex;
+}
+
+.oneColumn {
+  margin-right: 10px;
+}
+
+.twoColumn {
+  margin-left: 10px;
+}
+
+.FormAddSneakers select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #555;
+  font-size: 0.9rem;
+}
