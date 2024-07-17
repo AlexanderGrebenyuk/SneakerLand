@@ -3,7 +3,7 @@ const { Size, Sneaker } = require("../../db/models");
 
 router.get("/", async (req, res) => {
   try {
-    const sizes = await Size.findAll({ include: { model: Sneaker } }); // Нужно ли Sneaker подтягивать?
+    const sizes = await Size.findAll(); // Нужно ли Sneaker подтягивать?
     res.status(200).json({ message: "success", sizes });
   } catch ({ message }) {
     res.status(500).json({ error: message });

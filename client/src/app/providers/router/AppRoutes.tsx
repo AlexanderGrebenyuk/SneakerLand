@@ -6,6 +6,7 @@ import SneakersPage from '../../../pages/sneakerPages/SneakersPage';
 import FavoritesPage from '../../../pages/favoritesPage/FavoritesPage';
 import SneakerPage from '../../../pages/sneakerPages/SneakerPage';
 import Page404 from '../../../pages/page404/page404';
+import OrdersPage from '../../../pages/ordersPage/OrdersPage';
 
 
 type AppRoutesProps = {};
@@ -17,6 +18,7 @@ const AppRoutes = ({}: AppRoutesProps): JSX.Element => {
       <Route path='/sneakers' element={<SneakersPage/>}/>
       <Route path='/sneakers/:sneakerId' element={<SneakerPage/>}/>
       <Route path='/favorites' element={<FavoritesPage/>}/>
+      <Route path='/orders' element={<OrdersPage/>}/>
       <Route path='*' element={<Page404/>}/>
     </Routes>
   );

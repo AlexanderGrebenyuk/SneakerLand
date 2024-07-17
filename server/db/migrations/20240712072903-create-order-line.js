@@ -11,6 +11,7 @@ module.exports = {
       },
       count: {
         type: Sequelize.INTEGER,
+        defaultValue: 1,
         allowNull: true,
       },
       priceLine: {

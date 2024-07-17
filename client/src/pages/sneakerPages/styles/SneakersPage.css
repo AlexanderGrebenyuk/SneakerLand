@@ -19,10 +19,12 @@
 }
 
 .addSneakersButton {
+  /* width: 400px; */
   color: #fff;
   border: none;
   border-radius: 4px;
-  padding: 10px 20px;
+  margin-top: 40px;
+  margin-left: 50px;
   font-size: 1em;
   cursor: pointer;
   transition:
@@ -30,9 +32,16 @@
     transform 0.3s;
 }
 
+.buttonAddSneak {
+  width: 1065px;
+  height: 70px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
 .cardsFlex {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin-top: 30px;
+  margin-top: 10px;
 }

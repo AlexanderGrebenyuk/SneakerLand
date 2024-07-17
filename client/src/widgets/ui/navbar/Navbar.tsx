@@ -10,9 +10,7 @@ const Navbar = ({}: NavbarProps): JSX.Element => {
   const { user } = useAppSelector((state: RootState) => state.user);
   const likes = useAppSelector((state) => state.likes.likes);
   const dispatch = useAppDispatch();
-console.log(likes); //счетчик лайков сделать
-
-
+  console.log(likes); //счетчик лайков сделать
 
   const onHandleLogout = (e: React.MouseEvent<HTMLAnchorElement>): void => {
     e.preventDefault();
@@ -36,7 +34,9 @@ console.log(likes); //счетчик лайков сделать
           </>
         )}
 
-        {user  ? (
+        {user && user.isAdmin && <NavLink to="/orders">Заказы</NavLink>}
+
+        {user ? (
           <NavLink to="/" onClick={onHandleLogout}>
             Выход
           </NavLink>
