@@ -77,7 +77,7 @@ const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
         </button>
       )}
 
-      {!user?.isAdmin &&
+      {user && !user?.isAdmin &&
         (like === undefined ? (
           <button className="action-button" onClick={onHandleAddLike}>
             <img src="../../../../public/icons/icons8-червы-50.png" alt="like" style={{height: '40px'}}/>

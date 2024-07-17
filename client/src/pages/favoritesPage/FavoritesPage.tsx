@@ -7,8 +7,7 @@ import './styles/FavoritesPage.css'
 const FavoritesPage = (): JSX.Element => {
   const { user } = useAppSelector((state) => state.user);
   const likes = useAppSelector((state) => state.likes.likes);
-  console.log(likes);
-console.log(user);
+
 
   return (
     <div className="FavoritesPage">

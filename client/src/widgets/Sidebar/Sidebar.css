@@ -1,8 +1,9 @@
 .Sidebar {
-  padding: 20px;
+  padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  width: 260px;
+  box-shadow: 0 1px 3px rgba(140, 135, 135, 0.1);
+  width: 280px;
+  margin-top: 30px;
 }
 
 .Sidebar h2 {
