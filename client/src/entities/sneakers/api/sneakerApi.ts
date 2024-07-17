@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 
-import { Sneaker, SneakerId, SneakerWithoutId } from '../types/sneakerType'; //пересмотреть sneakerform
+import { Color, ColorWithoutId, Sneaker, SneakerId, SneakerWithoutId } from '../types/sneakerType'; //пересмотреть sneakerform
 
 import axiosInstance from '../../../services/axiosInstance';
 
@@ -22,7 +22,6 @@ class SneakerApi {
   };
 
   static createSneaker = async (body: SneakerWithoutId): Promise<Sneaker> => {
-    console.log(body);
     const response: AxiosResponse<{ message: string; sneaker: Sneaker }> = await axiosInstance.post(
       '/sneakers',
       body,
@@ -33,6 +32,14 @@ class SneakerApi {
       },
     );
     return response.data.sneaker;
+  };
+
+  static createColor = async (body: ColorWithoutId): Promise<Color> => {
+    const response: AxiosResponse<{ message: 'success'; color: Color }> = await axiosInstance.post(
+      '/colors',
+      body,
+    );
+    return response.data.color;
   };
 
   // static updateSneaker = async (obj: { // ПЕРЕДЕЛАТЬ, ДУРА!!!!!

@@ -5,7 +5,9 @@ import sneakerSlice from '../../entities/sneakers/sneakerSlice';
 import likeSlice from '../../entities/like/likeSlice';
 import filterSlice from '../../entities/filter/filterSlice';
 import sizeSlice from '../../entities/sizes/sizeSlice';
-import sexSlice from '../../entities/sexes/sexSlice';
+import brandSlice from '../../entities/brand/brandSlice';
+import colorSlice from '../../entities/color/colorSlice';
+import sexSlice from '../../entities/sex/sexSlice';
 
 const store = configureStore({
   reducer: {
@@ -14,6 +16,8 @@ const store = configureStore({
     likes: likeSlice.reducer,
     filters: filterSlice.reducer,
     sizes: sizeSlice.reducer,
+    brands: brandSlice.reducer,
+    colors: colorSlice.reducer,
     sexes: sexSlice.reducer,
   },
 });

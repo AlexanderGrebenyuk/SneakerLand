@@ -13,7 +13,7 @@ function ModalWindow({
   return (
     <div className={active ? 'modal active' : 'modal'} onClick={onToggle}>
       <div
-        className={active ? 'modal__content active' : 'modal__conten'}
+        className={active ? 'modal__content active' : 'modal__content'}
         onClick={(e) => e.stopPropagation()}
       >
         {children}

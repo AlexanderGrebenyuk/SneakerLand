@@ -1,12 +1,13 @@
 //@ts-nocheck
 import React, { useState } from 'react';
 import { number, object, string } from 'yup';
-import { useAppDispatch } from '../../../app/store/store';
+import { useAppDispatch, useAppSelector } from '../../../app/store/store';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SneakerWithoutId } from '../types/sneakerType';
 import { createSneakerThunk } from '../sneakerSlice';
-import '../../../shared/ui/modal/Modal.css'
+import '../../../shared/ui/modal/Modal.css';
+import { useSelector } from 'react-redux';
 
 type FormValues = {
   model: string;
@@ -39,10 +40,16 @@ const schema = object().shape({
     .integer('Идентификатор бренда должен быть целым числом'),
 });
 
-type FormAddSneakersProps = {};
-const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
+type FormAddSneakersProps = {
+  setActive: any
+};
+const FormAddSneakers = ({setActive}: FormAddSneakersProps): JSX.Element => {
   const dispatch = useAppDispatch();
   const [files, setFiles] = useState<FileList>();
+  const { brands } = useAppSelector((state) => state.brands);
+  const { sexes } = useAppSelector((state) => state.sexes);
+  const { sizes } = useAppSelector((state) => state.sizes);
+  const { colors } = useAppSelector((state) => state.colors);
 
   const {
     register,
@@ -86,7 +93,7 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
       Brand: { id: formData.brandId, name: '' },
       Images: [],
     };
-
+    console.log(sneaker);
     const formDataToSend: any = new FormData();
     for (const key in sneaker) {
       formDataToSend.append(key, sneaker[key]);
@@ -100,6 +107,7 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
 
     try {
       await dispatch(createSneakerThunk(formDataToSend));
+      setActive((prev) => !prev)
       reset();
     } catch (error) {
       console.error(error);
@@ -109,63 +117,100 @@ const FormAddSneakers = ({}: FormAddSneakersProps): JSX.Element => {
   return (
     <div className="FormAddSneakers">
       <form onSubmit={handleSubmit(onHandleSubmit)} enctype="multipart/form-data">
-        <label htmlFor="model">
-          Модель:
-          <input type="text" {...register('model')} />
-          <span>{errors.model?.message}</span>
-        </label>
-        <br />
-        <label htmlFor="description">
-          Описание:
-          <input type="text" {...register('description')} />
-          <span>{errors.description?.message}</span>
-        </label>
-        <br />
-        <label htmlFor="price">
-          Цена:
-          <input type="number" {...register('price')} />
-          <span>{errors.price?.message}</span>
-        </label>
-        <br />
-        <label htmlFor="sexId">
-          Пол:
-          <input type="number" {...register('sexId')} />
-          <span>{errors.sexId?.message}</span>
-        </label>
-        <br />
-        <label htmlFor="sizeId">
-          Размер:
-          <input type="number" {...register('sizeId')} />
-          <span>{errors.sizeId?.message}</span>
-        </label>
-        <br />
-        <label htmlFor="colorId">
-          Цвет:
-          <input type="number" {...register('colorId')} />
-          <span>{errors.colorId?.message}</span>
-        </label>
-        <br />
-        <label htmlFor="brandId">
-          Бренд:
-          <input type="number" {...register('brandId')} />
-          <span>{errors.brandId?.message}</span>
-        </label>
-        <br />
-        <label htmlFor="images" className='input-file'>
-          Изображения:
-          <input
-            type="file"
-            id="images"
-            name="images"
-            multiple
-            onChange={(e) => {
-              if (e.target.files) {
-                setFiles(e.target.files);
-              }
-            }}
-          />
-          <span>Добавить файлы</span>
-        </label>
+        <div className="flexInputs">
+          <div className="oneColumn">
+            <label htmlFor="model">
+              Модель:
+              <input type="text" {...register('model')} />
+              <span>{errors.model?.message}</span>
+            </label>
+            <br />
+            <label htmlFor="description">
+              Описание:
+              <input type="text" {...register('description')} />
+              <span>{errors.description?.message}</span>
+            </label>
+            <br />
+            <label htmlFor="price">
+              Цена:
+              <input type="number" {...register('price')} />
+              <span>{errors.price?.message}</span>
+            </label>
+            <br />
+            <label htmlFor="brandId">
+              Бренд:
+              <br />
+              <select {...register('brandId')}>
+                <option value="">не выбрано</option>
+                {brands.map((brand) => (
+                  <option key={brand.id} value={brand.id}>
+                    {brand.name}
+                  </option>
+                ))}
+              </select>
+              <span>{errors.brandId?.message}</span>
+            </label>
+            <br />
+          </div>
+          <div className="twoColumn">
+            <label htmlFor="sexId">
+              Пол:
+              <br />
+              <select {...register('sexId')}>
+                <option value="">не выбрано</option>
+                {sexes.map((sex) => (
+                  <option key={sex.id} value={sex.id}>
+                    {sex.title}
+                  </option>
+                ))}
+              </select>
+              <span>{errors.sexId?.message}</span>
+            </label>
+            <br />
+            <label htmlFor="sizeId">
+              Размер:
+              <br />
+              <select {...register('sizeId')}>
+                <option value="">не выбрано</option>
+                {sizes.map((size) => (
+                  <option key={size.id} value={size.id}>
+                    {size.size}
+                  </option>
+                ))}
+              </select>
+              <span>{errors.sizeId?.message}</span>
+            </label>
+            <br />
+            <label htmlFor="colorId">
+            Цвет:
+              <br />
+              <select {...register('colorId')}>
+                <option value="">не выбрано</option>
+                {colors.map((color) => (
+                  <option key={color.id} value={color.id}>
+                    {color.name}
+                  </option>
+                ))}
+              </select>
+              <span>{errors.colorId?.message}</span>
+            </label>
+            <label htmlFor="images" className="input-file">
+              Изображения:
+              <input
+                type="file"
+                id="images"
+                name="images"
+                multiple
+                onChange={(e) => {
+                  if (e.target.files) {
+                    setFiles(e.target.files);
+                  }
+                }}
+              />
+              <span>Добавить</span>
+            </label>
+          </div>
+        </div>
         <br />
         <button type="submit">Добавить</button>
       </form>

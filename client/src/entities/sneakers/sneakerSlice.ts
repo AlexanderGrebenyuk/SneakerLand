@@ -1,5 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Sneaker, SneakerId, SneakerWithoutId } from './types/sneakerType';
+import {
+  BrandWithoutId,
+  ColorWithoutId,
+  Sneaker,
+  SneakerId,
+  SneakerWithoutId,
+} from './types/sneakerType';
 import SneakerApi from './api/sneakerApi';
 
 type StateSneakers = {
@@ -25,10 +31,10 @@ export const removeSneakerThunk = createAsyncThunk('remove/sneakers', (id: Sneak
   SneakerApi.removeSneaker(id),
 );
 
-// export const updateSneakerThunk = createAsyncThunk(
-//   'update/sneakers',
-//   (obj: { id: SneakerId; body: SneakerForForm }) => SneakerApi.updateSneaker(obj), //SneakerForForm ПЕРЕДЕЛАТЬ ДУРА!!!!
-// );
+
+export const createColorThunk = createAsyncThunk('add/color', (body: ColorWithoutId) =>
+  SneakerApi.createColor(body),
+);
 
 const sneakerSlice = createSlice({
   name: 'sneakers',
@@ -45,7 +51,7 @@ const sneakerSlice = createSlice({
       })
       .addCase(createSneakerThunk.fulfilled, (state, action) => {
         state.sneakers.push(action.payload);
-      });
+      })
     //   .addCase(updateSneakerThunk.fulfilled, (state, action) => {
     //     state.sneakers = state.sneakers.map((sneaker) => sneaker.id === action.payload.id ? action.payload : sneaker)
     //   })
