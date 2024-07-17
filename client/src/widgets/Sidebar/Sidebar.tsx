@@ -20,9 +20,9 @@ const Sidebar :React.FC<SidebarProps> = ({filters,setFilters}) => {
   };
 
   return (
-    <div className="sidebar">
+    <div className="Sidebar">
       <h2>Фильтры</h2>
-      <div className="filter-group">
+      <div>
         <label htmlFor="color">Цвет:</label>
         <select
           id="color"
@@ -44,7 +44,7 @@ const Sidebar :React.FC<SidebarProps> = ({filters,setFilters}) => {
           <option value="черный">черный</option>
         </select>
       </div>
-      <div className="filter-group">
+      <div>
         <label htmlFor="brand">Бренд:</label>
         <select
           id="brand"
@@ -60,7 +60,7 @@ const Sidebar :React.FC<SidebarProps> = ({filters,setFilters}) => {
           <option value="New Balance">New Balance</option>
         </select>
       </div>
-      <div className="filter-group">
+      <div >
         <label htmlFor="size">Размер:</label>
         <select
           id="size"
@@ -81,7 +81,7 @@ const Sidebar :React.FC<SidebarProps> = ({filters,setFilters}) => {
           <option value="45">45</option>
         </select>
       </div>
-      <div className="filter-group">
+      <div >
         <label htmlFor="sex">Пол:</label>
         <select
           id="sex"
