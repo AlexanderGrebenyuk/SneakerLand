@@ -54,25 +54,29 @@ router.post("/",verifyAccessToken, async (req, res) => {
   try {
     const { user } = res.locals;
     const { sneakerId } = req.body;
-
+    console.log(user);
+    console.log(sneakerId);
     let order;
     let basketinDb;
 
-    basketinDb = await Basket.findOne({ where: { userId: user.basketId } }); //user.basketId
-    console.log(!basketinDb);
+    basketinDb = await Basket.findOne({ where: { userId: user.id } }); //user.basketId
+    console.log(basketinDb);
+
     if (!basketinDb) {
-      basketinDb = await Basket.create({ where: { userId: user.id } }); //изменить на user.id
+      basketinDb = await Basket.create({ userId: user.id } ); //изменить на user.id
       res.locals.user.basketId = basketinDb.id;
     }
     order = await Order.findOne({
       where: { basketId: basketinDb.id, statusId: 1 },
     });
 
+
     if (!order) {
-      order = await Order.create({
-        where: { basketId: basketinDb.id, statusId: 1 },
-      }); //Тотал прайс проверить
+      order = await Order.create( { basketId: basketinDb.id, statusId: 1 }
+      ); //Тотал прайс проверить
     }
+
+    console.log('+++++++++++++++++++++',order);
 
     const sneaker = await Sneaker.findOne({ where: { id: sneakerId } });
     let orderLine = await OrderLine.findOne({

@@ -55,7 +55,7 @@ const SneakerItemPage = ({ sneaker }: SneakerItemPageProps): JSX.Element => {
               Добавить в корзину
             </button>
             <ModalWindow active={active} onToggle={onToggle}>
-              <SizeItem />
+              <SizeItem sneaker={sneaker}/>
             </ModalWindow>
             {like === undefined ? (
               <button onClick={onHandleAddLike}>

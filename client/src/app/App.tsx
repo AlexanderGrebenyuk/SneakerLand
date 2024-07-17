@@ -10,6 +10,7 @@ import { getSizeThunk } from '../entities/sizes/sizeSlice';
 import { getBrandThunk } from '../entities/brand/brandSlice';
 import { getSexThunk } from '../entities/sex/sexSlice';
 import { getColorThunk } from '../entities/color/colorSlice';
+import { getBasketThunk } from '../entities/basket/basketSlice';
 
 
 
@@ -26,6 +27,7 @@ function App(): JSX.Element {
     void dispatch(getColorThunk())
     void dispatch(getSizeThunk())
     void dispatch(getSexThunk())
+    void dispatch(getBasketThunk())
   }, [dispatch]);
 
   return (
