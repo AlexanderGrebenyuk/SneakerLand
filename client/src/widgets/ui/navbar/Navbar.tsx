@@ -10,7 +10,7 @@ const Navbar = ({}: NavbarProps): JSX.Element => {
   const { user } = useAppSelector((state: RootState) => state.user);
   const likes = useAppSelector((state) => state.likes.likes);
   const dispatch = useAppDispatch();
-  console.log(likes); //счетчик лайков сделать
+
 
   const onHandleLogout = (e: React.MouseEvent<HTMLAnchorElement>): void => {
     e.preventDefault();
