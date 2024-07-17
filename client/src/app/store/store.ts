@@ -14,7 +14,6 @@ const store = configureStore({
     user: authSlice.reducer,
     sneakers: sneakerSlice.reducer,
     likes: likeSlice.reducer,
-  
     sizes: sizeSlice.reducer,
     brands: brandSlice.reducer,
     colors: colorSlice.reducer,
