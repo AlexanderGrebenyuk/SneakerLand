@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Sneaker } from '../types/sneakerType';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/store/store';
 import SizeItem from '../../sizes/ui/SizeItem';
 import { createLikeThunk, removeLikeThunk } from '../../like/likeSlice';
+import ModalWindow from '../../../shared/ui/modal/Modal';
 
 type SneakerItemPageProps = {
   sneaker: Sneaker;
@@ -16,6 +17,11 @@ const SneakerItemPage = ({ sneaker }: SneakerItemPageProps): JSX.Element => {
   const likes = useAppSelector((state) => state.likes.likes);
   const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
+  const [active, setActive] = useState<boolean>(false);
+
+  const onToggle = (): void => {
+    setActive((prev) => !prev);
+  };
 
   const onHandleAddLike = (): void => {
     void dispatch(createLikeThunk({ sneakerId: sneaker.id, Sneaker: sneaker }));
@@ -43,25 +49,29 @@ const SneakerItemPage = ({ sneaker }: SneakerItemPageProps): JSX.Element => {
       </div>
       <div className="SneakerItemPageForBasket">
         <p>{sneaker.model}</p>
-          {user && !user.isAdmin && (
-            <>
-              <button>Добавить в корзину</button>
-              {like === undefined ? (
-                <button onClick={onHandleAddLike}>
-                  <img src="../../../../public/icons/icons8-червы-50.png" alt="like" />
-                </button>
-              ) : (
-                <button onClick={onHandleDeleteLike}>
-                  <img src="../../../../public/icons/icons8-лайк-с-заливкой-48.png" alt="liked" />
-                </button>
-              )}
-            </>
-          )}
+        {user && !user.isAdmin && (
+          <>
+            <button type="button" onClick={() => setActive((prev) => !prev)}>
+              Добавить в корзину
+            </button>
+            <ModalWindow active={active} onToggle={onToggle}>
+              <SizeItem />
+            </ModalWindow>
+            {like === undefined ? (
+              <button onClick={onHandleAddLike}>
+                <img src="../../../../public/icons/icons8-червы-50.png" alt="like" />
+              </button>
+            ) : (
+              <button onClick={onHandleDeleteLike}>
+                <img src="../../../../public/icons/icons8-лайк-с-заливкой-48.png" alt="liked" />
+              </button>
+            )}
+          </>
+        )}
       </div>
       <button type="button" onClick={() => navigate(-1)}>
         Назад
       </button>
-      <SizeItem sneaker={sneaker} />
     </div>
   );
 };

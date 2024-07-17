@@ -5,7 +5,7 @@ import sneakerSlice from '../../entities/sneakers/sneakerSlice';
 import likeSlice from '../../entities/like/likeSlice';
 import filterSlice from '../../entities/filter/filterSlice';
 import sizeSlice from '../../entities/sizes/sizeSlice';
-
+import sexSlice from '../../entities/sexes/sexSlice';
 
 const store = configureStore({
   reducer: {
@@ -14,6 +14,7 @@ const store = configureStore({
     likes: likeSlice.reducer,
     filters: filterSlice.reducer,
     sizes: sizeSlice.reducer,
+    sexes: sexSlice.reducer,
   },
 });
 
