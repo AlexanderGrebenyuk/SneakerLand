@@ -23,7 +23,6 @@ router.get("/", verifyAccessToken, async (req, res) => {
     console.log(user);
 
     if (user && !user.isAdmin) {
-   
       const order = await Order.findOne({
         where: { basketId: user.basketId, statusId: 1 }, //user.basketId
         include: {
@@ -36,12 +35,11 @@ router.get("/", verifyAccessToken, async (req, res) => {
               { model: Color },
               { model: Brand },
               { model: Image },
-      
             ],
           },
         },
       });
-      console.log('========',order);
+      console.log("========", order);
       // a = false;
       res.status(200).json({ message: "success", order });
       return;
@@ -55,32 +53,27 @@ router.get("/", verifyAccessToken, async (req, res) => {
 //СОЗДАНИЕ OrderLine
 //verifyAccessToken
 
-router.post("/",verifyAccessToken, async (req, res) => {
+router.post("/", verifyAccessToken, async (req, res) => {
   try {
     const { user } = res.locals;
     const { sneakerId } = req.body;
-  
+
     let order;
     let basketinDb;
 
     basketinDb = await Basket.findOne({ where: { userId: user.id } }); //user.basketId
 
-
     if (!basketinDb) {
-      basketinDb = await Basket.create({ userId: user.id } ); //изменить на user.id
+      basketinDb = await Basket.create({ userId: user.id }); //изменить на user.id
       res.locals.user.basketId = basketinDb.id;
     }
     order = await Order.findOne({
       where: { basketId: basketinDb.id, statusId: 1 },
     });
 
-
     if (!order) {
-      order = await Order.create( { basketId: basketinDb.id, statusId: 1 }
-      ); //Тотал прайс проверить
+      order = await Order.create({ basketId: basketinDb.id, statusId: 1 }); //Тотал прайс проверить
     }
-
-
 
     const sneaker = await Sneaker.findOne({ where: { id: sneakerId } });
     let orderLine = await OrderLine.findOne({
@@ -98,7 +91,7 @@ router.post("/",verifyAccessToken, async (req, res) => {
       let newPriceLine = orderLine.priceLine + sneaker.price;
       let newOrderCount = orderLine.count + 1;
 
-     await orderLine.update({
+      await orderLine.update({
         priceLine: newPriceLine,
         count: newOrderCount,
       });
@@ -110,13 +103,24 @@ router.post("/",verifyAccessToken, async (req, res) => {
       totalPrice: newTotalPrice,
     });
 
-
     order = await Order.findOne({
       where: { id: order.id },
-      include: OrderLine,
+      include: {
+        model: OrderLine,
+        include: {
+          model: Sneaker,
+          include: [
+            { model: Sex },
+            { model: Size },
+            { model: Color },
+            { model: Brand },
+            { model: Image },
+          ],
+        },
+      },
     });
 
-    console.log('OREDE FINISH', order);
+    console.log("OREDE FINISH", order);
 
     //  заказ со всеми кросcовками
     res.status(200).json({ message: "success", order });
@@ -142,12 +146,14 @@ router.delete("/orderLines/:orderLineId", async (req, res) => {
       return;
     }
 
-    orderLine.destroy({where: {orderLineId: id}});
+    orderLine.destroy({ where: { orderLineId: id } });
 
     res.status(200).json({ message: "товар удален из заказа" });
   } catch ({ message }) {
     res.status(500).json({ error: message });
   }
 });
+
+router.put('/:orderLineId')
 
 module.exports = router;
