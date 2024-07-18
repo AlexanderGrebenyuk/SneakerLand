@@ -51,13 +51,13 @@ console.log(active);
       {user?.isAdmin ? (
         <>
           <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-            <button
+            {/* <button
               type="button"
               style={{ borderRadius: '20px' }}
               onClick={() => setActive((prev) => !prev)}
             >
               Обновить
-            </button>
+            </button> */}
             {/* <ModalWindow active={active} onToggle={onToggle}>
               <FormUpdateSneaker sneak={sneak} />
             </ModalWindow> */}
