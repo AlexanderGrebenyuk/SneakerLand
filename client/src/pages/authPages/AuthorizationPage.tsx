@@ -38,6 +38,7 @@ function AuthorizationPage(): JSX.Element {
       email: formData.email,
       password: formData.password,
       isAdmin: false,
+      basketId: null 
     };
     void dispatch(authorizationThunk(user));
     navigate('/sneakers')

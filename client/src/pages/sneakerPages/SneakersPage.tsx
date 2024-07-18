@@ -15,17 +15,16 @@ export interface Filters {
   sex: string;
 }
 type PoiskProps = {
-  activePoisk : boolean
+  activePoisk: boolean;
 };
 
-const SneakersPage = ({activePoisk}:PoiskProps): JSX.Element => {
+const SneakersPage = ({ activePoisk }: PoiskProps): JSX.Element => {
   const sneakers = useAppSelector((state) => state.sneakers.sneakers);
   const { user } = useAppSelector((state) => state.user);
-  
+
   // .............................................................................
-  const [values, setValue] = useState('')
-  const [poisk, setPoisk] = useState('')
-  
+  const [values, setValue] = useState('');
+  const [poisk, setPoisk] = useState('');
 
   const [filters, setFilters] = useState<Filters>({
     color: '',
@@ -34,88 +33,87 @@ const SneakersPage = ({activePoisk}:PoiskProps): JSX.Element => {
     sex: '',
   });
 
-const filtered = sneakers.filter((sneaker) => {
-  return (
-    (filters.color === '' || sneaker.Color.name === filters.color) &&
-    (filters.brand === '' || sneaker.Brand.name === filters.brand) &&
-    (+filters.size === 0 || +sneaker.Size.size === +filters.size) &&
-    (filters.sex === '' || sneaker.Sex.title === filters.sex)
-  );
-});
-const result:Sneaker[] = []
-function removeDuplicatesByArticle (arr:Sneaker[]) {
-  const seenArticles = new Set<string|number>();
-  ;
-  
-  arr.forEach(item => {
+  const filtered = sneakers.filter((sneaker) => {
+    return (
+      (filters.color === '' || sneaker.Color.name === filters.color) &&
+      (filters.brand === '' || sneaker.Brand.name === filters.brand) &&
+      (+filters.size === 0 || +sneaker.Size.size === +filters.size) &&
+      (filters.sex === '' || sneaker.Sex.title === filters.sex)
+    );
+  });
+  const result: Sneaker[] = [];
+  function removeDuplicatesByArticle(arr: Sneaker[]) {
+    const seenArticles = new Set<string | number>();
+    arr.forEach((item) => {
       const articul = item.articul;
       if (!seenArticles.has(articul)) {
-          seenArticles.add(articul);
-          result.push(item);
+        seenArticles.add(articul);
+        result.push(item);
       }
+    });
+  }
+  removeDuplicatesByArticle(filtered);
+
+  const filteredSneakers = result.filter((sneaker) => {
+    return sneaker.model
+      .toLocaleLowerCase()
+      .replaceAll(' ', '')
+      .split(' ')
+      .sort()
+      .join(' ')
+      .includes(values.toLocaleLowerCase().replaceAll(' ', '').split(' ').sort().join(' '));
   });
-}
-removeDuplicatesByArticle(filtered) 
 
+  const handleButtonClick = (e: React.FormEvent<HTMLFormElement>) => {
+    console.log(e.target, 77777777);
 
+    e.preventDefault();
+    setValue(poisk);
+  };
+  // ................................................................................
 
-const filteredSneakers = result.filter((sneaker)=>{
-    return sneaker.model.toLocaleLowerCase().replaceAll(' ','').split(' ').sort().join(' ').includes(values.toLocaleLowerCase().replaceAll(' ','').split(' ').sort().join(' '))
-})
-
-const handleButtonClick =(e:React.FormEvent<HTMLFormElement>)=>{
-  console.log(e.target,77777777);
-  
-e.preventDefault()
-setValue(poisk)
-  
-}
-// ................................................................................
-
-
-
-const [active, setActive] = useState(false);
-const onToggle = (): void => {
-  setActive((prev) => !prev);
-};
+  const [active, setActive] = useState(false);
+  const onToggle = (): void => {
+    setActive((prev) => !prev);
+  };
 
   return (
     <>
-  
-<div className="flexSideNCards">
-  <div className="sidebar">
-    <Sidebar filters={filters} setFilters={setFilters}/>
-  </div>
-  <div className="allCards">
-    {activePoisk && 
-  <form className='serch' onSubmit={handleButtonClick}>
-      <input
-        type="text"
-        value={poisk}
-        onChange={(e) => setPoisk(e.target.value)}
-      />
-      <button className='onSubmit'>поиск</button>
-    </form>
-}
-    <div className="addSneakersButton">
-      {user?.isAdmin === true && (
-        <button className='buttonAddSneak' type="button" onClick={() => setActive((prev) => !prev)}>
-          Добавить кроссовки
-        </button>
-      )}
-    </div>
-    <ModalWindow active={active} onToggle={onToggle}>
-      <h4 style={{marginLeft: '110px', marginBottom: '20px'}}>Добавить кроссовки</h4>
-      <FormAddSneakers setActive={setActive} />
-    </ModalWindow>
-    <div className='cardsFlex'>
- 
-    {filteredSneakers && filteredSneakers.map((sneak) => <SneakerItem sneak={sneak} key={sneak.id} />)}
-    </div>
-  </div>
-</div>
-</>
+      <div className="flexSideNCards">
+        <div className="sidebar">
+          <Sidebar filters={filters} setFilters={setFilters} />
+        </div>
+        <div className="allCards">
+          {activePoisk && (
+            <div className='searchLine'>
+            <form className="serch" onSubmit={handleButtonClick}>
+              <input type="text" placeholder='Поиск' value={poisk} onChange={(e) => setPoisk(e.target.value)} />
+              <button className="onSubmit">поиск</button>
+            </form>
+            </div>
+          )}
+          <div className="addSneakersButton">
+            {user?.isAdmin === true && (
+              <button
+                className="buttonAddSneak"
+                type="button"
+                onClick={() => setActive((prev) => !prev)}
+              >
+                Добавить кроссовки
+              </button>
+            )}
+          </div>
+          <ModalWindow active={active} onToggle={onToggle}>
+            <h4 style={{ marginLeft: '110px', marginBottom: '20px' }}>Добавить кроссовки</h4>
+            <FormAddSneakers setActive={setActive} />
+          </ModalWindow>
+          <div className="cardsFlex">
+            {filteredSneakers &&
+              filteredSneakers.map((sneak) => <SneakerItem sneak={sneak} key={sneak.id} />)}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 export default SneakersPage;
-
