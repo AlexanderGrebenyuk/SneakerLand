@@ -262,6 +262,7 @@ router.get("/userOrders", verifyAccessToken, async (req, res) => {
           },
         },
       });
+      console.log('UUUSEEEEEERRRR+++++++++++',orders);
       res.status(200).json({ message: "success", orders });
       // a = false;
       return;
