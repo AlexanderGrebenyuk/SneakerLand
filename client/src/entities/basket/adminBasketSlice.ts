@@ -4,11 +4,11 @@ import { OrderLineId, OrderLinesForStatus } from './types/basketTypes';
 import BasketApi from './api/basketApi';
 
 type StateBasket = {
-  order: OrderLinesForStatus | undefined; // проверить
+  orders: OrderLinesForStatus[] | undefined; // проверить
 };
 
 const initialState: StateBasket = {
-  order: undefined, // проверить
+  orders: undefined, // проверить
 };
 
 export const getBasketsAdminThunk = createAsyncThunk('load/basket', () => BasketApi.getAllBasketsAdmin());
@@ -19,16 +19,16 @@ const adminBasketSlice = createSlice({
   initialState,
   reducers: {
     clearBasket: (state) => {
-      state.order = undefined;
+      state.orders = undefined;
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(getBasketsAdminThunk.fulfilled, (state, action) => {
-        state.order = action.payload;
+        state.orders = action.payload;
       })
       .addCase(updateOrderAdminThunk.fulfilled, (state, action) => {
-        state.order = action.payload;
+        state.orders = action.payload;
       })
   },
 });

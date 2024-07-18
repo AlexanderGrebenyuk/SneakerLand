@@ -22,18 +22,20 @@ class BasketApi {
 
     return response.data.orders;
   };
-// Получение всех заказов для админа
-  static getAllBasketsAdmin = async (): Promise<OrderLinesForStatus> => {
-    const response: AxiosResponse<{ message: string; order: OrderLinesForStatus }> =
+// Получение всех заказов для админа.
+  static getAllBasketsAdmin = async (): Promise<OrderLinesForStatus[]> => {
+    const response: AxiosResponse<{ message: string; orders: OrderLinesForStatus[] }> =
       await axiosInstance.get('/basket/adminOrders');
-    return response.data.order;
+      console.log(123456789, response.data.orders);
+      
+    return response.data.orders;
   };
 
   //Обновление заказов Админом
-  static updateOrderAdmin = async (id: OrderLineId): Promise<OrderLinesForStatus> => {
-    const response: AxiosResponse<{ message: string; order: OrderLinesForStatus }> =
+  static updateOrderAdmin = async (id: OrderLineId): Promise<OrderLinesForStatus[]> => {
+    const response: AxiosResponse<{ message: string; orders: OrderLinesForStatus[] }> =
       await axiosInstance.put(`/basket/orders/${id}`);
-    return response.data.order;
+    return response.data.orders;
   };
 // По клику оплатить юзером, обновляется статус заказа на 2 
   static updateOrderUser = async (id: OrderLineId): Promise<string> => {
