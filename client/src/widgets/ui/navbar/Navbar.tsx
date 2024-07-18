@@ -11,6 +11,8 @@ type NavbarProps = {
 };
 const Navbar = ({ setActivePoisk }: NavbarProps): JSX.Element => {
   const { user } = useAppSelector((state: RootState) => state.user);
+  console.log(user);
+  
   const dispatch = useAppDispatch();
   const navigate = useNavigate()
 
@@ -24,33 +26,32 @@ const Navbar = ({ setActivePoisk }: NavbarProps): JSX.Element => {
   return (
     <nav className="Navbar">
       <div className="nav-section nav-left">
-        {/* <NavLink to="/">Главная</NavLink> */}
         <NavLink to="/sneakers">Главная</NavLink>
       </div>
       <div className="nav-section nav-center">
         <img src={logo3} alt="logo" />
       </div>
       <div className="nav-section nav-right">
-        {user && !user?.isAdmin && (
-          <>
-            <button
-              className="buttonSearch"
-              onClick={() => setActivePoisk((prev: boolean) => !prev)}
-            >
-              <img src="../../../../public/search.png" alt="lupa" style={{ height: '30px' }} />
-            </button>
-
-            <NavLink to="/favorites">Избранное</NavLink>
-            <NavLink to="/basket">Корзина</NavLink>
-          </>
-        )}
-
-        {user && user.isAdmin && <NavLink to="/orders">Заказы</NavLink>}
-
         {user ? (
-          <NavLink to="/" onClick={onHandleLogout}>
-            Выход
-          </NavLink>
+          <>
+            {!user.isAdmin && (
+              <>
+                <button
+                  className="buttonSearch"
+                  onClick={() => setActivePoisk((prev: boolean) => !prev)}
+                >
+                  <img src="../../../../public/search.png" alt="lupa" style={{ height: '30px' }} />
+                </button>
+                <NavLink to="/favorites">Избранное</NavLink>
+                <NavLink to="/basket">Корзина</NavLink>
+                <NavLink to="/userOrders">История заказов</NavLink>
+              </>
+            )}
+            {user.isAdmin && <NavLink to="/orders">Заказы</NavLink>}
+            <NavLink to="/" onClick={onHandleLogout}>
+              Выход
+            </NavLink>
+          </>
         ) : (
           <>
             <NavLink to="/signIn">Войти</NavLink>
@@ -61,4 +62,5 @@ const Navbar = ({ setActivePoisk }: NavbarProps): JSX.Element => {
     </nav>
   );
 };
+
 export default Navbar;

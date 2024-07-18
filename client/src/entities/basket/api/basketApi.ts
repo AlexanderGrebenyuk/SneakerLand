@@ -18,7 +18,7 @@ class BasketApi {
   static getBasketUser = async (): Promise<Basket> => {
     const response: AxiosResponse<{ message: string; orders: Basket }> =
       await axiosInstance.get('/basket/userOrders');
-    console.log(response.data.orders);
+    console.log("USER",response.data.orders);
 
     return response.data.orders;
   };
