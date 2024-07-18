@@ -10,7 +10,7 @@ const sexRoutes = require('./api/sex.routes')
 const brandRoutes = require('./api/brand.routes')
 const colorRoutes = require('./api/color.routes')
 const basketRoutes= require('./api/basket.routes')
-
+const statusRouter = require('./api/status.routes')
 
 router.use("/tokens", tokensRouter);
 router.use("/auth", authRouter);
@@ -22,5 +22,5 @@ router.use("/sexes", sexRoutes )
 router.use("/brands", brandRoutes )
 router.use("/colors", colorRoutes )
 router.use('/basket', basketRoutes)
-
+router.use('/statuses', statusRouter)
 module.exports = router;
