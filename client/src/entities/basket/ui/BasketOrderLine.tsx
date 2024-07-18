@@ -6,7 +6,11 @@ type BasketOrderLineProps = {
   ordLine: OrderLine;
 };
 const BasketOrderLine = ({ ordLine }: BasketOrderLineProps): JSX.Element => {
-  console.log(ordLine);
+  
+  
+  console.log(123);
+  
+    console.log('ORDERLINE',ordLine);
 
   return (
     <div className="OrderLine">

@@ -1,10 +1,10 @@
 import React from 'react';
 import { RootState, useAppDispatch, useAppSelector } from '../../../app/store/store';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { logoutThunk } from '../../../entities/users/authSlice';
 import './Navbar.css';
 import logo3 from '../../../../public/logo3.png';
-import { clearBasket } from '../../../entities/basket/basketSlice';
+import { clearBasket } from '../../../entities/basket/adminBasketSlice';
 
 type NavbarProps = {
   setActivePoisk: any;
@@ -12,11 +12,13 @@ type NavbarProps = {
 const Navbar = ({ setActivePoisk }: NavbarProps): JSX.Element => {
   const { user } = useAppSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
 
   const onHandleLogout = (e: React.MouseEvent<HTMLAnchorElement>): void => {
     e.preventDefault();
     void dispatch(logoutThunk());
     dispatch(clearBasket());
+    navigate('/sneakers')
   };
 
   return (
@@ -31,11 +33,12 @@ const Navbar = ({ setActivePoisk }: NavbarProps): JSX.Element => {
       <div className="nav-section nav-right">
         {user && !user?.isAdmin && (
           <>
-
-
-          <button className='buttonSearch' onClick={()=>setActivePoisk((prev:boolean)=>!prev)}>
-          <img src="../../../../public/search.png" alt="lupa" style={{height: '30px'}}/>
-          </button>
+            <button
+              className="buttonSearch"
+              onClick={() => setActivePoisk((prev: boolean) => !prev)}
+            >
+              <img src="../../../../public/search.png" alt="lupa" style={{ height: '30px' }} />
+            </button>
 
             <NavLink to="/favorites">Избранное</NavLink>
             <NavLink to="/basket">Корзина</NavLink>

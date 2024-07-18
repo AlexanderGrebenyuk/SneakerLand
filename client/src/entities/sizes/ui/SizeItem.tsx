@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { Sneaker } from '../../sneakers/types/sneakerType';
 import { useAppDispatch, useAppSelector } from '../../../app/store/store';
 import { useNavigate } from 'react-router-dom';
-import { createBasketThunk } from '../../basket/basketSlice';
-import './styles/SizeItem.css'
 
+import './styles/SizeItem.css';
+import { createBasketThunk } from '../../basket/userBasketSlice';
 
 type SizeItemProps = {
   sneaker: Sneaker;
-  onToggle: any
+  onToggle: any;
 };
 
-const SizeItem = ({ sneaker,onToggle }: SizeItemProps): JSX.Element => {
+const SizeItem = ({ sneaker, onToggle }: SizeItemProps): JSX.Element => {
   const dispatch = useAppDispatch();
   const { sizes } = useAppSelector((state) => state.sizes);
   const { sexes } = useAppSelector((state) => state.sexes);
@@ -38,7 +38,7 @@ const SizeItem = ({ sneaker,onToggle }: SizeItemProps): JSX.Element => {
     e.preventDefault();
     void dispatch(createBasketThunk(basketSneaker[0].id));
   };
-
+  
   return (
     <div className="size-item">
       <p>Для оформления заказа выберите размер и пол</p>
@@ -48,7 +48,9 @@ const SizeItem = ({ sneaker,onToggle }: SizeItemProps): JSX.Element => {
           <select onChange={(e) => setNewSize(+e.target.value)} name="size" id="size-select">
             <option value="">Размер</option>
             {sizes.map((size) => (
-              <option key={size.id} value={size.id}>{size.size}</option>
+              <option key={size.id} value={size.id}>
+                {size.size}
+              </option>
             ))}
           </select>
         </label>
@@ -57,13 +59,19 @@ const SizeItem = ({ sneaker,onToggle }: SizeItemProps): JSX.Element => {
           <select onChange={(e) => setNewSex(+e.target.value)} name="sex" id="sex-select">
             <option value="">Пол</option>
             {sexes.map((sex) => (
-              <option key={sex.id} value={sex.id}>{sex.title}</option>
+              <option key={sex.id} value={sex.id}>
+                {sex.title}
+              </option>
             ))}
           </select>
         </label>
-        <button type="submit" className="submit-button" onClick={onToggle}>Добавить</button>
+        <button type="submit" className="submit-button" onClick={onToggle}>
+          Добавить
+        </button>
       </form>
-      <button className="back-button" onClick={() => navigate('/sneakers')}>Назад</button>
+      <button className="back-button" onClick={() => navigate('/sneakers')}>
+        Назад
+      </button>
     </div>
   );
 };

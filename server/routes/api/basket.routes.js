@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { Op } = require("sequelize");
 const {
   Basket,
   Sneaker,
@@ -162,37 +163,49 @@ router.delete(
 //verifyAccessToken
 router.put("/orders/:orderId", verifyAccessToken, async (req, res) => {
   try {
+    let order;
     const { orderId } = req.params;
-    const { statusId } = req.body;
     const { user } = res.locals;
 
-    // let a = true;
-    //user && !user.isAdmin
+    order = await Order.findOne({ where: { id: orderId } });
+    // для  админ панели
+    if (user.isAdmin) {
+      if (order.statusId === 2) {
+        await order.update({
+          statusId: 3,
+        });
+      } else if (order.statusId === 3) {
+        await order.update({
+          statusId: 4,
+        });
+      }
+
+      order = await Order.findOne({
+        where: { id: order.id },
+        include: {
+          model: OrderLine,
+          include: {
+            model: Sneaker,
+            include: [
+              { model: Sex },
+              { model: Size },
+              { model: Color },
+              { model: Brand },
+              { model: Image },
+            ],
+          },
+        },
+      });
+      res.status(200).json({ message: "success", order });
+      return;
+    }
     if (user && !user.isAdmin) {
       const result = await Order.update(
-        { statusId },
+        { statusId: 2 },
         { where: { id: orderId } }
       );
       if (result[0] > 0) {
-        order = await Order.findOne({
-          where: { id: orderId },
-          include: {
-            model: Status,
-            model: OrderLine,
-            include: {
-              model: Sneaker,
-              include: [
-                { model: Sex },
-                { model: Size },
-                { model: Color },
-                { model: Brand },
-                { model: Image },
-              ],
-            },
-          },
-        });
-        res.status(200).json({ message: "success", order });
-        // a = false;
+        res.status(200).json({ message: "success" }); // order
         return;
       }
       res.status(400).json("Не получилось");
@@ -206,15 +219,51 @@ router.put("/orders/:orderId", verifyAccessToken, async (req, res) => {
 });
 
 //verifyAccessToken
-router.get("/orders", async (req, res) => {
+router.get("/adminOrders", verifyAccessToken, async (req, res) => {
   try {
     const { user } = res.locals;
     // user && user.isAdmin
-        let a = true;
-    if (a) {
-      const orders = await Order.findAll({include: {model: Status}});
+    // let a = true;
+    if (user && user.isAdmin) {
+      const orders = await Order.findAll({
+        where: { statusId: { [Op.gt]: 1 } },
+        include: { model: Status },
+      });
       res.status(200).json({ message: "success", orders });
-      a = false
+      // a = false;
+      return;
+    }
+    res.status(400).json("Вы не админ");
+  } catch ({ message }) {
+    res.status(500).json({ error: message });
+  }
+});
+
+router.get("/userOrders", verifyAccessToken, async (req, res) => {
+  try {
+    const { user } = res.locals;
+    // user && user.isAdmin
+    // let a = true;
+
+    if (user && !user.isAdmin) {
+      const orders = await Order.findAll({
+        where: { statusId: 1, basketId: user.basketId },
+        include: {
+          model: OrderLine,
+          include: {
+            model: Sneaker,
+            include: [
+              { model: Sex },
+              { model: Size },
+              { model: Color },
+              { model: Brand },
+              { model: Image },
+            ],
+          },
+        },
+      });
+      res.status(200).json({ message: "success", orders });
+      // a = false;
       return;
     }
     res.status(400).json("Вы не админ");
