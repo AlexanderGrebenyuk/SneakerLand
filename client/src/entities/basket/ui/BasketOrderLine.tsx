@@ -7,7 +7,7 @@ type BasketOrderLineProps={
 }
 const BasketOrderLine= ({ordLine}: BasketOrderLineProps): JSX.Element =>{
 return (
-<div className=' OrderLine'>
+<div className='OrderLine'>
     {ordLine &&
     <>
      <div className="OrderLineImages">

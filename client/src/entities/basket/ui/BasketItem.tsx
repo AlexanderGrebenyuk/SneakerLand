@@ -8,7 +8,7 @@ type BasketItemProps = {
 };
 const BasketItem = ({ ord }: BasketItemProps): JSX.Element => {
   return (
-    <div className=" BasketItem">
+    <div className="BasketItem">
       {ord && ord.statusId === 1 && (
         <>
           {ord.OrderLines.map((ordLine) => (

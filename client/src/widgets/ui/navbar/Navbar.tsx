@@ -13,6 +13,7 @@ const Navbar = ({setActivePoisk}: NavbarProps): JSX.Element => {
   const dispatch = useAppDispatch();
 
 
+
   const onHandleLogout = (e: React.MouseEvent<HTMLAnchorElement>): void => {
     e.preventDefault();
     dispatch(logoutThunk());
