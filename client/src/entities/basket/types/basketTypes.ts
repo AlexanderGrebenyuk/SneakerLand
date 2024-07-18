@@ -73,3 +73,21 @@ export type OrderResponse = {
   order: Basket;
 };
 
+export type OrderLineInOrder= {
+    id: number;
+    count: number;
+    priceLine:number;
+    orderId:number;
+    sneakerId: number;
+}
+
+export type OrderLinesForStatus = {
+    id:number;
+    totalPrice: number;
+    basketId: number;
+    statusId: number;
+    OrderLineInOrder: OrderLineInOrder[]
+}
+
+export type OrderLineId= OrderLinesForStatus['id']
+export type OrderLineStatusId= OrderLinesForStatus['statusId']

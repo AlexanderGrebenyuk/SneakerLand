@@ -11,39 +11,43 @@ import { getBrandThunk } from '../entities/brand/brandSlice';
 import { getSexThunk } from '../entities/sex/sexSlice';
 import { getColorThunk } from '../entities/color/colorSlice';
 import Footer from '../widgets/Footer/Footer';
-import { getBasketThunk } from '../entities/basket/basketSlice';
-import './App.css'
+
+import { getBasketsAdminThunk } from '../entities/basket/adminBasketSlice';
+import './App.css';
+import { getAllUserBaskets } from '../entities/basket/userBasketSlice';
+
 import { getStatusThunk } from '../entities/status/statusSlice';
+
 
 
 
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
-  const [activePoisk , setActivePoisk]= useState<boolean>(false)
+  const [activePoisk, setActivePoisk] = useState<boolean>(false);
 
   useEffect(() => {
     void dispatch(getSneakersThunk());
     void dispatch(refreshTokens());
     void dispatch(getLikeThunk());
-    void dispatch(getSizeThunk());
     void dispatch(getBrandThunk());
-    void dispatch(getSexThunk())
-    void dispatch(getColorThunk())
-    void dispatch(getSizeThunk())
-    void dispatch(getSexThunk())
-    void dispatch(getBasketThunk())
+    void dispatch(getSexThunk());
+    void dispatch(getColorThunk());
+    void dispatch(getSizeThunk());
+    void dispatch(getAllUserBaskets());
+    void dispatch(getBasketsAdminThunk());
     void dispatch(getStatusThunk())
+
   }, [dispatch]);
 
   return (
     <div className="App">
-    <Navbar setActivePoisk={setActivePoisk} />
-    <div className="main-content">
-      <AppRoutes activePoisk={activePoisk} />
+      <Navbar setActivePoisk={setActivePoisk} />
+      <div className="main-content">
+        <AppRoutes activePoisk={activePoisk} />
+      </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
   );
 }
 

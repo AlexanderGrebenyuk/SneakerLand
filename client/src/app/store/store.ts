@@ -3,13 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import authSlice from '../../entities/users/authSlice';
 import sneakerSlice from '../../entities/sneakers/sneakerSlice';
 import likeSlice from '../../entities/like/likeSlice';
-
 import sizeSlice from '../../entities/sizes/sizeSlice';
 import brandSlice from '../../entities/brand/brandSlice';
 import colorSlice from '../../entities/color/colorSlice';
 import sexSlice from '../../entities/sex/sexSlice';
-import basketSlice from '../../entities/basket/basketSlice';
+
+import userBasketSlice from '../../entities/basket/userBasketSlice';
+// import adminBasketSlice from '../../entities/basket/adminBasketSlice';
+
 import statusSlice from '../../entities/status/statusSlice';
+
 
 const store = configureStore({
   reducer: {
@@ -20,8 +23,12 @@ const store = configureStore({
     brands: brandSlice.reducer,
     colors: colorSlice.reducer,
     sexes: sexSlice.reducer,
-    basket: basketSlice.reducer,
+
+    basket: userBasketSlice.reducer,
+    // adminBasket: adminBasketSlice.reducer
+
     statuses: statusSlice.reducer
+
   },
 });
 
