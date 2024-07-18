@@ -1,13 +1,13 @@
-import React from 'react';
-import { Sneaker } from '../types/sneakerType';
+// import React from 'react';
+// import { Sneaker } from '../types/sneakerType';
 // import { useAppDispatch } from '../../../app/store/store';
 // import { updateSneakerThunk } from '../sneakerSlice';
 
 
-type FormUpdateSneakerProps={
-    sneak: Sneaker
-}
-const FormUpdateSneaker= ({sneak}: FormUpdateSneakerProps): JSX.Element =>{
+// type FormUpdateSneakerProps={
+//     sneak: Sneaker
+// }
+// const FormUpdateSneaker= ({sneak}: FormUpdateSneakerProps): JSX.Element =>{
     // const dispatch = useAppDispatch()
     
     // const [model, setModel] = useState(sneak.model)
@@ -28,10 +28,10 @@ const FormUpdateSneaker= ({sneak}: FormUpdateSneakerProps): JSX.Element =>{
         // void dispatch(updateSneakerThunk({id: sneak.id, body:{model, description, price, articul, sexId, sizeId, colorId, brandId, Images: image}}))
     // }
  
-return (
-<div className=' FormUpdateSneaker'>
- </div>
- );
+// return (
+// <div className=' FormUpdateSneaker'>
+//  </div>
+//  );
 
-}
-export default FormUpdateSneaker
+// }
+// export default FormUpdateSneaker

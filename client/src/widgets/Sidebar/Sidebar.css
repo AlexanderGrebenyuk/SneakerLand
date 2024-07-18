@@ -1,7 +1,8 @@
-.sidebar {
+.Sidebar {
   padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(140, 135, 135, 0.1);
+  box-shadow: 0 2px 4px rgba(140, 135, 135, 0.2);
+  /* border: 1px solid; */
   width: 280px;
   margin-top: 30px;
 }

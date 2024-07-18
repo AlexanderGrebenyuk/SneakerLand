@@ -10,7 +10,6 @@ type NavbarProps = {
 };
 const Navbar = ({setActivePoisk}: NavbarProps): JSX.Element => {
   const { user } = useAppSelector((state: RootState) => state.user);
-  const likes = useAppSelector((state) => state.likes.likes);
   const dispatch = useAppDispatch();
 
 

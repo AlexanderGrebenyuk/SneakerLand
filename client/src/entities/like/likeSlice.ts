@@ -34,14 +34,10 @@ const likeSlice = createSlice({
       .addCase(getLikeThunk.fulfilled, (state, action) => {
         state.likes = action.payload;
       })
-
       .addCase(createLikeThunk.fulfilled, (state, action) => {
-        state.likes.push(action.payload); // Добавляем новый лайк в массив
+        state.likes.push(action.payload);
       })
-
       .addCase(removeLikeThunk.fulfilled, (state, action) => {
-        console.log(action.payload, 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq');
-
         state.likes = state.likes.filter((like) => like.sneakerId !== action.payload);
       });
   },

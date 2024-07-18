@@ -1,48 +1,67 @@
 import React, { useState } from 'react';
 import { Sneaker } from '../../sneakers/types/sneakerType';
-import { useAppSelector } from '../../../app/store/store';
+import { useAppDispatch, useAppSelector } from '../../../app/store/store';
 import { useNavigate } from 'react-router-dom';
+import { createBasketThunk } from '../../basket/basketSlice';
+import './styles/SizeItem.css'
 
-const SizeItem = (): JSX.Element => {
+type SizeItemProps = {
+  sneaker: Sneaker;
+};
+
+const SizeItem = ({ sneaker }: SizeItemProps): JSX.Element => {
+  const dispatch = useAppDispatch();
   const { sizes } = useAppSelector((state) => state.sizes);
-  const {sexes} =useAppSelector((state) => state.sexes)
-  const { sneakers } = useAppSelector((state) => state.sizes);
+  const { sexes } = useAppSelector((state) => state.sexes);
+  const { sneakers } = useAppSelector((state) => state.sneakers);
   const [newSize, setNewSize] = useState(0);
-  const [newSex, setNewSex] = useState('')
+  const [newSex, setNewSex] = useState(0);
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  const updatedSneaker = {
+    ...sneaker,
+    sizeId: newSize !== null ? newSize : sneaker.sizeId,
+    sexId: newSex !== null ? newSex : sneaker.sexId,
+  };
+
+  const basketSneaker = sneakers.filter(
+    (sneak) =>
+      sneak.articul === updatedSneaker.articul &&
+      sneak.sizeId === updatedSneaker.sizeId &&
+      sneak.sexId === updatedSneaker.sexId,
+  );
 
   //Роут на баскет
-    const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-      e.preventDefault();
-    //   void dispatch(updateMovieThunk({ id: movie.id, body: { title, director, rating, genreId } }));
-    };
+  const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    void dispatch(createBasketThunk(basketSneaker[0].id));
+  };
 
   return (
-    <div className=" SizeItem">
+    <div className="size-item">
       <p>Для оформления заказа выберите размер и пол</p>
+
       <form onSubmit={onHandleSubmit}>
         <label htmlFor="size-select">
           <select onChange={(e) => setNewSize(+e.target.value)} name="size" id="size-select">
             <option value="">Размер</option>
             {sizes.map((size) => (
-              <option value={size.id}>{size.size}</option>
+              <option key={size.id} value={size.id}>{size.size}</option>
             ))}
           </select>
         </label>
 
-        {/* Скорректировать для пола */}
         <label htmlFor="sex-select">
-          <select onChange={(e) => setNewSex(e.target.value)} name="sex" id="sex-select">
+          <select onChange={(e) => setNewSex(+e.target.value)} name="sex" id="sex-select">
             <option value="">Пол</option>
             {sexes.map((sex) => (
-              <option value={sex.id}>{sex.title}</option>
+              <option key={sex.id} value={sex.id}>{sex.title}</option>
             ))}
           </select>
         </label>
+        <button type="submit" className="submit-button">Добавить</button>
       </form>
-      <button type="submit">Добавить</button>
-      <button onClick={() => navigate(-1)}>Назад</button>
+      <button className="back-button" onClick={() => navigate('/sneakers')}>Назад</button>
     </div>
   );
 };

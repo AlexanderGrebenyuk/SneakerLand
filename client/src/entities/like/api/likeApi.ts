@@ -15,8 +15,6 @@ class LikeApi {
   };
 
   static createLike = async (body: LikeWithoutIdAndUserId): Promise<Like> => {
-    console.log(body, 'wwww');
-
     const response: AxiosResponse<{ message: string; like: Like }> = await axiosInstance.post(
       '/likes',
       body,
@@ -26,12 +24,9 @@ class LikeApi {
 
   static deleteLike = async (id: LikeId): Promise<SneakerId | string> => {
     const response: AxiosResponse<{ message: string }> = await axiosInstance.delete(`likes/${id}`);
-    console.log(response, 'qqqqqqqqqqqqq');
-
     if (response.data.message === 'успешно удалено') {
       return +id;
     }
-
     return 'не твоя вот и бесишься';
   };
 }

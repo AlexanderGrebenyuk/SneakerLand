@@ -6,8 +6,6 @@ import { createLikeThunk, removeLikeThunk } from '../../like/likeSlice';
 import { useNavigate } from 'react-router-dom';
 import { removeSneakerThunk } from '../sneakerSlice';
 import Carusel from '../../../shared/ui/carusel/Carusel';
-// import ModalWindow from '../../../shared/ui/modal/Modal';
-// import FormUpdateSneaker from './FormUpdateSneaker';
 
 type SneakerItemProps = {
   sneak: Sneaker;
@@ -20,6 +18,7 @@ const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
   const navigate = useNavigate();
   const [active, setActive] = useState(false);
 
+console.log(active);
 
 
   const onHandleAddLike = (): void => {

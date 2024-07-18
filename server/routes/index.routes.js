@@ -9,8 +9,6 @@ const sizesRoutes= require('./api/sizes.routes')
 const sexRoutes = require('./api/sex.routes')
 const brandRoutes = require('./api/brand.routes')
 const colorRoutes = require('./api/color.routes')
-
-
 const basketRoutes= require('./api/basket.routes')
 
 
@@ -23,8 +21,6 @@ router.use("/sizes", sizesRoutes )
 router.use("/sexes", sexRoutes )
 router.use("/brands", brandRoutes )
 router.use("/colors", colorRoutes )
-
-
 router.use('/basket', basketRoutes)
 
 module.exports = router;
