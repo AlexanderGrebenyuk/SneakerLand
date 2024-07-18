@@ -14,9 +14,11 @@ export interface Filters {
   size: number;
   sex: string;
 }
+type PoiskProps = {
+  activePoisk : boolean
+};
 
-
-const SneakersPage = (): JSX.Element => {
+const SneakersPage = ({activePoisk}:PoiskProps): JSX.Element => {
   const sneakers = useAppSelector((state) => state.sneakers.sneakers);
   const { user } = useAppSelector((state) => state.user);
 
@@ -30,7 +32,7 @@ const SneakersPage = (): JSX.Element => {
     sex: '',
   });
 
-const filteredSneakers = sneakers.filter((sneaker) => {
+const filtered = sneakers.filter((sneaker) => {
   return (
     (filters.color === '' || sneaker.Color.name === filters.color) &&
     (filters.brand === '' || sneaker.Brand.name === filters.brand) &&
@@ -51,8 +53,15 @@ function removeDuplicatesByArticle (arr:Sneaker[]) {
       }
   });
 }
-removeDuplicatesByArticle(filteredSneakers) 
+removeDuplicatesByArticle(filtered) 
 
+
+const [values, setValue] = useState('')
+const [poisk, setPoisk] = useState('')
+
+const filteredSneakers = result.filter((sneaker)=>{
+    return sneaker.model.toLocaleLowerCase().replaceAll(' ','').split(' ').sort().join(' ').includes(values.toLocaleLowerCase().replaceAll(' ','').split(' ').sort().join(' '))
+})
 
 // ................................................................................
 
@@ -67,15 +76,33 @@ const onToggle = (): void => {
 
 
 
+  const handleButtonClick =(e:React.FormEvent<HTMLFormElement>)=>{
+    console.log(e.target,77777777);
+    
+e.preventDefault()
+setValue(poisk)
+    
+  }
 
 
   return (
+    <>
+  
 <div className="flexSideNCards">
   <div className="sidebar">
     <Sidebar filters={filters} setFilters={setFilters}/>
   </div>
   <div className="allCards">
-    
+    {activePoisk && 
+  <form className='serch' onSubmit={handleButtonClick}>
+      <input
+        type="text"
+        value={poisk}
+        onChange={(e) => setPoisk(e.target.value)}
+      />
+      <button className='onSubmit'>поиск</button>
+    </form>
+}
     <div className="addSneakersButton">
       {user?.isAdmin === true && (
         <button className='buttonAddSneak' type="button" onClick={() => setActive((prev) => !prev)}>
@@ -88,10 +115,12 @@ const onToggle = (): void => {
       <FormAddSneakers setActive={setActive} />
     </ModalWindow>
     <div className='cardsFlex'>
-    {result && result.map((sneak) => <SneakerItem sneak={sneak} key={sneak.id} />)}
+ 
+    {filteredSneakers && filteredSneakers.map((sneak) => <SneakerItem sneak={sneak} key={sneak.id} />)}
     </div>
   </div>
 </div>
+</>
   );
 };
 export default SneakersPage;

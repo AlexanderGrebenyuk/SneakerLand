@@ -5,8 +5,10 @@ import { logoutThunk } from '../../../entities/users/authSlice';
 import './Navbar.css';
 import logo3 from '../../../../public/logo3.png';
 
-type NavbarProps = {};
-const Navbar = ({}: NavbarProps): JSX.Element => {
+type NavbarProps = {
+  setActivePoisk : any
+};
+const Navbar = ({setActivePoisk}: NavbarProps): JSX.Element => {
   const { user } = useAppSelector((state: RootState) => state.user);
   const likes = useAppSelector((state) => state.likes.likes);
   const dispatch = useAppDispatch();
@@ -29,6 +31,9 @@ const Navbar = ({}: NavbarProps): JSX.Element => {
       <div className="nav-section nav-right">
         {user && !user?.isAdmin && (
           <>
+          <button onClick={()=>setActivePoisk((prev:boolean)=>!prev)}>
+          <img src="../../../../public/png-transparent-computer-icons-magnifying-glass-partners-in-parenting-magnifying-glass-business-magnifier-лупа.png" alt="lupa" style={{height: '25px'}}/>
+          </button>
             <NavLink to="/favorites">Избранное</NavLink>
             <NavLink to="/cart">Корзина</NavLink>
           </>

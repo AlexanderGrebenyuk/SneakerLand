@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppRoutes from './providers/router/AppRoutes';
 import Navbar from '../widgets/ui/navbar/Navbar';
 import { useAppDispatch } from './store/store';
@@ -15,6 +15,7 @@ import { getColorThunk } from '../entities/color/colorSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
+  const [activePoisk , setActivePoisk]= useState<boolean>(false)
 
   useEffect(() => {
     void dispatch(getSneakersThunk());
@@ -30,8 +31,8 @@ function App(): JSX.Element {
 
   return (
     <div className="App">
-      <Navbar />
-      <AppRoutes />
+      <Navbar setActivePoisk={setActivePoisk}/>
+      <AppRoutes activePoisk={activePoisk}/>
     </div>
   );
 }
