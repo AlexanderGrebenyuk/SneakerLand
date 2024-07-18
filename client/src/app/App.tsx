@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppRoutes from './providers/router/AppRoutes';
 import Navbar from '../widgets/ui/navbar/Navbar';
 import { useAppDispatch } from './store/store';
@@ -10,12 +10,15 @@ import { getSizeThunk } from '../entities/sizes/sizeSlice';
 import { getBrandThunk } from '../entities/brand/brandSlice';
 import { getSexThunk } from '../entities/sex/sexSlice';
 import { getColorThunk } from '../entities/color/colorSlice';
+import Footer from '../widgets/Footer/Footer';
 import { getBasketThunk } from '../entities/basket/basketSlice';
+
 
 
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
+  const [activePoisk , setActivePoisk]= useState<boolean>(false)
 
   useEffect(() => {
     void dispatch(getSneakersThunk());
@@ -32,8 +35,9 @@ function App(): JSX.Element {
 
   return (
     <div className="App">
-      <Navbar />
-      <AppRoutes />
+      <Navbar setActivePoisk={setActivePoisk}/>
+      <AppRoutes activePoisk={activePoisk}/>
+      <Footer/>
     </div>
   );
 }
