@@ -1,6 +1,6 @@
 import React from 'react';
 import { OrderLine } from '../types/basketTypes';
-import './styles/BasketItem.css'
+import './styles/BasketItem.css';
 
 type BasketOrderLineProps = {
   ordLine: OrderLine;
@@ -9,7 +9,7 @@ const BasketOrderLine = ({ ordLine }: BasketOrderLineProps): JSX.Element => {
   console.log(ordLine);
 
   return (
-    <div className=" OrderLine">
+    <div className="OrderLine">
       {ordLine && (
         <>
           <div className="OrderLineImages">
