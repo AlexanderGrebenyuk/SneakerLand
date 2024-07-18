@@ -7,8 +7,12 @@ import sizeSlice from '../../entities/sizes/sizeSlice';
 import brandSlice from '../../entities/brand/brandSlice';
 import colorSlice from '../../entities/color/colorSlice';
 import sexSlice from '../../entities/sex/sexSlice';
+
 import userBasketSlice from '../../entities/basket/userBasketSlice';
 // import adminBasketSlice from '../../entities/basket/adminBasketSlice';
+
+import statusSlice from '../../entities/status/statusSlice';
+
 
 const store = configureStore({
   reducer: {
@@ -19,8 +23,12 @@ const store = configureStore({
     brands: brandSlice.reducer,
     colors: colorSlice.reducer,
     sexes: sexSlice.reducer,
+
     basket: userBasketSlice.reducer,
     // adminBasket: adminBasketSlice.reducer
+
+    statuses: statusSlice.reducer
+
   },
 });
 

@@ -9,6 +9,7 @@ const BasketPage = (): JSX.Element => {
   const { user } = useAppSelector((state) => state.user);
   const order = useAppSelector((state) => state.basket.order);
   const dispatch = useAppDispatch();
+console.log(order);
 
   
 

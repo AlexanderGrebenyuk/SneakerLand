@@ -43,7 +43,7 @@ const sneakerSlice = createSlice({
         state.sneakers = state.sneakers.filter((sneaker) => sneaker.id !== action.payload);
       })
       .addCase(createSneakerThunk.fulfilled, (state, action) => {
-        state.sneakers.push(action.payload);
+        state.sneakers.unshift(action.payload);
       });
     //   .addCase(updateSneakerThunk.fulfilled, (state, action) => {
     //     state.sneakers = state.sneakers.map((sneaker) => sneaker.id === action.payload.id ? action.payload : sneaker)

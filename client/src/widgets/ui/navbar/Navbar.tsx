@@ -24,8 +24,8 @@ const Navbar = ({ setActivePoisk }: NavbarProps): JSX.Element => {
   return (
     <nav className="Navbar">
       <div className="nav-section nav-left">
-        <NavLink to="/">Главная</NavLink>
-        <NavLink to="/sneakers">Кроссовки</NavLink>
+        {/* <NavLink to="/">Главная</NavLink> */}
+        <NavLink to="/sneakers">Главная</NavLink>
       </div>
       <div className="nav-section nav-center">
         <img src={logo3} alt="logo" />

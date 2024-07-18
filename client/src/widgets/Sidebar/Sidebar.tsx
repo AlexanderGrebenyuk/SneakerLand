@@ -19,6 +19,7 @@ const Sidebar :React.FC<SidebarProps> = ({filters,setFilters}) => {
     }));
   };
 
+
   return (
     <div className="Sidebar">
       <h2>Фильтры</h2>

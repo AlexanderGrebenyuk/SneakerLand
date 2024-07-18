@@ -16,6 +16,7 @@ router.get('/', async (req, res) => {
         { model: Brand },
         { model: Image },
       ],
+      order: [['id', 'DESC']],
     });
     res.status(200).json({ message: 'success', sneakers });
   } catch ({ message }) {
