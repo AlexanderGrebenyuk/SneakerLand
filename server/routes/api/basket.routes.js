@@ -13,6 +13,7 @@ const {
   Status,
 } = require("../../db/models");
 const verifyAccessToken = require("../../middleware/verifyAccessToken");
+const { log } = require("console");
 
 //verifyAccessToken
 
@@ -233,6 +234,7 @@ router.get("/adminOrders", verifyAccessToken, async (req, res) => {
       // a = false;
       return;
     }
+    console.log(12121);
     res.status(400).json("Вы не админ");
   } catch ({ message }) {
     res.status(500).json({ error: message });
@@ -246,7 +248,7 @@ router.get("/userOrders", verifyAccessToken, async (req, res) => {
     // let a = true;
 
     if (user && !user.isAdmin) {
-      const orders = await Order.findAll({
+      const orders = await Order.findOne({
         where: { statusId: 1, basketId: user.basketId },
         include: {
           model: OrderLine,
