@@ -10,6 +10,7 @@ import { getSizeThunk } from '../entities/sizes/sizeSlice';
 import { getBrandThunk } from '../entities/brand/brandSlice';
 import { getSexThunk } from '../entities/sex/sexSlice';
 import { getColorThunk } from '../entities/color/colorSlice';
+import Footer from '../widgets/Footer/Footer';
 
 
 
@@ -33,6 +34,7 @@ function App(): JSX.Element {
     <div className="App">
       <Navbar setActivePoisk={setActivePoisk}/>
       <AppRoutes activePoisk={activePoisk}/>
+      <Footer/>
     </div>
   );
 }

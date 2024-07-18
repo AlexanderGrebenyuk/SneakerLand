@@ -21,10 +21,12 @@ type PoiskProps = {
 const SneakersPage = ({activePoisk}:PoiskProps): JSX.Element => {
   const sneakers = useAppSelector((state) => state.sneakers.sneakers);
   const { user } = useAppSelector((state) => state.user);
-
-
-
+  
   // .............................................................................
+  const [values, setValue] = useState('')
+  const [poisk, setPoisk] = useState('')
+  
+
   const [filters, setFilters] = useState<Filters>({
     color: '',
     brand: '',
@@ -56,13 +58,18 @@ function removeDuplicatesByArticle (arr:Sneaker[]) {
 removeDuplicatesByArticle(filtered) 
 
 
-const [values, setValue] = useState('')
-const [poisk, setPoisk] = useState('')
 
 const filteredSneakers = result.filter((sneaker)=>{
     return sneaker.model.toLocaleLowerCase().replaceAll(' ','').split(' ').sort().join(' ').includes(values.toLocaleLowerCase().replaceAll(' ','').split(' ').sort().join(' '))
 })
 
+const handleButtonClick =(e:React.FormEvent<HTMLFormElement>)=>{
+  console.log(e.target,77777777);
+  
+e.preventDefault()
+setValue(poisk)
+  
+}
 // ................................................................................
 
 
@@ -71,19 +78,6 @@ const [active, setActive] = useState(false);
 const onToggle = (): void => {
   setActive((prev) => !prev);
 };
-
-
-
-
-
-  const handleButtonClick =(e:React.FormEvent<HTMLFormElement>)=>{
-    console.log(e.target,77777777);
-    
-e.preventDefault()
-setValue(poisk)
-    
-  }
-
 
   return (
     <>
