@@ -1,0 +1,135 @@
+.BasketContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    width: 1000px;
+    /* background-color: #f9f9f9; */
+  }
+  
+  .BasketLeft {
+    width: 60%;
+  }
+  
+  .BasketLeft h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .BasketLeft p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .OrderLine {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  
+  .OrderLineImages img {
+    /* width: 300px; */
+    height: 250px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .OrderLineDetails p {
+    margin: 5px 0;
+  }
+  
+  .BasketRight {
+    /* height: 140px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .OrderSummary h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .OrderSummary p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .OrderSummary h3 {
+    font-size: 18px;
+    margin: 20px 0;
+  }
+  
+  .OrderSummary button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .OrderSummary button:hover {
+    background-color: #333;
+  }
+  
+
+  
+  .add-to-cart-button,
+  .like-button,
+  .liked-button,
+  .back-button {
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .add-to-cart-button:hover,
+  .like-button:hover,
+  .liked-button:hover,
+  .back-button:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+  }
+  
+  .add-to-cart-button:focus,
+  .like-button:focus,
+  .liked-button:focus,
+  .back-button:focus {
+    outline: none;
+  }
+  
+  .add-to-cart-button img,
+  .like-button img,
+  .liked-button img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  button {
+    background-color: transparent;
+    color: #4778aa;
+    border: 2px solid #cad4df;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  }
+  
+  button:hover {
+    background-color: #ced9e5;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
