@@ -25,13 +25,16 @@ const SizeItem = ({ sneaker, onToggle }: SizeItemProps): JSX.Element => {
     sizeId: newSize !== null ? newSize : sneaker.sizeId,
     sexId: newSex !== null ? newSex : sneaker.sexId,
   };
+console.log(sneakers);
+console.log(updatedSneaker);
 
   const basketSneaker = sneakers.filter(
     (sneak) =>
-      sneak.articul === updatedSneaker.articul &&
-      sneak.sizeId === updatedSneaker.sizeId &&
-      sneak.sexId === updatedSneaker.sexId,
+      sneak.articul === +updatedSneaker.articul &&
+      sneak.sizeId === +updatedSneaker.sizeId &&
+      sneak.sexId === +updatedSneaker.sexId,
   );
+console.log(basketSneaker);
 
   //Роут на баскет
   const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {

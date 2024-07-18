@@ -16,9 +16,9 @@ const SneakerItem = ({ sneak }: SneakerItemProps): JSX.Element => {
   const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [active, setActive] = useState(false);
+//   const [active, setActive] = useState(false);
 
-console.log(active);
+// console.log(active);
 
 
   const onHandleAddLike = (): void => {
