@@ -12,6 +12,7 @@ import userBasketSlice from '../../entities/basket/userBasketSlice';
 // import adminBasketSlice from '../../entities/basket/adminBasketSlice';
 
 import statusSlice from '../../entities/status/statusSlice';
+import adminBasketSlice from '../../entities/basket/adminBasketSlice';
 
 
 const store = configureStore({
@@ -25,7 +26,7 @@ const store = configureStore({
     sexes: sexSlice.reducer,
 
     basket: userBasketSlice.reducer,
-    // adminBasket: adminBasketSlice.reducer
+    adminBasket: adminBasketSlice.reducer,
 
     statuses: statusSlice.reducer
 
