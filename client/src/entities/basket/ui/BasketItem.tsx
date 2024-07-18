@@ -1,27 +1,28 @@
 import React from 'react';
 import { Basket } from '../types/basketTypes';
 import BasketOrderLine from './BasketOrderLine';
+import './styles/BasketItem.css'
 
+type BasketItemProps = {
+  ord: Basket;
+};
+const BasketItem = ({ ord }: BasketItemProps): JSX.Element => {
+  return (
+    <div className=" BasketItem">
+      {ord && ord.statusId === 1 && (
+        <>
+          {ord.OrderLines.map((ordLine) => (
+            <BasketOrderLine key={ordLine.id} ordLine={ordLine} />
+          ))}
+          <p>ИТОГО: {ord.totalPrice} ₽</p>
 
-type BasketItemProps={
-    ord: Basket
-}
-const BasketItem= ({ord}: BasketItemProps): JSX.Element =>{
-
-
-
-return (
-<div className=' BasketItem'>
-    {ord && ord.OrderLines.map((ordLine) => <BasketOrderLine key={ordLine.id} ordLine={ordLine}/>)
-    }
-    <p>ИТОГО: {ord.totalPrice} ₽</p>
-
-    {/* Тут нужно вытащить статус заказа (наименование) из БД */}
-    <p>Статус заказа: {ord.statusId}</p> 
-    {/* Удаление из БД? */}
-    <button>Оплатить</button>
- </div>
- );
-
-}
-export default BasketItem
+          {/* Тут нужно вытащить статус заказа (наименование) из БД */}
+          <p>Статус заказа: {ord.statusId}</p>
+          {/* Удаление из БД? */}
+          <button>Оплатить</button>
+        </>
+      )}
+    </div>
+  );
+};
+export default BasketItem;

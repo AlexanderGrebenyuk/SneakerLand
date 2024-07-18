@@ -20,7 +20,7 @@ router.get("/", verifyAccessToken, async (req, res) => {
     // console.log( 'USER_________',user.basketId);
     // let a = true;
     //user && !user.isAdmin
-
+    console.log(user);
 
     if (user && !user.isAdmin) {
    
