@@ -3,6 +3,7 @@ import { Sneaker } from '../../sneakers/types/sneakerType';
 import { useAppDispatch, useAppSelector } from '../../../app/store/store';
 import { useNavigate } from 'react-router-dom';
 import { createBasketThunk } from '../../basket/basketSlice';
+import BasketPage from '../../../pages/basketPage/BasketPage';
 
 type SizeItemProps = {
   sneaker: Sneaker;

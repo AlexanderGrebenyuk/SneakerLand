@@ -11,11 +11,13 @@ async function verifyRefreshToken(req, res, next) {
       where: { id: user.id },
       attributes: ["id", "name", "email", "isAdmin"],
     });
+
     const basket = await Basket.findOne({ where: { userId: user.id } });
     if (basket) {
-      user.basketId = basket.id;
+      user.dataValues.basketId = basket.id; //ДОБАВИЛИ dataValues
     }
     res.locals.user = user;
+    
 
     next();
   } catch (error) {

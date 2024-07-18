@@ -3,13 +3,12 @@ import { Basket } from './types/basketTypes';
 import { SneakerId } from '../sneakers/types/sneakerType';
 import BasketApi from './api/basketApi';
 
-
 type StateBasket = {
-  basket: Basket[]; // проверить
+  order: Basket[]; // проверить
 };
 
 const initialState: StateBasket = {
-basket: [], // проверить
+  order: [], // проверить
 };
 export const createBasketThunk = createAsyncThunk('add/basket', (body: SneakerId) =>
   BasketApi.createBasket(body),
@@ -24,10 +23,12 @@ const basketSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(createBasketThunk.fulfilled, (state, action) => {
-        state.basket.push(action.payload);
+        console.log('PUSHSTATEBASK', action.payload);
+        console.log('state.order=====', state.order);
+        state.order.push(action.payload);
       })
       .addCase(getBasketThunk.fulfilled, (state, action) => {
-        state.basket = action.payload;
+        state.order.push(action.payload);
       });
   },
 });

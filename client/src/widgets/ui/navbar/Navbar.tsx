@@ -29,7 +29,7 @@ const Navbar = ({}: NavbarProps): JSX.Element => {
         {user && !user?.isAdmin && (
           <>
             <NavLink to="/favorites">Избранное</NavLink>
-            <NavLink to="/cart">Корзина</NavLink>
+            <NavLink to="/basket">Корзина</NavLink>
           </>
         )}
 
