@@ -7,6 +7,7 @@ import FavoritesPage from '../../../pages/favoritesPage/FavoritesPage';
 import SneakerPage from '../../../pages/sneakerPages/SneakerPage';
 import Page404 from '../../../pages/page404/page404';
 import OrdersPage from '../../../pages/ordersPage/OrdersPage';
+import BasketPage from '../../../pages/basketPage/BasketPage';
 
 
 type AppRoutesProps = {
@@ -21,6 +22,7 @@ const AppRoutes = ({activePoisk}: AppRoutesProps): JSX.Element => {
       <Route path='/sneakers/:sneakerId' element={<SneakerPage/>}/>
       <Route path='/favorites' element={<FavoritesPage/>}/>
       <Route path='/orders' element={<OrdersPage/>}/>
+      <Route path='/basket' element={<BasketPage/>}/>
       <Route path='*' element={<Page404/>}/>
     </Routes>
   );

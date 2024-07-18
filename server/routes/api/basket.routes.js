@@ -17,10 +17,13 @@ const verifyAccessToken = require("../../middleware/verifyAccessToken");
 router.get("/", verifyAccessToken, async (req, res) => {
   try {
     const { user } = res.locals;
-
+    // console.log( 'USER_________',user.basketId);
     // let a = true;
     //user && !user.isAdmin
+
+
     if (user && !user.isAdmin) {
+   
       const order = await Order.findOne({
         where: { basketId: user.basketId, statusId: 1 }, //user.basketId
         include: {
@@ -33,10 +36,12 @@ router.get("/", verifyAccessToken, async (req, res) => {
               { model: Color },
               { model: Brand },
               { model: Image },
+      
             ],
           },
         },
       });
+      console.log('========',order);
       // a = false;
       res.status(200).json({ message: "success", order });
       return;
@@ -54,13 +59,12 @@ router.post("/",verifyAccessToken, async (req, res) => {
   try {
     const { user } = res.locals;
     const { sneakerId } = req.body;
-    console.log(user);
-    console.log(sneakerId);
+  
     let order;
     let basketinDb;
 
     basketinDb = await Basket.findOne({ where: { userId: user.id } }); //user.basketId
-    console.log(basketinDb);
+
 
     if (!basketinDb) {
       basketinDb = await Basket.create({ userId: user.id } ); //изменить на user.id
@@ -76,7 +80,7 @@ router.post("/",verifyAccessToken, async (req, res) => {
       ); //Тотал прайс проверить
     }
 
-    console.log('+++++++++++++++++++++',order);
+
 
     const sneaker = await Sneaker.findOne({ where: { id: sneakerId } });
     let orderLine = await OrderLine.findOne({
@@ -112,6 +116,8 @@ router.post("/",verifyAccessToken, async (req, res) => {
       include: OrderLine,
     });
 
+    console.log('OREDE FINISH', order);
+
     //  заказ со всеми кросcовками
     res.status(200).json({ message: "success", order });
     return;
@@ -136,7 +142,7 @@ router.delete("/orderLines/:orderLineId", async (req, res) => {
       return;
     }
 
-    orderLine.destroy();
+    orderLine.destroy({where: {orderLineId: id}});
 
     res.status(200).json({ message: "товар удален из заказа" });
   } catch ({ message }) {

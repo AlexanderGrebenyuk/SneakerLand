@@ -34,7 +34,7 @@ const Navbar = ({setActivePoisk}: NavbarProps): JSX.Element => {
           <img src="../../../../public/png-transparent-computer-icons-magnifying-glass-partners-in-parenting-magnifying-glass-business-magnifier-лупа.png" alt="lupa" style={{height: '25px'}}/>
           </button>
             <NavLink to="/favorites">Избранное</NavLink>
-            <NavLink to="/cart">Корзина</NavLink>
+            <NavLink to="/basket">Корзина</NavLink>
           </>
         )}
 
