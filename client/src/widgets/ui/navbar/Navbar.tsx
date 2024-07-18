@@ -30,8 +30,8 @@ const Navbar = ({setActivePoisk}: NavbarProps): JSX.Element => {
       <div className="nav-section nav-right">
         {user && !user?.isAdmin && (
           <>
-          <button onClick={()=>setActivePoisk((prev:boolean)=>!prev)}>
-          <img src="../../../../public/png-transparent-computer-icons-magnifying-glass-partners-in-parenting-magnifying-glass-business-magnifier-лупа.png" alt="lupa" style={{height: '25px'}}/>
+          <button className='buttonSearch' onClick={()=>setActivePoisk((prev:boolean)=>!prev)}>
+          <img src="../../../../public/search.png" alt="lupa" style={{height: '30px'}}/>
           </button>
             <NavLink to="/favorites">Избранное</NavLink>
             <NavLink to="/basket">Корзина</NavLink>
