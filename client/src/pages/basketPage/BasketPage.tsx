@@ -1,18 +1,32 @@
 import React from 'react';
-import { useAppSelector } from '../../app/store/store';
-import BasketItem from '../../entities/basket/ui/BasketItem';
-// import { getBasketThunk } from '../../entities/basket/basketSlice';
+
+import { useAppDispatch, useAppSelector } from '../../app/store/store';
+import BasketOrderLine from '../../entities/basket/ui/BasketOrderLine';
+
 
 const BasketPage = (): JSX.Element => {
-  // const { user } = useAppSelector((state) => state.user);
-  const { order } = useAppSelector((state) => state.basket);
-  // const dispatch = useAppDispatch();
-
-  console.log('order', order);
+  const { user } = useAppSelector((state) => state.user);
+  const order = useAppSelector((state) => state.basket.order);
+  const dispatch = useAppDispatch();
 
   return (
     <div className=" BasketPage">
-      {order && order.map((ord) => <BasketItem key={ord.id} ord={ord} />)}
+  
+        <>
+          {order &&
+            order.statusId === 1 &&
+            order.OrderLines.map((ordLine) => (
+              <BasketOrderLine key={ordLine.id} ordLine={ordLine} />
+            ))}
+          <p>ИТОГО: {order && order.totalPrice} ₽</p>
+
+          {/* Тут нужно вытащить статус заказа (наименование) из БД */}
+          <p>Статус заказа: {order && order.statusId}</p>
+          {/* Удаление из БД? */}
+          <button>Оплатить</button>
+        </>
+
+
     </div>
   );
 };
