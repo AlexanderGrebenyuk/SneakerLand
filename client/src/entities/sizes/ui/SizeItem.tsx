@@ -3,6 +3,7 @@ import { Sneaker } from '../../sneakers/types/sneakerType';
 import { useAppDispatch, useAppSelector } from '../../../app/store/store';
 import { useNavigate } from 'react-router-dom';
 import { createBasketThunk } from '../../basket/basketSlice';
+import './styles/SizeItem.css'
 
 type SizeItemProps = {
   sneaker: Sneaker;
@@ -37,7 +38,7 @@ const SizeItem = ({ sneaker }: SizeItemProps): JSX.Element => {
   };
 
   return (
-    <div className=" SizeItem">
+    <div className="size-item">
       <p>Для оформления заказа выберите размер и пол</p>
 
       <form onSubmit={onHandleSubmit}>
@@ -58,9 +59,9 @@ const SizeItem = ({ sneaker }: SizeItemProps): JSX.Element => {
             ))}
           </select>
         </label>
-        <button type="submit">Добавить</button>
+        <button type="submit" className="submit-button">Добавить</button>
       </form>
-      <button onClick={() => navigate('/sneakers')}>Назад</button>
+      <button className="back-button" onClick={() => navigate('/sneakers')}>Назад</button>
     </div>
   );
 };
