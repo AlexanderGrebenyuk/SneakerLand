@@ -9,8 +9,6 @@ type SizeItemProps = {
 };
 
 const SizeItem = ({ sneaker }: SizeItemProps): JSX.Element => {
-  console.log('sneaker', sneaker);
-
   const dispatch = useAppDispatch();
   const { sizes } = useAppSelector((state) => state.sizes);
   const { sexes } = useAppSelector((state) => state.sexes);
@@ -19,20 +17,18 @@ const SizeItem = ({ sneaker }: SizeItemProps): JSX.Element => {
   const [newSex, setNewSex] = useState(0);
   const navigate = useNavigate();
 
-  console.log(newSex, newSize);
-
   const updatedSneaker = {
     ...sneaker,
     sizeId: newSize !== null ? newSize : sneaker.sizeId,
     sexId: newSex !== null ? newSex : sneaker.sexId,
   };
 
-  console.log('updatedSneaker', updatedSneaker);
-
-  const basketSneaker = sneakers.filter((sneak) => sneak.articul === updatedSneaker.articul && sneak.sizeId ===updatedSneaker.sizeId && sneak.sexId ===updatedSneaker.sexId);
-  console.log('basketSneaker', basketSneaker);
-//   console.log(basketSneaker[0].id);
-  
+  const basketSneaker = sneakers.filter(
+    (sneak) =>
+      sneak.articul === updatedSneaker.articul &&
+      sneak.sizeId === updatedSneaker.sizeId &&
+      sneak.sexId === updatedSneaker.sexId,
+  );
 
   //Роут на баскет
   const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -49,7 +45,7 @@ const SizeItem = ({ sneaker }: SizeItemProps): JSX.Element => {
           <select onChange={(e) => setNewSize(+e.target.value)} name="size" id="size-select">
             <option value="">Размер</option>
             {sizes.map((size) => (
-              <option value={size.id}>{size.size}</option>
+              <option key={size.id} value={size.id}>{size.size}</option>
             ))}
           </select>
         </label>
@@ -58,7 +54,7 @@ const SizeItem = ({ sneaker }: SizeItemProps): JSX.Element => {
           <select onChange={(e) => setNewSex(+e.target.value)} name="sex" id="sex-select">
             <option value="">Пол</option>
             {sexes.map((sex) => (
-              <option value={sex.id}>{sex.title}</option>
+              <option key={sex.id} value={sex.id}>{sex.title}</option>
             ))}
           </select>
         </label>
