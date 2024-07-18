@@ -13,6 +13,7 @@ import { getColorThunk } from '../entities/color/colorSlice';
 import Footer from '../widgets/Footer/Footer';
 import { getBasketThunk } from '../entities/basket/basketSlice';
 import './App.css'
+import { getStatusThunk } from '../entities/status/statusSlice';
 
 
 
@@ -32,6 +33,7 @@ function App(): JSX.Element {
     void dispatch(getSizeThunk())
     void dispatch(getSexThunk())
     void dispatch(getBasketThunk())
+    void dispatch(getStatusThunk())
   }, [dispatch]);
 
   return (

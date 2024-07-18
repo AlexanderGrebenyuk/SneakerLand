@@ -9,6 +9,7 @@ import brandSlice from '../../entities/brand/brandSlice';
 import colorSlice from '../../entities/color/colorSlice';
 import sexSlice from '../../entities/sex/sexSlice';
 import basketSlice from '../../entities/basket/basketSlice';
+import statusSlice from '../../entities/status/statusSlice';
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     colors: colorSlice.reducer,
     sexes: sexSlice.reducer,
     basket: basketSlice.reducer,
+    statuses: statusSlice.reducer
   },
 });
 
