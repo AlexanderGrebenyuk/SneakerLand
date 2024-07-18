@@ -53,6 +53,7 @@ const RegistrationPage = (): JSX.Element => {
       email: formData.email,
       password: formData.password,
       isAdmin: false,
+      basketId: null
     };
     void dispatch(registrationThunk(user));
     navigate('/sneakers')

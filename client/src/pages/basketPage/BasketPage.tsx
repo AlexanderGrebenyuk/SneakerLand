@@ -1,22 +1,17 @@
 import React from 'react';
+
 import { useAppDispatch, useAppSelector } from '../../app/store/store';
 import BasketOrderLine from '../../entities/basket/ui/BasketOrderLine';
-// import { getBasketThunk } from '../../entities/basket/basketSlice';
+
 
 const BasketPage = (): JSX.Element => {
   const { user } = useAppSelector((state) => state.user);
   const order = useAppSelector((state) => state.basket.order);
   const dispatch = useAppDispatch();
 
-  //   useEffect(() => {
-  //     void dispatch(getBasketThunk());
-  //   }, [dispatch]);
-
-  console.log('order', order);
-
   return (
     <div className=" BasketPage">
-      <div className=" BasketItem">
+  
         <>
           {order &&
             order.statusId === 1 &&
@@ -30,8 +25,8 @@ const BasketPage = (): JSX.Element => {
           {/* Удаление из БД? */}
           <button>Оплатить</button>
         </>
-      </div>
-      ord
+
+
     </div>
   );
 };

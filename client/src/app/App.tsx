@@ -12,6 +12,7 @@ import { getSexThunk } from '../entities/sex/sexSlice';
 import { getColorThunk } from '../entities/color/colorSlice';
 import Footer from '../widgets/Footer/Footer';
 import { getBasketThunk } from '../entities/basket/basketSlice';
+import './App.css'
 
 
 
@@ -35,10 +36,12 @@ function App(): JSX.Element {
 
   return (
     <div className="App">
-      <Navbar setActivePoisk={setActivePoisk}/>
-      <AppRoutes activePoisk={activePoisk}/>
-      <Footer/>
+    <Navbar setActivePoisk={setActivePoisk} />
+    <div className="main-content">
+      <AppRoutes activePoisk={activePoisk} />
     </div>
+    <Footer />
+  </div>
   );
 }
 

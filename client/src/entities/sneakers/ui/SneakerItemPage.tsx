@@ -56,7 +56,7 @@ console.log(sneaker);
               Добавить в корзину
             </button>
             <ModalWindow active={active} onToggle={onToggle}>
-              <SizeItem sneaker={sneaker} />
+              <SizeItem sneaker={sneaker} onToggle={onToggle} />
             </ModalWindow>
             {like === undefined ? (
               <button className="like-button" onClick={onHandleAddLike}>

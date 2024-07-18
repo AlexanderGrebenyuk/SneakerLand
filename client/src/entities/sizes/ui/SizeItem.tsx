@@ -3,15 +3,15 @@ import { Sneaker } from '../../sneakers/types/sneakerType';
 import { useAppDispatch, useAppSelector } from '../../../app/store/store';
 import { useNavigate } from 'react-router-dom';
 import { createBasketThunk } from '../../basket/basketSlice';
-import BasketPage from '../../../pages/basketPage/BasketPage';
 import './styles/SizeItem.css'
 
 
 type SizeItemProps = {
   sneaker: Sneaker;
+  onToggle: any
 };
 
-const SizeItem = ({ sneaker }: SizeItemProps): JSX.Element => {
+const SizeItem = ({ sneaker,onToggle }: SizeItemProps): JSX.Element => {
   const dispatch = useAppDispatch();
   const { sizes } = useAppSelector((state) => state.sizes);
   const { sexes } = useAppSelector((state) => state.sexes);
@@ -61,7 +61,7 @@ const SizeItem = ({ sneaker }: SizeItemProps): JSX.Element => {
             ))}
           </select>
         </label>
-        <button type="submit" className="submit-button">Добавить</button>
+        <button type="submit" className="submit-button" onClick={onToggle}>Добавить</button>
       </form>
       <button className="back-button" onClick={() => navigate('/sneakers')}>Назад</button>
     </div>

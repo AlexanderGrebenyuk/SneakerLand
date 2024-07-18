@@ -87,3 +87,26 @@ body {
   margin: 0 10px;
   text-decoration: none;
 }
+
+.buttonSearch {
+  all: unset;
+  cursor: pointer;
+  height: 30px;
+}
+
+.buttonSearch img {
+  height: 25px;
+  background: none;
+}
+
+.buttonSearch:hover,
+.buttonSearch:focus,
+.buttonSearch:active {
+  background: none;
+}
+
+.buttonSearch img:hover,
+.buttonSearch img:focus,
+.buttonSearch img:active {
+  background: none;
+}
