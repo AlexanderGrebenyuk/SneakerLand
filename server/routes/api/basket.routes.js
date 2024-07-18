@@ -9,6 +9,7 @@ const {
   Size,
   Color,
   Brand,
+  Status,
 } = require("../../db/models");
 const verifyAccessToken = require("../../middleware/verifyAccessToken");
 
@@ -132,28 +133,94 @@ router.post("/", verifyAccessToken, async (req, res) => {
 
 //Удаление Order
 
-router.delete("/orderLines/:orderLineId", async (req, res) => {
-  try {
-    const { user } = res.locals;
-    const { orderLineId } = req.params;
-    const orderLine = await OrderLine.findOne({ where: { id: orderLineId } });
-    if (orderLine.count > 1) {
-      orderLine.update({
-        count: orderLine.count - 1,
-      });
+router.delete(
+  "/orderLines/:orderLineId",
+  verifyAccessToken,
+  async (req, res) => {
+    try {
+      const { user } = res.locals;
+      const { orderLineId } = req.params;
+      const orderLine = await OrderLine.findOne({ where: { id: orderLineId } });
+      if (orderLine.count > 1) {
+        orderLine.update({
+          count: orderLine.count - 1,
+        });
 
-      res.status(200).json({ message: "success", orderLine });
+        res.status(200).json({ message: "success", orderLine });
+        return;
+      }
+
+      orderLine.destroy({ where: { orderLineId: id } });
+
+      res.status(200).json({ message: "товар удален из заказа" });
+    } catch ({ message }) {
+      res.status(500).json({ error: message });
+    }
+  }
+);
+
+//verifyAccessToken
+router.put("/orders/:orderId", verifyAccessToken, async (req, res) => {
+  try {
+    const { orderId } = req.params;
+    const { statusId } = req.body;
+    const { user } = res.locals;
+
+    // let a = true;
+    //user && !user.isAdmin
+    if (user && !user.isAdmin) {
+      const result = await Order.update(
+        { statusId },
+        { where: { id: orderId } }
+      );
+      if (result[0] > 0) {
+        order = await Order.findOne({
+          where: { id: orderId },
+          include: {
+            model: Status,
+            model: OrderLine,
+            include: {
+              model: Sneaker,
+              include: [
+                { model: Sex },
+                { model: Size },
+                { model: Color },
+                { model: Brand },
+                { model: Image },
+              ],
+            },
+          },
+        });
+        res.status(200).json({ message: "success", order });
+        // a = false;
+        return;
+      }
+      res.status(400).json("Не получилось");
       return;
     }
-
-    orderLine.destroy({ where: { orderLineId: id } });
-
-    res.status(200).json({ message: "товар удален из заказа" });
+    res.status(400).json("Вы не админ");
+    return;
   } catch ({ message }) {
     res.status(500).json({ error: message });
   }
 });
 
-router.put('/:orderLineId')
+//verifyAccessToken
+router.get("/orders", async (req, res) => {
+  try {
+    const { user } = res.locals;
+    // user && user.isAdmin
+        let a = true;
+    if (a) {
+      const orders = await Order.findAll({include: {model: Status}});
+      res.status(200).json({ message: "success", orders });
+      a = false
+      return;
+    }
+    res.status(400).json("Вы не админ");
+  } catch ({ message }) {
+    res.status(500).json({ error: message });
+  }
+});
 
 module.exports = router;
