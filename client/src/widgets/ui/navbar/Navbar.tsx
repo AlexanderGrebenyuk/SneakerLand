@@ -8,7 +8,6 @@ import logo3 from '../../../../public/logo3.png';
 type NavbarProps = {};
 const Navbar = ({}: NavbarProps): JSX.Element => {
   const { user } = useAppSelector((state: RootState) => state.user);
-  const likes = useAppSelector((state) => state.likes.likes);
   const dispatch = useAppDispatch();
 
 
