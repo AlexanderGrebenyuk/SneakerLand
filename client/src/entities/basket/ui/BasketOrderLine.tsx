@@ -23,7 +23,6 @@ const BasketOrderLine = ({ ordLine }: BasketOrderLineProps): JSX.Element => {
           <p>Цена: {ordLine.priceLine}</p>
           <p>Размер: {ordLine.Sneaker.Size.size}</p>
           <p>Пол: {ordLine.Sneaker.Sex.title}</p>
-
           <div></div>
         </>
       )}

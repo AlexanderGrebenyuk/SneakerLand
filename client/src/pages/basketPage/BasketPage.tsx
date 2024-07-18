@@ -9,31 +9,38 @@ const BasketPage = (): JSX.Element => {
   const { user } = useAppSelector((state) => state.user);
   const order = useAppSelector((state) => state.basket.order);
   const dispatch = useAppDispatch();
-console.log(order,777);
+  console.log(order, 777);
 
-  
+  const { statuses } = useAppSelector((state) => state.statuses);
+
+  const orderStatus = statuses.filter((ordStat) => ordStat.id === order?.statusId);
+
+  console.log('ORDSTATUS', orderStatus);
 
   const onHandlePay = (): void => {
     //Санка на обновление статуса
-    dispatch(updateOrderUserThunk(order?.id))
+    dispatch(updateOrderUserThunk(order?.id));
     dispatch(clearBasket());
-
   };
-// console.log('ORDER',order[0])
+  // console.log('ORDER',order[0])
 
-  
   return (
     <div className=" BasketPage">
       <>
         {order &&
           order.statusId === 1 &&
           order.OrderLines.map((ordLine) => <BasketOrderLine key={ordLine.id} ordLine={ordLine} />)}
-        <p>ИТОГО: {order && order.totalPrice} ₽</p>
 
-        {/* Тут нужно вытащить статус заказа (наименование) из БД */}
-        <p>Статус заказа: {order && order.statusId}</p>
-        {/* Удаление из БД? */}
-        <button onClick={onHandlePay}>Оплатить</button>
+        {order.statusId === 1 ? (
+          <>
+            <p>ИТОГО: {order && order.totalPrice} ₽</p>
+            <p>Статус заказа: {order && orderStatus.map((ord) => ord.name)}</p>
+            {/* Удаление из БД? */}
+            <button onClick={onHandlePay}>Оплатить</button>
+          </>
+        ) : (
+          <h3>Ваша корзина пуста</h3>
+        )}
       </>
     </div>
   );
