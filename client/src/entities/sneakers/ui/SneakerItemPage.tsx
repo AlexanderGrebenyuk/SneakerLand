@@ -38,20 +38,18 @@ console.log(sneaker);
   return (
     <div className="SneakerItemPage">
     <div className="SneakerPageImages">
-      {sneaker.Images.map((image) => (
-        <img key={image.id} src={image.link} alt={sneaker.model} />
-      ))}
+      {<img src={`http://localhost:3000/${sneaker.Images[0].link}`} alt="image" />}
     </div>
     <div className="SneakerItemPageContent">
       <div className="SneakerItemPageDescription">
         <h3>{sneaker.Brand.name}</h3>
-        <h5>Описание</h5>
+        <h5>{sneaker.model}</h5>
         <p>Цвет: {sneaker.Color.name}</p>
         <p>Описание товара: {sneaker.description}</p>
-        <p>Цена: {sneaker.price} ₽</p>
+        <p style={{fontSize: '20px', color: 'black', marginTop: '20px'}}>Цена: {sneaker.price} ₽</p>
       </div>
       <div className="SneakerItemPageForBasket">
-        <p>{sneaker.model}</p>
+     
         {user && !user.isAdmin && (
           <>
             <button className="add-to-cart-button" type="button" onClick={() => setActive((prev) => !prev)}>

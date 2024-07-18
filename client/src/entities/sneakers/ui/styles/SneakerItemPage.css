@@ -1,29 +1,23 @@
 .SneakerItemPage {
     display: flex;
     align-items: flex-start;
-    background-color: #f8f8f8;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 20px auto;
     font-family: Arial, sans-serif;
   }
   
   .SneakerPageImages {
-    display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
-    margin-right: 20px;
   }
   
   .SneakerPageImages img {
-    width: 300px;
-    height: 300px;
+    margin-top: 50px;
+    margin-right:  50px;
+    height: 430px;
     object-fit: cover;
-    border-radius: 8px;
   }
   
   .SneakerItemPageContent {
@@ -48,50 +42,55 @@
   }
   
   .SneakerItemPageDescription h5 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 10px;
-    color: #555;
+    color: #111111;
   }
   
   .SneakerItemPageDescription p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #666;
     margin-bottom: 5px;
   }
   
   .SneakerItemPageForBasket {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     margin-bottom: 20px;
+    gap: 20px;
   }
   
   .SneakerItemPageForBasket p {
     font-size: 1.2rem;
     margin-bottom: 10px;
-    color: #333;
+    color: #000000;
   }
   
-  .add-to-cart-button, .like-button, .liked-button, .back-button {
-    background-color: #fff;
+  .add-to-cart-button, .like-button, .liked-button {
+    /* background-color: #fff; */
     color: #333;
-    border: 2px solid #ccc;
+    /* border: 2px solid #ccc; */
     border-radius: 8px;
     padding: 10px 20px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     margin-top: 10px;
   }
   
+  .back-button{
+    width: 288px;
+  }
+  
   .add-to-cart-button:hover, .like-button:hover, .liked-button:hover, .back-button:hover {
-    background-color: #f0f0f0;
+    /* background-color: #f0f0f0; */
     transform: translateY(-2px);
   }
   
   .add-to-cart-button:focus, .like-button:focus, .liked-button:focus, .back-button:focus {
     outline: none;
-    border-color: #333;
+
   }
   
   .add-to-cart-button img, .like-button img, .liked-button img {
