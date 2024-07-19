@@ -28,7 +28,7 @@ const adminBasketSlice = createSlice({
         state.orders = action.payload;
       })
       .addCase(updateOrderAdminThunk.fulfilled, (state, action) => {
-        state.orders = action.payload;
+        state.orders =  state.orders?.map((order) => order.id === action.payload.id ? action.payload: order  );
       })
   },
 });

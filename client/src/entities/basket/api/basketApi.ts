@@ -32,10 +32,10 @@ class BasketApi {
   };
 
   //Обновление заказов Админом
-  static updateOrderAdmin = async (id: OrderLineId): Promise<OrderLinesForStatus[]> => {
-    const response: AxiosResponse<{ message: string; orders: OrderLinesForStatus[] }> =
+  static updateOrderAdmin = async (id: OrderLineId): Promise<OrderLinesForStatus> => {
+    const response: AxiosResponse<{ message: string; order: OrderLinesForStatus}> =
       await axiosInstance.put(`/basket/orders/${id}`);
-    return response.data.orders;
+    return response.data.order;
   };
 // По клику оплатить юзером, обновляется статус заказа на 2 
   static updateOrderUser = async (id: OrderLineId): Promise<string> => {
