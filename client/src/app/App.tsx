@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AppRoutes from './providers/router/AppRoutes';
 import Navbar from '../widgets/ui/navbar/Navbar';
-import { useAppDispatch } from './store/store';
+import { RootState, useAppDispatch } from './store/store';
 import { refreshTokens } from '../entities/users/authSlice';
 import { getSneakersThunk } from '../entities/sneakers/sneakerSlice';
 import { getLikeThunk } from '../entities/like/likeSlice';
@@ -17,13 +17,11 @@ import './App.css';
 import { getAllUserBaskets } from '../entities/basket/userBasketSlice';
 
 import { getStatusThunk } from '../entities/status/statusSlice';
-
-
-
-
+import { useSelector } from 'react-redux';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
+  const user = useSelector((store: RootState) => store.user.user);
   const [activePoisk, setActivePoisk] = useState<boolean>(false);
 
   useEffect(() => {
@@ -35,9 +33,8 @@ function App(): JSX.Element {
     void dispatch(getColorThunk());
     void dispatch(getSizeThunk());
     void dispatch(getAllUserBaskets());
-    void dispatch(getBasketsAdminThunk());
-    void dispatch(getStatusThunk())
-
+    if (user?.isAdmin) dispatch(getBasketsAdminThunk());
+    void dispatch(getStatusThunk());
   }, [dispatch]);
 
   return (

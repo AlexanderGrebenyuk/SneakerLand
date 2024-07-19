@@ -1,26 +1,42 @@
-import React from 'react';
-import { useAppSelector } from '../../app/store/store';
+// @ts-nocheck
+
+import React, { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../app/store/store';
 import UserOrderItem from '../../entities/userOrderItem/ui/UserOrderItem';
+import { getBasket } from '../../entities/basket/userBasketSlice';
 
 const UserOrdersPage = (): JSX.Element => {
-  const { order } = useAppSelector((state) => state.basket);
+  const dispatch = useAppDispatch();
+  const basket = useAppSelector((state) => state.basket.basket);
   const { statuses } = useAppSelector((state) => state.statuses);
-
-  const orderStatus = statuses.filter((ordStat) => ordStat.id === order?.statusId);
-  console.log('USERORDERPAGE', order);
-
+  console.log(basket);
+  useEffect(() => {
+    void dispatch(getBasket());
+  }, []);
+  let orders;
+  // console.log('USERORDERPAGE', basket);
+  if (basket) {
+    orders = basket.Orders.filter((order) => order.statusId !== 1);
+  }
   return (
-    <div className=" UserOrdersPage">
-      {order && (
-        <>
-          {order.OrderLines.map((ordLine) => (
+    <div className="UserOrdersPage">
+      <>
+        {/* {order.OrderLines.map((ordLine) => (
             <UserOrderItem key={ordLine.id} ordLine={ordLine} />
-          ))}
+          ))} */}
+        {orders &&
+          orders.map((order) => (
+            <>
+              <div>
+                <h1>{order.id}</h1>
 
-          <p>ИТОГО: {order.totalPrice} ₽</p>
-          <p>Статус заказа: {orderStatus && orderStatus.map((ord) => ord.name).join(', ')}</p>
-        </>
-      )}
+                <p>{order.totalPrice}</p>
+              </div>
+            </>
+          ))}
+        {/* <p>ИТОГО: {order.totalPrice} ₽</p>
+        <p>Статус заказа: {orderStatus && orderStatus.map((ord) => ord.name).join(', ')}</p> */}
+      </>
     </div>
   );
 };

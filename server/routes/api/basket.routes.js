@@ -1,5 +1,5 @@
-const router = require("express").Router();
-const { Op } = require("sequelize");
+const router = require('express').Router();
+const { Op } = require('sequelize');
 const {
   Basket,
   Sneaker,
@@ -11,23 +11,86 @@ const {
   Color,
   Brand,
   Status,
-} = require("../../db/models");
-const verifyAccessToken = require("../../middleware/verifyAccessToken");
-const { log } = require("console");
+} = require('../../db/models');
+const verifyAccessToken = require('../../middleware/verifyAccessToken');
 
 //verifyAccessToken
 
-router.get("/", verifyAccessToken, async (req, res) => {
+// router.get('/', verifyAccessToken, async (req, res) => {
+//   try {
+//     const { user } = res.locals;
+//     // console.log( 'USER_________',user.basketId);
+//     // let a = true;
+//     //user && !user.isAdmin
+//     console.log(user);
+
+//     if (user && !user.isAdmin) {
+//       const order = await Order.findOne({
+//         where: { basketId: user.basketId, statusId: 1 }, //user.basketId
+//         include: {
+//           model: OrderLine,
+
+//           include: {
+//             model: Sneaker,
+//             include: [
+//               { model: Sex },
+//               { model: Size },
+//               { model: Color },
+//               { model: Brand },
+//               { model: Image },
+//             ],
+//           },
+//         },
+//       });
+//       console.log('========', order);
+//       // a = false;
+//       res.status(200).json({ message: 'success', order });
+//       return;
+//     }
+//     res.status(400).json({ message: 'что-то пошло не так' });
+//   } catch ({ message }) {
+//     res.status(500).json({ error: message });
+//   }
+// });
+
+router.get('/allOrders', verifyAccessToken, async (req, res) => {
+  try {
+    console.log(res.locals.user, 1);
+    const basket = await Basket.findOne({
+      where: { userId: res.locals.user.id },
+      include: {
+        model: Order,
+        include: {
+          model: OrderLine,
+          include: {
+            model: Sneaker,
+            include: [
+              { model: Sex },
+              { model: Size },
+              { model: Color },
+              { model: Brand },
+              { model: Image },
+            ],
+          },
+        },
+      },
+    });
+
+    res.status(200).json({ message: 'success', basket });
+  } catch ({ message }) {
+    console.log(message);
+  }
+});
+
+router.get('/', verifyAccessToken, async (req, res) => {
   try {
     const { user } = res.locals;
-    // console.log( 'USER_________',user.basketId);
+    // user && user.isAdmin
     // let a = true;
-    //user && !user.isAdmin
     console.log(user);
-
     if (user && !user.isAdmin) {
       const order = await Order.findOne({
-        where: { basketId: user.basketId, statusId: 1 }, //user.basketId
+        where: { basketId: user.basketId, statusId: 1 },
         include: {
           model: OrderLine,
           include: {
@@ -42,21 +105,20 @@ router.get("/", verifyAccessToken, async (req, res) => {
           },
         },
       });
-      console.log("========", order);
+      console.log('UUUSEEEEEERRRR+++++++++++', order);
+      res.status(200).json({ message: 'success', order });
       // a = false;
-      res.status(200).json({ message: "success", order });
       return;
     }
-    res.status(400).json({ message: "что-то пошло не так" });
+    res.status(400).json('Вы не админ');
   } catch ({ message }) {
     res.status(500).json({ error: message });
   }
 });
-
 //СОЗДАНИЕ OrderLine
 //verifyAccessToken
 
-router.post("/", verifyAccessToken, async (req, res) => {
+router.post('/', verifyAccessToken, async (req, res) => {
   try {
     const { user } = res.locals;
     const { sneakerId } = req.body;
@@ -98,7 +160,7 @@ router.post("/", verifyAccessToken, async (req, res) => {
         priceLine: newPriceLine,
         count: newOrderCount,
       });
-      console.log(orderLine, "orderline");
+      console.log(orderLine, 'orderline');
     }
 
     let newTotalPrice = order.totalPrice + orderLine.priceLine;
@@ -123,10 +185,10 @@ router.post("/", verifyAccessToken, async (req, res) => {
       },
     });
 
-    console.log("OREDE FINISH", order);
+    console.log('OREDE FINISH', order);
 
     //  заказ со всеми кросcовками
-    res.status(200).json({ message: "success", order });
+    res.status(200).json({ message: 'success', order });
     return;
   } catch ({ message }) {
     res.status(500).json({ error: message });
@@ -136,7 +198,7 @@ router.post("/", verifyAccessToken, async (req, res) => {
 //Удаление Order
 
 router.delete(
-  "/orderLines/:orderLineId",
+  '/orderLines/:orderLineId',
   verifyAccessToken,
   async (req, res) => {
     try {
@@ -148,13 +210,13 @@ router.delete(
           count: orderLine.count - 1,
         });
 
-        res.status(200).json({ message: "success", orderLine });
+        res.status(200).json({ message: 'success', orderLine });
         return;
       }
 
       orderLine.destroy({ where: { orderLineId: id } });
 
-      res.status(200).json({ message: "товар удален из заказа" });
+      res.status(200).json({ message: 'товар удален из заказа' });
     } catch ({ message }) {
       res.status(500).json({ error: message });
     }
@@ -162,7 +224,7 @@ router.delete(
 );
 
 //verifyAccessToken
-router.put("/orders/:orderId", verifyAccessToken, async (req, res) => {
+router.put('/orders/:orderId', verifyAccessToken, async (req, res) => {
   try {
     let order;
     const { orderId } = req.params;
@@ -197,7 +259,7 @@ router.put("/orders/:orderId", verifyAccessToken, async (req, res) => {
           },
         },
       });
-      res.status(200).json({ message: "success", order });
+      res.status(200).json({ message: 'success', order });
       return;
     }
     if (user && !user.isAdmin) {
@@ -206,13 +268,13 @@ router.put("/orders/:orderId", verifyAccessToken, async (req, res) => {
         { where: { id: orderId } }
       );
       if (result[0] > 0) {
-        res.status(200).json({ message: "success" }); // order
+        res.status(200).json({ message: 'success' }); // order
         return;
       }
-      res.status(400).json("Не получилось");
+      res.status(400).json('Не получилось');
       return;
     }
-    res.status(400).json("Вы не админ");
+    res.status(400).json('Вы не админ');
     return;
   } catch ({ message }) {
     res.status(500).json({ error: message });
@@ -220,7 +282,7 @@ router.put("/orders/:orderId", verifyAccessToken, async (req, res) => {
 });
 
 //verifyAccessToken
-router.get("/adminOrders", verifyAccessToken, async (req, res) => {
+router.get('/adminOrders', verifyAccessToken, async (req, res) => {
   try {
     const { user } = res.locals;
     // user && user.isAdmin
@@ -230,46 +292,12 @@ router.get("/adminOrders", verifyAccessToken, async (req, res) => {
         where: { statusId: { [Op.gt]: 1 } },
         include: { model: Status },
       });
-      res.status(200).json({ message: "success", orders });
+      res.status(200).json({ message: 'success', orders });
       // a = false;
       return;
     }
     console.log(12121);
-    res.status(400).json("Вы не админ");
-  } catch ({ message }) {
-    res.status(500).json({ error: message });
-  }
-});
-
-router.get("/userOrders", verifyAccessToken, async (req, res) => {
-  try {
-    const { user } = res.locals;
-    // user && user.isAdmin
-    // let a = true;
-
-    if (user && !user.isAdmin) {
-      const orders = await Order.findOne({
-        where: { statusId: { [Op.gt]: 1 }, basketId: user.basketId },
-        include: {
-          model: OrderLine,
-          include: {
-            model: Sneaker,
-            include: [
-              { model: Sex },
-              { model: Size },
-              { model: Color },
-              { model: Brand },
-              { model: Image },
-            ],
-          },
-        },
-      });
-      console.log("UUUSEEEEEERRRR+++++++++++", orders);
-      res.status(200).json({ message: "success", orders });
-      // a = false;
-      return;
-    }
-    res.status(400).json("Вы не админ");
+    res.status(400).json('Вы не админ');
   } catch ({ message }) {
     res.status(500).json({ error: message });
   }
