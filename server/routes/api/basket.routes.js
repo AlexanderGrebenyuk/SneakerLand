@@ -290,7 +290,10 @@ router.get('/adminOrders', verifyAccessToken, async (req, res) => {
     if (user && user.isAdmin) {
       const orders = await Order.findAll({
         where: { statusId: { [Op.gt]: 1 } },
-        include: { model: Status },
+        include:[ { model: Status },
+                  {model: OrderLine , include: {model: Sneaker}},
+                  
+               ]
       });
       res.status(200).json({ message: 'success', orders });
       // a = false;
