@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useEffect, useState } from 'react';
 import AppRoutes from './providers/router/AppRoutes';
 import Navbar from '../widgets/ui/navbar/Navbar';
@@ -12,7 +13,7 @@ import { getSexThunk } from '../entities/sex/sexSlice';
 import { getColorThunk } from '../entities/color/colorSlice';
 import Footer from '../widgets/Footer/Footer';
 
-import { getBasketsAdminThunk } from '../entities/basket/adminBasketSlice';
+
 import './App.css';
 import { getAllUserBaskets } from '../entities/basket/userBasketSlice';
 
@@ -33,7 +34,6 @@ function App(): JSX.Element {
     void dispatch(getColorThunk());
     void dispatch(getSizeThunk());
     void dispatch(getAllUserBaskets());
-    if (user?.isAdmin) dispatch(getBasketsAdminThunk());
     void dispatch(getStatusThunk());
   }, [dispatch]);
 

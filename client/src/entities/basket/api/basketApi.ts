@@ -27,7 +27,7 @@ class BasketApi {
   // Получение всех заказов для админа.
   static getAllBasketsAdmin = async (): Promise<OrderLinesForStatus[]> => {
     const response: AxiosResponse<{ message: string; orders: OrderLinesForStatus[] }> =
-      await axiosInstance.get('/basket');
+      await axiosInstance.get('/basket/adminOrders');
     console.log(123456789, response.data.orders);
 
     return response.data.orders;
