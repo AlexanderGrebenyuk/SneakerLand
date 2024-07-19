@@ -13,13 +13,27 @@ const BasketPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
   console.log(order, 777);
 
+
+
+
+  const orderStatus = statuses.filter((ordStat) => ordStat.id === order?.statusId);
+
+  console.log('ORDSTATUS', orderStatus);
+
   const onHandlePay = (): void => {
+    //Санка на обновление статуса
     dispatch(updateOrderUserThunk(order?.id));
     dispatch(clearBasket());
   };
+  // console.log('ORDER',order[0])
 
-  const orderStatus =
-    statuses.find((status) => status.id === order?.statusId)?.name || 'Неизвестный статус';
+
+
+
+
+    // const orderStatus =
+    // statuses.find((status) => status.id === order?.statusId)?.name || 'Неизвестный статус';
+
 
   return (
     <div className="BasketPage">
@@ -27,7 +41,8 @@ const BasketPage = (): JSX.Element => {
         {order &&
           order.statusId === 1 &&
           order.OrderLines.map((ordLine) => <BasketOrderLine key={ordLine.id} ordLine={ordLine} />)}
-        {order === null || order === undefined ? (
+
+        {order === null || order === undefined && order.statusId !== 1 ? (
           <>
             <div style={{ fontSize: '40px', marginTop: '200px' }}>Корзина пока пустая 😞</div>
           </>
@@ -42,6 +57,7 @@ const BasketPage = (): JSX.Element => {
               <button onClick={onHandlePay}>Оплатить</button>
             </div>
           </>
+
         )}
       </>
     </div>

@@ -24,10 +24,8 @@ const store = configureStore({
     brands: brandSlice.reducer,
     colors: colorSlice.reducer,
     sexes: sexSlice.reducer,
-
     basket: userBasketSlice.reducer,
     adminBasket: adminBasketSlice.reducer,
-
     statuses: statusSlice.reducer
 
   },

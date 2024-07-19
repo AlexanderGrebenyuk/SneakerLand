@@ -4,7 +4,7 @@ import BasketApi from './api/basketApi';
 import { Basket, OrderLineId } from './types/basketTypes';
 
 type StateBasket = {
-  order: Basket | undefined; 
+  order: Basket | undefined; // Добавила []
 };
 
 const initialState: StateBasket = {
@@ -34,9 +34,9 @@ const userBasketSlice = createSlice({
         
       })
       .addCase(updateOrderUserThunk.fulfilled, (state) => {
-        state.order = undefined; // ПРОВЕРИТЬ
+        state.order = undefined; 
       }).addCase(getAllUserBaskets.fulfilled, (state, action) => {
-        state.order = action.payload
+        state.order = action.payload // 
       })
   },
 });

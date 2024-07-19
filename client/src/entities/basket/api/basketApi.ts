@@ -15,11 +15,13 @@ class BasketApi {
     return response.data.order;
   };
 //Заказ юзера
-  static getBasketUser = async (): Promise<Basket> => {
-    const response: AxiosResponse<{ message: string; orders: Basket }> =
+  static getBasketUser = async (): Promise<Basket> => { //Добавила []
+    const response: AxiosResponse<{ message: string; orders: Basket }> = //Добавила []
       await axiosInstance.get('/basket/userOrders');
-    console.log("USER",response.data.orders);
+    console.log("USER",response.data.orders
+    );
 
+    
     return response.data.orders;
   };
 // Получение всех заказов для админа.

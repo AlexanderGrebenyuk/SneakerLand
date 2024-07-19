@@ -249,7 +249,7 @@ router.get("/userOrders", verifyAccessToken, async (req, res) => {
 
     if (user && !user.isAdmin) {
       const orders = await Order.findOne({
-        where: { statusId: 1, basketId: user.basketId },
+        where: { statusId: { [Op.gt]: 1 }, basketId: user.basketId },
         include: {
           model: OrderLine,
           include: {
@@ -264,7 +264,7 @@ router.get("/userOrders", verifyAccessToken, async (req, res) => {
           },
         },
       });
-      console.log('UUUSEEEEEERRRR+++++++++++',orders);
+      console.log("UUUSEEEEEERRRR+++++++++++", orders);
       res.status(200).json({ message: "success", orders });
       // a = false;
       return;

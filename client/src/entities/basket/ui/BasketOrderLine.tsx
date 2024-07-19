@@ -12,6 +12,7 @@ const BasketOrderLine = ({ ordLine }: BasketOrderLineProps): JSX.Element => {
   console.log('ORDERLINE', ordLine);
 
   return (
+
     <div className="BasketContainer">
       <div className="BasketLeft">
         <div className="OrderLine">
