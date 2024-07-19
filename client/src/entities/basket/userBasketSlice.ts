@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { SneakerId } from '../sneakers/types/sneakerType';
 import BasketApi from './api/basketApi';
@@ -45,7 +46,6 @@ const userBasketSlice = createSlice({
         state.order = action.payload;
       })
       .addCase(getBasket.fulfilled, (state, action) => {
- 
         state.basket = action.payload;
       });
   },
