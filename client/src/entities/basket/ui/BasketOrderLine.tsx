@@ -2,7 +2,6 @@ import React from 'react';
 import { OrderLine } from '../types/basketTypes';
 import './styles/OrderLine.css';
 
-
 type BasketOrderLineProps = {
   ordLine: OrderLine;
 };
@@ -12,7 +11,6 @@ const BasketOrderLine = ({ ordLine }: BasketOrderLineProps): JSX.Element => {
   console.log('ORDERLINE', ordLine);
 
   return (
-
     <div className="BasketContainer">
       <div className="BasketLeft">
         <div className="OrderLine">
@@ -28,7 +26,7 @@ const BasketOrderLine = ({ ordLine }: BasketOrderLineProps): JSX.Element => {
                 <p>Пол: {ordLine.Sneaker.Sex.title}</p>
               </div>
             </>
-          )} 
+          )}
         </div>
       </div>
       <div className="BasketRight">
@@ -41,7 +39,6 @@ const BasketOrderLine = ({ ordLine }: BasketOrderLineProps): JSX.Element => {
           <h3>Итого</h3>
           <p>{ordLine.count * ordLine.priceLine} руб.</p>
         </div>
-      
       </div>
     </div>
   );

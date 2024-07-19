@@ -13,12 +13,10 @@ const BasketPage = (): JSX.Element => {
   const dispatch = useAppDispatch();
   console.log(order, 777);
 
-
-
-
-  const orderStatus = statuses.filter((ordStat) => ordStat.id === order?.statusId);
+  const orderStatus = statuses.find((ordStat) => ordStat.id === order?.statusId);
 
   console.log('ORDSTATUS', orderStatus);
+  console.log('ORDER=========', order);
 
   const onHandlePay = (): void => {
     //Санка на обновление статуса
@@ -27,39 +25,33 @@ const BasketPage = (): JSX.Element => {
   };
   // console.log('ORDER',order[0])
 
-
-
-
-
-    // const orderStatus =
-    // statuses.find((status) => status.id === order?.statusId)?.name || 'Неизвестный статус';
-
+  // const orderStatus =
+  // statuses.find((status) => status.id === order?.statusId)?.name || 'Неизвестный статус';
 
   return (
     <div className="BasketPage">
-      <>
-        {order &&
-          order.statusId === 1 &&
-          order.OrderLines.map((ordLine) => <BasketOrderLine key={ordLine.id} ordLine={ordLine} />)}
+      {order ? (
+        <>
+          {order.statusId === 1 && order.OrderLines.length > 0 && (
+            <>
+              {order.OrderLines.map((ordLine) => (
+                <BasketOrderLine key={ordLine.id} ordLine={ordLine} />
+              ))}
+              <div style={{ marginLeft: '620px' }}>
+                <p style={{ fontSize: '18px' }}>ИТОГО: {order && order.totalPrice} ₽</p>
 
-        {order === null || order === undefined && order.statusId !== 1 ? (
-          <>
-            <div style={{ fontSize: '40px', marginTop: '200px' }}>Корзина пока пустая 😞</div>
-          </>
-        ) : (
-          <>
-            <div style={{ marginLeft: '620px' }}>
-              <p style={{ fontSize: '18px' }}>ИТОГО: {order && order.totalPrice} ₽</p>
+                <p style={{ fontSize: '18px' }}>Статус заказа: {orderStatus.name}</p>
 
-              {/* Тут нужно вытащить статус заказа (наименование) из БД */}
-              <p style={{ fontSize: '18px' }}>Статус заказа: {orderStatus}</p>
-              {/* Удаление из БД? */}
-              <button onClick={onHandlePay}>Оплатить</button>
-            </div>
-          </>
-
-        )}
-      </>
+                <button onClick={onHandlePay}>Оплатить</button>
+              </div>
+            </>
+          )}
+        </>
+      ) : (
+        <>
+          <div style={{ fontSize: '40px', marginTop: '200px' }}>Корзина пока пустая 😞</div>
+        </>
+      )}
     </div>
   );
 };
