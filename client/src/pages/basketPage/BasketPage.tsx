@@ -4,14 +4,17 @@ import { useAppDispatch, useAppSelector } from '../../app/store/store';
 import BasketOrderLine from '../../entities/basket/ui/BasketOrderLine';
 import { clearBasket } from '../../entities/basket/adminBasketSlice';
 import { updateOrderUserThunk } from '../../entities/basket/userBasketSlice';
+import './styles/BasketPage.css';
 
 const BasketPage = (): JSX.Element => {
   const { user } = useAppSelector((state) => state.user);
+  const { statuses } = useAppSelector((state) => state.statuses);
   const order = useAppSelector((state) => state.basket.order);
   const dispatch = useAppDispatch();
   console.log(order, 777);
 
-  const { statuses } = useAppSelector((state) => state.statuses);
+
+
 
   const orderStatus = statuses.filter((ordStat) => ordStat.id === order?.statusId);
 
@@ -24,22 +27,37 @@ const BasketPage = (): JSX.Element => {
   };
   // console.log('ORDER',order[0])
 
+
+
+
+
+    // const orderStatus =
+    // statuses.find((status) => status.id === order?.statusId)?.name || 'Неизвестный статус';
+
+
   return (
-    <div className=" BasketPage">
+    <div className="BasketPage">
       <>
         {order &&
           order.statusId === 1 &&
           order.OrderLines.map((ordLine) => <BasketOrderLine key={ordLine.id} ordLine={ordLine} />)}
 
-        {order.statusId === 1 ? (
+        {order === null || order === undefined && order.statusId !== 1 ? (
           <>
-            <p>ИТОГО: {order && order.totalPrice} ₽</p>
-            <p>Статус заказа: {order && orderStatus.map((ord) => ord.name)}</p>
-            {/* Удаление из БД? */}
-            <button onClick={onHandlePay}>Оплатить</button>
+            <div style={{ fontSize: '40px', marginTop: '200px' }}>Корзина пока пустая 😞</div>
           </>
         ) : (
-          <h3>Ваша корзина пуста</h3>
+          <>
+            <div style={{ marginLeft: '620px' }}>
+              <p style={{ fontSize: '18px' }}>ИТОГО: {order && order.totalPrice} ₽</p>
+
+              {/* Тут нужно вытащить статус заказа (наименование) из БД */}
+              <p style={{ fontSize: '18px' }}>Статус заказа: {orderStatus}</p>
+              {/* Удаление из БД? */}
+              <button onClick={onHandlePay}>Оплатить</button>
+            </div>
+          </>
+
         )}
       </>
     </div>
