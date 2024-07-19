@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Sneaker } from '../types/sneakerType';
 import './styles/SneakerItem.css';
 import { useAppDispatch, useAppSelector } from '../../../app/store/store';
