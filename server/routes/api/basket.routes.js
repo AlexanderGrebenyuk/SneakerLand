@@ -232,6 +232,7 @@ router.put('/orders/:orderId', verifyAccessToken, async (req, res) => {
 
     order = await Order.findOne({ where: { id: orderId } });
     // для  админ панели
+    console.log(order, order.statusId, 'order status');
     if (user.isAdmin) {
       if (order.statusId === 2) {
         await order.update({
@@ -284,22 +285,24 @@ router.put('/orders/:orderId', verifyAccessToken, async (req, res) => {
 //verifyAccessToken
 router.get('/adminOrders', verifyAccessToken, async (req, res) => {
   try {
+    console.log(444444);
     const { user } = res.locals;
     // user && user.isAdmin
     // let a = true;
     if (user && user.isAdmin) {
       const orders = await Order.findAll({
         where: { statusId: { [Op.gt]: 1 } },
-        include:[ { model: Status },
-                  {model: OrderLine , include: {model: Sneaker}},
-                  
-               ]
+        include: [
+          { model: Status },
+          { model: OrderLine, include: { model: Sneaker } },
+        ],
       });
+      console.log(12121);
       res.status(200).json({ message: 'success', orders });
       // a = false;
       return;
     }
-    console.log(12121);
+
     res.status(400).json('Вы не админ');
   } catch ({ message }) {
     res.status(500).json({ error: message });
