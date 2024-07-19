@@ -1,0 +1,119 @@
+.SneakerItemPage {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 1300px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .SneakerPageImages {
+    width: 400px; /* Устанавливаем фиксированную ширину для контейнера Swiper */
+    margin-right: 20px; /* Добавляем отступ между Swiper и описанием */
+  }
+  
+  .SneakerPageImages img {
+    max-width: 100%; /* Задаем максимальную ширину для изображений в Swiper */
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .SneakerItemPageContent {
+    flex: 1; /* Занимаем всё доступное пространство по высоте */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .SneakerItemPageDescription {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .SneakerItemPageDescription h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .SneakerItemPageDescription h5 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #111111;
+  }
+  
+  .SneakerItemPageDescription p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .SneakerItemPageForBasket {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Центрируем элементы по вертикали */
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .add-to-cart-button,
+  .like-button,
+  .liked-button,
+  .back-button {
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .add-to-cart-button:hover,
+  .like-button:hover,
+  .liked-button:hover,
+  .back-button:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+  }
+  
+  .add-to-cart-button:focus,
+  .like-button:focus,
+  .liked-button:focus,
+  .back-button:focus {
+    outline: none;
+  }
+  
+  .add-to-cart-button img,
+  .like-button img,
+  .liked-button img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  button {
+    background-color: transparent;
+    color: #4778aa;
+    border: 2px solid #cad4df;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  }
+  
+  button:hover {
+    background-color: #ced9e5;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+
+  

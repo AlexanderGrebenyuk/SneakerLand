@@ -1,0 +1,90 @@
+.flexSideNCards {
+  display: flex;
+  position: relative;
+}
+
+.sidebar {
+  position: fixed;
+  top: 60px;
+}
+
+.allCards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-left: 270px;
+  overflow-y: auto;
+}
+
+.addSneakersButton {
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  margin-top: 40px;
+  margin-left: 50px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.buttonAddSneak {
+  width: 1065px;
+  height: 70px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.cardsFlex {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  /* height: 100vh; */
+}
+
+.searchLine {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 50px;
+  margin-left: 40px;
+}
+
+.serch {
+  display: flex;
+  gap: 10px;
+}
+
+.serch input {
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  width: 990px;
+}
+
+.serch input:focus {
+  border-color: #333;
+  outline: none;
+  bottom: 20px;
+}
+
+.onSubmit {
+  height: 40px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #b5b3b3;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 0px;
+}
+
+.onSubmit:hover {
+  background-color: #a8a6a6;
+  transform: scale(1.05);
+}

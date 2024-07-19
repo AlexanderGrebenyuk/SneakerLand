@@ -1,0 +1,56 @@
+.Sidebar {
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(140, 135, 135, 0.2);
+  /* border: 1px solid; */
+  width: 280px;
+  margin-top: 30px;
+}
+
+ h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.Sidebar form {
+  display: flex;
+  flex-direction: column;
+}
+
+ label {
+  margin-bottom: 10px;
+  color: #666;
+}
+
+ select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.Sidebar button {
+  background-color: transparent;
+  color: #26292c;
+  border: 2px solid #cad4df;
+  border-radius: 4px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    transform 0.3s;
+  margin-top: 10px;
+}
+
+.Sidebar button:hover {
+  background-color: #ced9e5;
+  color: #fff;
+  transform: translateY(-2px);
+}

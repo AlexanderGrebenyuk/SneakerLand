@@ -1,0 +1,69 @@
+.size-item {
+    padding: 20px;
+    /* background-color: #fff; */
+    border-radius: 12px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    max-width: 500px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .size-item p {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .size-item form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .size-item label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .size-item select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .size-item .submit-button, .size-item .back-button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .size-item .submit-button {
+    background-color: #427543;
+    color: white;
+  }
+  
+  .size-item .submit-button:hover {
+    background-color: #6bbc6f;
+  }
+  
+  .size-item .back-button {
+    background-color: #616870;
+    color: white;
+    width: 400px;
+    margin-top: 10px;
+  }
+  
+  .size-item .back-button:hover {
+    background-color: #af5959;
+
+  }
+  
